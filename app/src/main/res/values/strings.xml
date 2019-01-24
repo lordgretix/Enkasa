@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Enkasa</string>
+    <string name="login_btn_login_label">Iniciar Sesión</string>
+    <string name="login_status_logged">Sesión Iniciada</string>
+    <string name="login_status_failed">Nombre de usuario o contraseña incorrectos</string>
+    <string name="login_lbl_create_account">No tienes cuenta? Crear cuenta</string>
+    <string name="logo">logo</string>
+    <string name="username">Username</string>
+</resources>
