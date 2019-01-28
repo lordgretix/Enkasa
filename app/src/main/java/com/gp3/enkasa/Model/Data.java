@@ -5,9 +5,10 @@ import com.gp3.enkasa.Model.JSON.Reservas;
 import com.gp3.enkasa.Model.JSON.Traducciones;
 import com.gp3.enkasa.Model.JSON.User;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Data {
+public class Data implements Serializable {
 
     private User user;
     private ArrayList<Alojamientos> alojamientos = new ArrayList<>();
