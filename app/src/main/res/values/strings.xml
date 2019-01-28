@@ -22,5 +22,22 @@
     <string name="place_direction">Direccion</string>
     <string name="place_tel">Telefono</string>
     <string name="more">Detalles</string>
+
+    <string name="login_btn_login">Iniciar Sesión</string>
+    <string name="login_btn_register">Registrarse</string>
+
+    <!-- Strings  login y registrarse -->
+    <string name="text_email">Email</string>
+    <string name="text_apellidos">Apellidos</string>
+    <string name="text_password">Password</string>
+    <string name="text_user">Usuario</string>
+    <string name="text_name">Nombre</string>
+    <string name="text_dir">Direccion</string>
+    <!-- errores -->
+
+    <string name="error_invalid_password">La contraseña es demasiado corta</string>
+    <string name="error_incorrect_password">Constraseña incorrecta</string>
+    <string name="error_field_required">Este campo es necesario</string>
+
     <string name="resumen">Resumen</string>
 </resources>

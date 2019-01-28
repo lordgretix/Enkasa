@@ -10,7 +10,7 @@
         android:label="activity_main"
         tools:layout="@layout/activity_main">
         <action
-            android:id="@+id/action_mainActivity_to_loginActivity"
+            android:id="@+id/action_mainActivity_to_loginActivity4"
             app:destination="@id/loginActivity" />
     </fragment>
     <fragment
@@ -19,12 +19,24 @@
         android:label="activity_login"
         tools:layout="@layout/activity_login" >
         <action
-            android:id="@+id/action_loginActivity_to_filterActivity"
-            app:destination="@id/filterActivity" />
+            android:id="@+id/action_loginActivity_to_registrarseActivity"
+            app:destination="@id/registrarseActivity" />
+        <action
+            android:id="@+id/action_loginActivity_to_pagPrincipalActivity"
+            app:destination="@id/pagPrincipalActivity" />
     </fragment>
     <fragment
-        android:id="@+id/filterActivity"
-        android:name="com.gp3.enkasa.FilterActivity"
-        android:label="activity_filter"
-        tools:layout="@layout/activity_filter" />
+        android:id="@+id/pagPrincipalActivity"
+        android:name="com.gp3.enkasa.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_pag_principal" />
+    <fragment
+        android:id="@+id/registrarseActivity"
+        android:name="com.gp3.enkasa.LoginActivity"
+        android:label="activity_login"
+        tools:layout="@layout/activity_registrarse" >
+        <action
+            android:id="@+id/action_registrarseActivity_to_loginActivity"
+            app:destination="@id/loginActivity" />
+    </fragment>
 </navigation>

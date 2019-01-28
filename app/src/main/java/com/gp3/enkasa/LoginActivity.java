@@ -1,12 +1,15 @@
 package com.gp3.enkasa;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,6 +23,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.logging.Logger;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -27,7 +33,6 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mTxtUserName;
     private EditText mTxtPassword;
     private TextView mLblRegister;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,14 @@ public class LoginActivity extends AppCompatActivity {
             }
 
         });
+
+        mLblRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivityForResult(register, RegisterActivity.REGISTER_SUCCESS);
+            }
+        });
     }
 
     private void logIn(final String username, final String password){
@@ -59,8 +72,9 @@ public class LoginActivity extends AppCompatActivity {
         final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Authenticating...");
-        progressDialog.show();
 
+
+        progressDialog.show();
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -90,6 +104,8 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
                         mTxtUserName.setError(getResources().getString(R.string.login_status_logged));
+
+                        createAlojamientos(data);
                     }
 
 
@@ -102,5 +118,15 @@ public class LoginActivity extends AppCompatActivity {
             }
         }, 2000);
 
+    }
+
+    private void createAlojamientos(Data data){
+        Intent intent = new Intent(this, AlojamientosActivity.class);
+        intent.putExtra("DATA", data);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
