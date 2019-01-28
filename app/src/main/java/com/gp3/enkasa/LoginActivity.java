@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.StrictMode;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.util.Log;
@@ -55,6 +56,14 @@ public class LoginActivity extends AppCompatActivity {
                 logIn(mTxtUserName.getText().toString(), mTxtPassword.getText().toString());
             }
 
+        });
+
+        mLblRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent register = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivityForResult(register, RegisterActivity.REGISTER_SUCCESS);
+            }
         });
     }
 
@@ -114,5 +123,10 @@ public class LoginActivity extends AppCompatActivity {
     private void createAlojamientos(Data data){
         Intent intent = new Intent(this, AlojamientosActivity.class);
         intent.putExtra("DATA", data);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
