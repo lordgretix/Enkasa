@@ -50,7 +50,7 @@ android {
             throw new FileNotFoundException("Could not read version.properties!")
         }
 
-        if ('assembleRelease' in runTasks) {
+        if ('assemble' in runTasks) {
             applicationVariants.all { variant ->
                 variant.outputs.all { output ->
                     if (output.outputFile != null && output.outputFile.name.endsWith('.apk')) {
@@ -67,7 +67,7 @@ android {
         }
 
         afterEvaluate {
-            assembleRelease.doLast {
+            assemble.doLast {
                 tasks.copyApkFiles.execute()
             }
         }
