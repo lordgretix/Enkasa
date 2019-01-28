@@ -22,4 +22,5 @@
     <string name="place_direction">Direccion</string>
     <string name="place_tel">Telefono</string>
     <string name="more">Detalles</string>
+    <string name="resumen">Resumen</string>
 </resources>
