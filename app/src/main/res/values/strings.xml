@@ -39,4 +39,5 @@
     <string name="error_incorrect_password">Constraseña incorrecta</string>
     <string name="error_field_required">Este campo es necesario</string>
 
+    <string name="resumen">Resumen</string>
 </resources>
