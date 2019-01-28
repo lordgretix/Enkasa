@@ -17,4 +17,9 @@
     <string name="tienda">Tienda</string>
     <string name="autocaravana">Autocaravana</string>
     <string name="filtral">Filtrar</string>
+
+    <string name="place_name">Nombre</string>
+    <string name="place_direction">Direccion</string>
+    <string name="place_tel">Telefono</string>
+    <string name="more">Detalles</string>
 </resources>

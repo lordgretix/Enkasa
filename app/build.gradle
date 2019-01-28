@@ -67,7 +67,7 @@ android {
         }
 
         afterEvaluate {
-            assemble.doLast {
+            assembleRelease.doLast {
                 tasks.copyApkFiles.execute()
             }
         }
