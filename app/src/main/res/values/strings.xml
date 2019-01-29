@@ -17,6 +17,7 @@
     <string name="tienda">Tienda</string>
     <string name="autocaravana">Autocaravana</string>
     <string name="filtral">Filtrar</string>
+    <string name="reservar">Reservar</string>
 
     <string name="place_name">Nombre</string>
     <string name="place_direction">Direccion</string>
@@ -41,4 +42,7 @@
     <string name="error_field_required">Este campo es necesario</string>
 
     <string name="resumen">Resumen</string>
+    <string name="codigo_postal">Codigo Postel</string>
+    <string name="mail">Mail</string>
+    <string name="foto">Foto</string>
 </resources>
