@@ -9,7 +9,7 @@
         android:id="@+id/image_alojamiento"
         android:layout_width="112dp"
         android:layout_height="72dp"
-
+        android:contentDescription="@string/foto"
         android:layout_marginStart="8dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
@@ -48,6 +48,7 @@
         android:ems="10"
         android:inputType="textEmailAddress"
         android:text="@string/mail"
+
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_alojamiento" />
 
@@ -146,4 +147,17 @@
         android:text="@string/restaurante"
         app:layout_constraintStart_toEndOf="@+id/checkBox_certificado"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_club" />
+
+    <View
+        android:id="@+id/separador"
+        android:layout_width="335dp"
+        android:layout_height="4dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_restaurante" />
+
 </android.support.constraint.ConstraintLayout>
