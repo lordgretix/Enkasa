@@ -30,6 +30,7 @@
     <string name="text_email">Email</string>
     <string name="text_apellidos">Apellidos</string>
     <string name="text_password">Password</string>
+    <string name="text_passwordAgain">Confirme Password</string>
     <string name="text_user">Usuario</string>
     <string name="text_name">Nombre</string>
     <string name="text_dir">Direccion</string>
