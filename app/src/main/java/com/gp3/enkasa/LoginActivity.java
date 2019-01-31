@@ -24,6 +24,7 @@ import java.io.IOException;
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REGISTER = 0;
+    private static final String LUGARES = LoginActivity.class.getName()+".LUGARES";
 
     private CardView mBtnLogin;
     private EditText mTxtUserName;
@@ -88,9 +89,8 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
                         mTxtUserName.setError(getResources().getString(R.string.login_status_logged));
-                        Gson gson = new Gson();
-                        System.out.println("USUARIO: "+gson.toJson(data.getUser()));
-                        createAlojamientos(data);
+
+                        createLugaressActivity(data);
                     }
 
                 } catch (IOException e) {
@@ -104,9 +104,11 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void createAlojamientos(Data data){
+    private void createLugaressActivity(Data data){
         Intent intent = new Intent(this, AlojamientosActivity.class);
-        intent.putExtra("DATA", data);
+        intent.putExtra(LUGARES, data);
+        startActivity(intent);
+        finish();
     }
 
     @Override

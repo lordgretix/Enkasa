@@ -103,9 +103,6 @@ public class RegisterActivity extends AppCompatActivity {
     // TODO: validar todos los input
     private boolean validate(){
 
-        System.out.println("PASSWORD:"+ mTxtPassword.getText());
-        System.out.println("PASSWORD:"+ mTxtPasswordRepeat.getText());
-
         if(!mTxtPassword.getText().toString().equals(mTxtPasswordRepeat.getText().toString())){
             mTxtPassword.setError(getResources().getString(R.string.error_match_password));
             return false;

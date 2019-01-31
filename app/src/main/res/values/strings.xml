@@ -50,4 +50,10 @@
     <string name="start_date">Fecha de entrada</string>
     <string name="end_date">Fecha de salida</string>
     <string name="cancel">Cancelar</string>
+    <string name="title_activity_lugares">LugaresActivity</string>
+
+    <!-- menus -->
+    <string name="lugares_navigation_search">Buscar</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="lugares_navigation_profile">Perfil</string>
 </resources>
