@@ -61,6 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
                     user.setApellidos(mTxtApellidos.getText().toString());
                     user.setEmail(mTxtEmail.getText().toString());
                     user.setPassword(mTxtPassword.getText().toString(), true);
+                    user.setRole(3);
 
                     System.out.println("USUARIO: "+ new Gson().toJson(user));
                     
