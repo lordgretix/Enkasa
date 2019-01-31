@@ -15,7 +15,8 @@ import com.google.gson.Gson;
 import com.gp3.enkasa.Model.Json.Connection;
 import com.gp3.enkasa.Model.Json.JsonDataException;
 import com.gp3.enkasa.Model.Json.User;
-
+import java.util.regex.Pattern;
+import android.util.Patterns;
 import java.io.IOException;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -109,5 +110,9 @@ public class RegisterActivity extends AppCompatActivity {
         }
 
         return true;
+    }
+    private boolean validarEmail(String email) {
+        Pattern pattern = Patterns.EMAIL_ADDRESS;
+        return pattern.matcher(email).matches();
     }
 }
