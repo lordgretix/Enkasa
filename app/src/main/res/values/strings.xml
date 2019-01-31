@@ -40,6 +40,7 @@
     <string name="error_invalid_password">La contraseña es demasiado corta</string>
     <string name="error_incorrect_password">Constraseña incorrecta</string>
     <string name="error_field_required">Este campo es necesario</string>
+    <string name="error_match_password">Las contraseñas no coindiden</string>
 
     <string name="resumen">Resumen</string>
     <string name="codigo_postal">Codigo Postel</string>

@@ -1,4 +1,4 @@
-package com.gp3.enkasa.Model.JSON;
+package com.gp3.enkasa.Model.Json;
 
 public class Reservas {
 
