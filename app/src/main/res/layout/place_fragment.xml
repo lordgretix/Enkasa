@@ -11,8 +11,8 @@
 
     <ImageView
         android:id="@+id/image_alojamiento"
-        android:layout_width="103dp"
-        android:layout_height="99dp"
+        android:layout_width="108dp"
+        android:layout_height="114dp"
         android:layout_marginStart="8dp"
         android:contentDescription="@string/foto"
         app:layout_constraintStart_toStartOf="parent"
