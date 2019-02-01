@@ -41,6 +41,9 @@
     <string name="error_incorrect_password">Constraseña incorrecta</string>
     <string name="error_field_required">Este campo es necesario</string>
     <string name="error_match_password">Las contraseñas no coindiden</string>
+    <string name="error_format_mail">El formato de mail es incorrecto</string>
+    <string name="error_length_password">El longitud de contraseña debe estar entre 8-16 caracteres</string>
+    <string name="error_out_of_range">Es demasiado largo</string>
 
     <string name="resumen">Resumen</string>
     <string name="codigo_postal">Codigo Postel</string>
