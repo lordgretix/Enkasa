@@ -38,7 +38,7 @@ public class DummyContent {
     }
 
     private static DummyItem createDummyItem(int position) {
-        return new DummyItem(String.valueOf(position), "Item " + position, makeDetails(position));
+        return new DummyItem(String.valueOf(position), "El albergue Barrika Surf Camp se encuentra en Barrika, pequeña población situada al borde de acan..." + position, makeDetails(position));
     }
 
     private static String makeDetails(int position) {
