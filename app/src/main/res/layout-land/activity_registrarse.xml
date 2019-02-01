@@ -107,38 +107,42 @@
 
 
         </android.support.constraint.ConstraintLayout>
+        <!--Boton-->
+        <android.support.v7.widget.CardView
+            android:id="@+id/btnRegistrarse"
+            android:layout_width="316dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/lblRegister"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="280dp"
+            android:layout_marginBottom="15dp"
+            app:cardBackgroundColor="@color/colorSecondary"
+            app:cardCornerRadius="25dp"
+            tools:ignore="MissingConstraints"
+            android:layout_marginLeft="350dp"
+            >
 
+            <android.support.constraint.ConstraintLayout
+                android:layout_width="341dp"
+                android:layout_height="match_parent"
+                >
+
+                <TextView
+                    android:id="@+id/btnRegistrarseLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:text="@string/login_btn_register"
+                    android:textColor="@android:color/white"
+                    android:textSize="20dp"
+
+                    tools:layout_editor_absoluteX="119dp"
+                    tools:layout_editor_absoluteY="7dp" />
+            </android.support.constraint.ConstraintLayout>
+
+        </android.support.v7.widget.CardView>
 
     </android.support.v7.widget.CardView>
-    <!--Boton>
-    <android.support.v7.widget.CardView
-        android:id="@+id/btnLogin"
-        android:layout_width="316dp"
-        android:layout_height="50dp"
-        android:layout_above="@+id/lblRegister"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="15dp"
-        app:cardBackgroundColor="@color/colorSecondary"
-        app:cardCornerRadius="25dp"
-        tools:ignore="MissingConstraints">
 
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="341dp"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/btnLoginLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/login_btn_register"
-                android:textColor="@android:color/white"
-                android:textSize="20dp"
-                tools:layout_editor_absoluteX="119dp"
-                tools:layout_editor_absoluteY="7dp" />
-        </android.support.constraint.ConstraintLayout>
-
-    </android.support.v7.widget.CardView-->
 </android.support.constraint.ConstraintLayout>
