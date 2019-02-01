@@ -9,6 +9,7 @@ import android.widget.TextView;
 import com.gp3.enkasa.AlojamientoFragment.OnListFragmentInteractionListener;
 import com.gp3.enkasa.Model.Json.Alojamientos;
 import com.gp3.enkasa.Model.Json.Data;
+import com.gp3.enkasa.Model.Json.Traducciones;
 import com.gp3.enkasa.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -38,8 +39,10 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
     @Override
     public void onBindViewHolder(final AlojamientosViewHolder holder, final int position) {
 
-        holder.setItem( mData.getAlojamientos().get(position));
-        holder.getTitle().setText(mData.getTraduccionByAlojaminetoID(holder.getItem().getId(), AlojamientosActivity.LANG).getResumen());
+        Alojamientos aloj = mData.getAlojamientos().get(position);
+        Traducciones tr = mData.getTraduccionByAlojaminetoID(aloj.getId(), AlojamientosActivity.LANG);
+        holder.setItem( aloj );
+        holder.getTitle().setText(tr.getResumen());
 
         holder.getView().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +50,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(mData, position);
+                    mListener.onListFragmentInteraction(AlojamientosActivity.jsonData.getData(), position);
                 }
             }
         });

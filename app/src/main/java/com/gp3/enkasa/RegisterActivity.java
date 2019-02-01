@@ -15,6 +15,8 @@ import com.google.gson.Gson;
 import com.gp3.enkasa.Model.Json.Connection;
 import com.gp3.enkasa.Model.Json.JsonDataException;
 import com.gp3.enkasa.Model.Json.User;
+import com.gp3.enkasa.Model.JsonData;
+
 import java.util.regex.Pattern;
 import android.util.Patterns;
 import java.io.IOException;
@@ -85,7 +87,9 @@ public class RegisterActivity extends AppCompatActivity {
                     Connection.pushData(params);
 
                     Intent result = new Intent();
-                    result.putExtra(REGISTER_USER, user);
+                    JsonData jsonData = new JsonData();
+                    jsonData.setUser(user);
+                    result.putExtra(REGISTER_USER, new Gson().toJson(jsonData));
 
                     setResult(REGISTER_SUCCESS, result);
 

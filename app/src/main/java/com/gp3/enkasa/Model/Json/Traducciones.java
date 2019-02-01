@@ -1,15 +1,20 @@
 package com.gp3.enkasa.Model.Json;
 
 
-import java.io.Serializable;
-
+import com.google.gson.annotations.SerializedName;
 public class Traducciones {
 
+    @SerializedName("id")
     private int idTraduccion;
+    @SerializedName("alojamiento")
     private int idAlojamiento;
+    @SerializedName("idioma")
     private String idioma = "";
+    @SerializedName("tipo")
     private String tipo = "";
+    @SerializedName("resumen")
     private String resumen = "";
+    @SerializedName("descripcion")
     private String descripcion = "";
 
     public Traducciones() {

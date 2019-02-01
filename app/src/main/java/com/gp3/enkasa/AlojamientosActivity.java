@@ -11,10 +11,12 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.gp3.enkasa.Model.Json.Data;
+import com.gp3.enkasa.Model.JsonData;
 
 public class AlojamientosActivity extends AppCompatActivity implements AlojamientoFragment.OnListFragmentInteractionListener {
 
     public static String LANG = "es";
+    public static JsonData jsonData = null;
 
     private TextView mTextMessage;
 
@@ -57,7 +59,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
             Bundle args = new Bundle();
             args.putInt(AlojamientoFragment.ARG_COLUMN_COUNT, 1);
-            args.putSerializable(AlojamientoFragment.ARG_DATA, getIntent().getExtras().getSerializable(LoginActivity.LUGARES));
+
             fragment.setArguments(args);
 
             transaction.add(R.id.fragment_alojamiento_list, fragment);

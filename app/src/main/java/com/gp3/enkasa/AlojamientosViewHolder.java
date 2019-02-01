@@ -16,7 +16,7 @@ public class AlojamientosViewHolder extends RecyclerView.ViewHolder {
         super(view);
         mView = view;
         mTitle = view.findViewById(R.id.content);
-        mTitle.setText(mItem.getNombre());
+        //mTitle.setText(mItem.getNombre());
     }
 
     public View getView() {

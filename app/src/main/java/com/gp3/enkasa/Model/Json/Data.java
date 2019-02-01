@@ -1,12 +1,17 @@
 package com.gp3.enkasa.Model.Json;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Data {
 
+    @SerializedName("alojamientos")
     private ArrayList<Alojamientos> alojamientos = new ArrayList<>();
+    @SerializedName("reservas")
     private ArrayList<Reservas> reservas = new ArrayList<>();
+    @SerializedName("traducciones")
     private ArrayList<Traducciones> traducciones = new ArrayList<>();
 
     public Data() {

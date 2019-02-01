@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.google.gson.Gson;
 import com.gp3.enkasa.Model.Json.Data;
 import com.gp3.enkasa.Model.JsonData;
 import com.gp3.enkasa.dummy.DummyContent;
@@ -56,7 +57,7 @@ public class AlojamientoFragment extends Fragment {
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-            mJsonData = (JsonData)getArguments().getSerializable(ARG_DATA);
+            mJsonData = AlojamientosActivity.jsonData;
         }
     }
 

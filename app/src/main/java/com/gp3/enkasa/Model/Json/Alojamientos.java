@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class Alojamientos extends Traducciones {
+public class Alojamientos{
 
     @SerializedName("id")
     private int id;
@@ -65,12 +65,10 @@ public class Alojamientos extends Traducciones {
 
     }
 
-    public Alojamientos(int idTraduccion, int idAlojamiento, String idioma, String tipo, String resumen,
-                        String descripcion, int id, String nombre, String localidad, String telefono, String direccion,
+    public Alojamientos( int id, String nombre, String localidad, String telefono, String direccion,
                         int certificado, String email, String web, int restaurante, int club,
                         int autocarabana, String firma, int tienda, int capacidad, String codPostal,
                         String latlong, String municipio, String territorio, String json) {
-        super(idTraduccion, idAlojamiento, idioma, tipo, resumen, descripcion);
         this.id = id;
         this.nombre = nombre;
         this.localidad = localidad;

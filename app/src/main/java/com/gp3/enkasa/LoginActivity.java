@@ -16,7 +16,6 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.gp3.enkasa.Model.JsonData;
-import com.gp3.enkasa.Model.Json.Alojamientos;
 import com.gp3.enkasa.Model.Json.Connection;
 import com.gp3.enkasa.Model.Json.User;
 
@@ -25,7 +24,7 @@ import java.io.IOException;
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REGISTER = 0;
-    public static final String LUGARES = LoginActivity.class.getName()+".LUGARES";
+    public static final String ALOJAMIENTOS ="ALOJAMIENTOS";
 
     private CardView mBtnLogin;
     private EditText mTxtUserName;
@@ -73,6 +72,35 @@ public class LoginActivity extends AppCompatActivity {
 
 
         progressDialog.show();
+
+        try {
+            String params = "db=reto_gp3&users_table=usuarios&username_field=nombre&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&get_user=true";
+
+            if(hash) params+="&hash=sha256";
+
+            JsonData jsonData = Connection.retriveData(params);
+
+            System.out.println("JsonData has error: "+ jsonData.hashError());
+            if(jsonData.hashError()){
+                Toast.makeText(getApplicationContext(), R.string.login_status_failed, Toast.LENGTH_SHORT).show();
+                mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
+            }else{
+                Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
+                mTxtUserName.setError(getResources().getString(R.string.login_status_logged));
+
+                System.out.println("DATA: "+  new Gson().toJson(jsonData));
+
+                AlojamientosActivity.jsonData=jsonData;
+                createLugaressActivity(jsonData);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } finally {
+            progressDialog.dismiss();
+        }
+
+        /*
         new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
             @Override
             public void run() {
@@ -100,16 +128,16 @@ public class LoginActivity extends AppCompatActivity {
                     e.printStackTrace();
 
                 } finally {
-                    progressDialog.dismiss();
+                    //progressDialog.dismiss();
                 }
             }
         }, 1500);
+        */
 
     }
 
     private void createLugaressActivity(JsonData jsonData){
         Intent intent = new Intent(this, AlojamientosActivity.class);
-        intent.putExtra(LUGARES, new Gson().toJson(jsonData));
         startActivity(intent);
         System.out.println("-------------------------------------------------------------------------------------");
         //finish();
@@ -123,7 +151,7 @@ public class LoginActivity extends AppCompatActivity {
             if(resultCode==RegisterActivity.REGISTER_SUCCESS){
                 Toast.makeText(this, "Resgistrado", Toast.LENGTH_SHORT ).show();
 
-                User user = (User)data.getExtras().getSerializable(RegisterActivity.REGISTER_USER);
+                User user = new Gson().fromJson(data.getExtras().getString(RegisterActivity.REGISTER_USER), JsonData.class).getUser();
 
                 logIn(user.getUsername(), user.getPassword(), false);
 
