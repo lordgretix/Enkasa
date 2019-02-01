@@ -1,9 +1,9 @@
 package com.gp3.enkasa.Model;
 
-import com.gp3.enkasa.Model.JSON.Alojamientos;
-import com.gp3.enkasa.Model.JSON.Reservas;
-import com.gp3.enkasa.Model.JSON.Traducciones;
-import com.gp3.enkasa.Model.JSON.User;
+import com.gp3.enkasa.Model.Json.Alojamientos;
+import com.gp3.enkasa.Model.Json.Reservas;
+import com.gp3.enkasa.Model.Json.Traducciones;
+import com.gp3.enkasa.Model.Json.User;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Data implements Serializable {
         this.error = error;
     }
 
-    public Data(User user, ArrayList<Alojamientos> alojamientos, ArrayList<Reservas> reservas, ArrayList<com.gp3.enkasa.Model.JSON.Traducciones> traducciones) {
+    public Data(User user, ArrayList<Alojamientos> alojamientos, ArrayList<Reservas> reservas, ArrayList<com.gp3.enkasa.Model.Json.Traducciones> traducciones) {
         this.user = user;
         this.alojamientos = alojamientos;
         this.reservas = reservas;
@@ -55,11 +55,11 @@ public class Data implements Serializable {
         this.reservas = reservas;
     }
 
-    public ArrayList<com.gp3.enkasa.Model.JSON.Traducciones> getTraducciones() {
+    public ArrayList<com.gp3.enkasa.Model.Json.Traducciones> getTraducciones() {
         return Traducciones;
     }
 
-    public void setTraducciones(ArrayList<com.gp3.enkasa.Model.JSON.Traducciones> traducciones) {
+    public void setTraducciones(ArrayList<com.gp3.enkasa.Model.Json.Traducciones> traducciones) {
         Traducciones = traducciones;
     }
 
@@ -74,4 +74,5 @@ public class Data implements Serializable {
     public boolean hashError(){
         return this.error != null;
     }
+
 }

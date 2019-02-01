@@ -36,7 +36,7 @@
         android:label="activity_login"
         tools:layout="@layout/activity_registrarse" >
         <action
-            android:id="@+id/action_registrarseActivity_to_loginActivity"
-            app:destination="@id/loginActivity" />
+            android:id="@+id/action_registrarseActivity_to_pagPrincipalActivity"
+            app:destination="@id/pagPrincipalActivity" />
     </fragment>
 </navigation>

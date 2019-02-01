@@ -40,6 +40,7 @@
     <string name="error_invalid_password">La contraseña es demasiado corta</string>
     <string name="error_incorrect_password">Constraseña incorrecta</string>
     <string name="error_field_required">Este campo es necesario</string>
+    <string name="error_match_password">Las contraseñas no coindiden</string>
 
     <string name="resumen">Resumen</string>
     <string name="codigo_postal">Codigo Postel</string>
@@ -49,4 +50,10 @@
     <string name="start_date">Fecha de entrada</string>
     <string name="end_date">Fecha de salida</string>
     <string name="cancel">Cancelar</string>
+    <string name="title_activity_lugares">LugaresActivity</string>
+
+    <!-- menus -->
+    <string name="lugares_navigation_search">Buscar</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="lugares_navigation_profile">Perfil</string>
 </resources>

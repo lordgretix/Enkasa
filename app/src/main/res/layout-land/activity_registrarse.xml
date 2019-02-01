@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:background="@color/colorPrimaryDark">
 
 
@@ -14,135 +14,97 @@
         android:layout_height="match_parent"
         android:layout_margin="30dp">
 
-        <android.support.constraint.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <EditText
-                android:id="@+id/editText2"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-
-                android:layout_margin="10dp"
-                android:ems="10"
-                android:hint="@string/text_email"
-                android:textSize="12sp"
-                tools:ignore="MissingConstraints"
-                tools:layout_editor_absoluteX="355dp"
-                tools:layout_editor_absoluteY="102dp" />
-
-            <EditText
-                android:id="@+id/editText"
-                android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:hint="@string/text_apellidos"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="355dp"
-                tools:layout_editor_absoluteY="40dp"
-                tools:ignore="MissingConstraints" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
 
             <TextView
                 android:id="@+id/textView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:text="@string/login_btn_register"
                 android:textAlignment="center"
-                android:textSize="18sp"
-                tools:ignore="MissingConstraints" />
+                android:layout_marginTop="10dp"
+                android:textSize="18sp" />
 
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
+                android:layout_marginTop="40dp"
 
                 android:hint="@string/text_name"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="33dp"
-                tools:layout_editor_absoluteY="40dp"
-                tools:ignore="MissingConstraints" />
+                android:textSize="12sp" />
 
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
+                android:layout_marginTop="40dp"
 
                 android:ems="10"
                 android:hint="@string/text_passwordAgain"
                 android:inputType="textPassword"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="355dp"
-                tools:layout_editor_absoluteY="180dp"
-                tools:ignore="MissingConstraints" />
+                android:textSize="12sp" />
 
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
+                android:layout_marginTop="40dp"
 
                 android:ems="10"
                 android:hint="@string/text_user"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="33dp"
-                tools:layout_editor_absoluteY="102dp"
-                tools:ignore="MissingConstraints" />
+                android:textSize="12sp" />
 
             <EditText
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_margin="10dp"
+                android:layout_marginTop="40dp"
+
                 android:ems="10"
                 android:hint="@string/text_password"
                 android:inputType="textPassword"
-                android:textSize="12sp"
-                tools:layout_editor_absoluteX="33dp"
-                tools:layout_editor_absoluteY="180dp"
-                tools:ignore="MissingConstraints" />
+                android:textSize="12sp" />
 
+            <android.support.v7.widget.CardView
+                android:id="@+id/btnLogin"
+                android:layout_width="316dp"
+                android:layout_height="50dp"
+                android:layout_above="@+id/lblRegister"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                app:cardBackgroundColor="@color/colorSecondary"
+                app:cardCornerRadius="25dp">
 
+                <RelativeLayout
+                    android:layout_width="341dp"
+                    android:layout_height="match_parent">
 
+                    <TextView
+                        android:id="@+id/btnRegisterLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:text="@string/login_btn_register"
+                        android:textColor="@android:color/white"
+                        android:textSize="20dp" />
+                </RelativeLayout>
 
-        </android.support.constraint.ConstraintLayout>
-        <!--Boton-->
-        <android.support.v7.widget.CardView
-            android:id="@+id/btnRegistrarse"
-            android:layout_width="316dp"
-            android:layout_height="50dp"
-            android:layout_above="@+id/lblRegister"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="280dp"
-            android:layout_marginBottom="15dp"
-            app:cardBackgroundColor="@color/colorSecondary"
-            app:cardCornerRadius="25dp"
-            tools:ignore="MissingConstraints"
-            android:layout_marginLeft="350dp"
-            >
+            </android.support.v7.widget.CardView>
 
-            <android.support.constraint.ConstraintLayout
-                android:layout_width="341dp"
-                android:layout_height="match_parent"
-                >
+        </LinearLayout>
 
-                <TextView
-                    android:id="@+id/btnRegistrarseLabel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_centerVertical="true"
-                    android:text="@string/login_btn_register"
-                    android:textColor="@android:color/white"
-                    android:textSize="20dp"
-
-                    tools:layout_editor_absoluteX="119dp"
-                    tools:layout_editor_absoluteY="7dp" />
-            </android.support.constraint.ConstraintLayout>
-
-        </android.support.v7.widget.CardView>
 
     </android.support.v7.widget.CardView>
-
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

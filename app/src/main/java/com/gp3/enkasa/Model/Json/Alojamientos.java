@@ -1,25 +1,62 @@
-package com.gp3.enkasa.Model.JSON;
+package com.gp3.enkasa.Model.Json;
 
+
+import com.google.gson.annotations.SerializedName;
 
 public class Alojamientos extends Traducciones{
 
+    @SerializedName("id")
     private int id;
+
+    @SerializedName("nombre")
     private String nombre = "";
+
+    @SerializedName("localidad")
     private String localidad = "";
+
+    @SerializedName("telefono")
     private String telefono = "";
+
+    @SerializedName("direccion")
     private String direccion = "";
+
+    @SerializedName("certificado")
     private boolean certificado = false;
+
+    @SerializedName("email")
     private String email = "";
+
+    @SerializedName("web")
     private String web = "";
+
+    @SerializedName("restaurante")
     private boolean restaurante = false;
+
+    @SerializedName("club")
     private boolean club = false;
+
+    @SerializedName("autocarabana")
     private boolean autocarabana = false;
+
+    @SerializedName("firma")
     private String firma;
+
+    @SerializedName("tienda")
     private boolean tienda = false;
+
+    @SerializedName("capacidad")
     private int capacidad = 0;
+
+    @SerializedName("codPostal")
     private String codPostal = "";
+
+    @SerializedName("latlong")
     private String latlong = "";
+
+    @SerializedName("municipio")
     private String municipio = "";
+
+    @SerializedName("territorio")
     private String territorio = "";
 
     public Alojamientos() {
