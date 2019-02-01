@@ -1,24 +1,19 @@
-package com.gp3.enkasa;
+package com.gp3.enkasa.Fragments.Adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
-import com.gp3.enkasa.AlojamientoFragment.OnListFragmentInteractionListener;
-import com.gp3.enkasa.Model.Json.Alojamientos;
-import com.gp3.enkasa.Model.Json.Data;
-import com.gp3.enkasa.Model.Json.Traducciones;
-import com.gp3.enkasa.dummy.DummyContent.DummyItem;
+import com.gp3.enkasa.Activities.AlojamientosActivity;
+import com.gp3.enkasa.Fragments.AlojamientoFragment.OnListFragmentInteractionListener;
+import com.gp3.enkasa.Fragments.Holders.AlojamientosViewHolder;
+import com.gp3.enkasa.Models.Json.Models.Alojamientos;
+import com.gp3.enkasa.Models.Json.Models.Data;
+import com.gp3.enkasa.Models.Json.Models.Traducciones;
+import com.gp3.enkasa.R;
 
-import java.util.List;
 
-/**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
- * specified {@link OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
- */
 public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<AlojamientosViewHolder> {
 
     private final Data mData;

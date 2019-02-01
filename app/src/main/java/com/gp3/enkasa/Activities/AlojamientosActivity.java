@@ -1,4 +1,4 @@
-package com.gp3.enkasa;
+package com.gp3.enkasa.Activities;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -10,8 +10,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import com.gp3.enkasa.Model.Json.Data;
-import com.gp3.enkasa.Model.JsonData;
+import com.gp3.enkasa.Fragments.AlojamientoFragment;
+import com.gp3.enkasa.Models.Json.Models.Data;
+import com.gp3.enkasa.Models.Json.JsonData;
+import com.gp3.enkasa.R;
 
 public class AlojamientosActivity extends AppCompatActivity implements AlojamientoFragment.OnListFragmentInteractionListener {
 
@@ -28,13 +30,13 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
             switch (item.getItemId()) {
                 case R.id.lugares_navigation_search:
                     mTextMessage.setText(R.string.lugares_navigation_search);
-                    return true;
+                    break;
                 case R.id.lugares_navigation_center:
                     mTextMessage.setText(R.string.title_dashboard);
-                    return true;
+                    break;
                 case R.id.lugares_navigation_profile:
                     mTextMessage.setText(R.string.lugares_navigation_profile);
-                    return true;
+                    break;
             }
             return false;
         }
@@ -47,6 +49,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
         mTextMessage = findViewById(R.id.message);
         BottomNavigationView navigation = findViewById(R.id.navigation);
+
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         FragmentManager manager = getSupportFragmentManager();

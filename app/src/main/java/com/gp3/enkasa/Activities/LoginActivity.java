@@ -1,10 +1,8 @@
-package com.gp3.enkasa;
+package com.gp3.enkasa.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -15,16 +13,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.gp3.enkasa.Model.JsonData;
-import com.gp3.enkasa.Model.Json.Connection;
-import com.gp3.enkasa.Model.Json.User;
+import com.gp3.enkasa.Models.Json.JsonData;
+import com.gp3.enkasa.Models.Json.Connection;
+import com.gp3.enkasa.Models.Json.Models.User;
+import com.gp3.enkasa.R;
 
 import java.io.IOException;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REGISTER = 0;
-    public static final String ALOJAMIENTOS ="ALOJAMIENTOS";
+    public static final String ALOJAMIENTOS = LoginActivity.class.getName()+".ALOJAMIENTOS";
 
     private CardView mBtnLogin;
     private EditText mTxtUserName;

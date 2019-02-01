@@ -1,8 +1,7 @@
-package com.gp3.enkasa.Model.Json;
+package com.gp3.enkasa.Models.Json.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 public class Data {
@@ -18,7 +17,7 @@ public class Data {
 
     }
 
-    public Data(User user, ArrayList<Alojamientos> alojamientos, ArrayList<Reservas> reservas, ArrayList<com.gp3.enkasa.Model.Json.Traducciones> traducciones) {
+    public Data(User user, ArrayList<Alojamientos> alojamientos, ArrayList<Reservas> reservas, ArrayList<Traducciones> traducciones) {
         this.alojamientos = alojamientos;
         this.reservas = reservas;
         this.traducciones = traducciones;
@@ -40,11 +39,11 @@ public class Data {
         this.reservas = reservas;
     }
 
-    public ArrayList<com.gp3.enkasa.Model.Json.Traducciones> getTraducciones() {
+    public ArrayList<Traducciones> getTraducciones() {
         return this.traducciones;
     }
 
-    public void setTraducciones(ArrayList<com.gp3.enkasa.Model.Json.Traducciones> traducciones) {
+    public void setTraducciones(ArrayList<Traducciones> traducciones) {
         this.traducciones = traducciones;
     }
 

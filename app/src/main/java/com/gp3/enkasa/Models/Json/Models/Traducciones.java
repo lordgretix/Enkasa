@@ -1,4 +1,4 @@
-package com.gp3.enkasa.Model.Json;
+package com.gp3.enkasa.Models.Json.Models;
 
 
 import com.google.gson.annotations.SerializedName;

@@ -1,8 +1,8 @@
-package com.gp3.enkasa.Model.Json;
+package com.gp3.enkasa.Models.Json.Models;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
-import java.io.Serializable;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 

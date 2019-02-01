@@ -1,4 +1,4 @@
-package com.gp3.enkasa;
+package com.gp3.enkasa.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -10,11 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.google.gson.Gson;
-import com.gp3.enkasa.Model.Json.Data;
-import com.gp3.enkasa.Model.JsonData;
-import com.gp3.enkasa.dummy.DummyContent;
-import com.gp3.enkasa.dummy.DummyContent.DummyItem;
+import com.gp3.enkasa.Fragments.Adapters.AlojamientoRecyclerViewAdapter;
+import com.gp3.enkasa.Activities.AlojamientosActivity;
+import com.gp3.enkasa.Models.Json.Models.Data;
+import com.gp3.enkasa.Models.Json.JsonData;
+import com.gp3.enkasa.R;
 
 /**
  * A fragment representing a list of Items.

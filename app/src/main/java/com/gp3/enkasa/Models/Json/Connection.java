@@ -1,7 +1,7 @@
-package com.gp3.enkasa.Model.Json;
+package com.gp3.enkasa.Models.Json;
 
 import com.google.gson.Gson;
-import com.gp3.enkasa.Model.JsonData;
+import com.gp3.enkasa.Models.Json.Exceptions.JsonDataException;
 
 import java.io.BufferedReader;
 import java.io.IOException;

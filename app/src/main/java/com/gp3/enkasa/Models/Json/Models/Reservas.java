@@ -1,6 +1,4 @@
-package com.gp3.enkasa.Model.Json;
-
-import java.io.Serializable;
+package com.gp3.enkasa.Models.Json.Models;
 
 public class Reservas {
 

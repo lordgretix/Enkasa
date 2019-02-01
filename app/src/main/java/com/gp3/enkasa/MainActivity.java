@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import com.gp3.enkasa.Activities.LoginActivity;
+
 public class MainActivity extends AppCompatActivity {
 
     @Override

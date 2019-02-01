@@ -1,9 +1,7 @@
-package com.gp3.enkasa.Model;
+package com.gp3.enkasa.Models.Json;
 
-import com.gp3.enkasa.Model.Json.Data;
-import com.gp3.enkasa.Model.Json.User;
-
-import java.io.Serializable;
+import com.gp3.enkasa.Models.Json.Models.Data;
+import com.gp3.enkasa.Models.Json.Models.User;
 
 public class JsonData{
 

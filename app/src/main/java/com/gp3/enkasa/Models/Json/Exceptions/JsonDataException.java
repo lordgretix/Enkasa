@@ -1,4 +1,4 @@
-package com.gp3.enkasa.Model.Json;
+package com.gp3.enkasa.Models.Json.Exceptions;
 
 public class JsonDataException extends Exception {
 

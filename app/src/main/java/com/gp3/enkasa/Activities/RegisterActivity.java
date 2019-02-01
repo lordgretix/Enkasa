@@ -1,21 +1,19 @@
-package com.gp3.enkasa;
+package com.gp3.enkasa.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.util.AttributeSet;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
-import com.gp3.enkasa.Model.Json.Connection;
-import com.gp3.enkasa.Model.Json.JsonDataException;
-import com.gp3.enkasa.Model.Json.User;
-import com.gp3.enkasa.Model.JsonData;
+import com.gp3.enkasa.Models.Json.Connection;
+import com.gp3.enkasa.Models.Json.Exceptions.JsonDataException;
+import com.gp3.enkasa.Models.Json.Models.User;
+import com.gp3.enkasa.Models.Json.JsonData;
+import com.gp3.enkasa.R;
 
 import java.util.regex.Pattern;
 import android.util.Patterns;
@@ -26,7 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
     public static final int REGISTER_CANCEL = 0;
     public static final int REGISTER_SUCCESS = 1;
 
-    public static final String REGISTER_USER = "com.gp3.enkasa.RegisterActivity.REGISTER_USER";
+    public static final String REGISTER_USER = "com.gp3.enkasa.Activities.RegisterActivity.REGISTER_USER";
 
     private TextView mBtnRegister;
     private EditText mTxtNombre;

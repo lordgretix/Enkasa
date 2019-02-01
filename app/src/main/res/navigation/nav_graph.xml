@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/loginActivity"
-        android:name="com.gp3.enkasa.LoginActivity"
+        android:name="com.gp3.enkasa.Activities.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_login" >
         <action
@@ -27,12 +27,12 @@
     </fragment>
     <fragment
         android:id="@+id/pagPrincipalActivity"
-        android:name="com.gp3.enkasa.LoginActivity"
+        android:name="com.gp3.enkasa.Activities.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_pag_principal" />
     <fragment
         android:id="@+id/registrarseActivity"
-        android:name="com.gp3.enkasa.LoginActivity"
+        android:name="com.gp3.enkasa.Activities.LoginActivity"
         android:label="activity_login"
         tools:layout="@layout/activity_registrarse" >
         <action
