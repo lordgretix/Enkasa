@@ -3,7 +3,9 @@ package com.gp3.enkasa.Model.Json;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Alojamientos extends Traducciones{
+import java.io.Serializable;
+
+public class Alojamientos extends Traducciones {
 
     @SerializedName("id")
     private int id;
@@ -21,7 +23,7 @@ public class Alojamientos extends Traducciones{
     private String direccion = "";
 
     @SerializedName("certificado")
-    private boolean certificado = false;
+    private int certificado = 0;
 
     @SerializedName("email")
     private String email = "";
@@ -30,19 +32,19 @@ public class Alojamientos extends Traducciones{
     private String web = "";
 
     @SerializedName("restaurante")
-    private boolean restaurante = false;
+    private int restaurante = 0;
 
     @SerializedName("club")
-    private boolean club = false;
+    private int club = 0;
 
     @SerializedName("autocarabana")
-    private boolean autocarabana = false;
+    private int autocarabana = 0;
 
     @SerializedName("firma")
     private String firma;
 
     @SerializedName("tienda")
-    private boolean tienda = false;
+    private int tienda = 0;
 
     @SerializedName("capacidad")
     private int capacidad = 0;
@@ -65,8 +67,8 @@ public class Alojamientos extends Traducciones{
 
     public Alojamientos(int idTraduccion, int idAlojamiento, String idioma, String tipo, String resumen,
                         String descripcion, int id, String nombre, String localidad, String telefono, String direccion,
-                        boolean certificado, String email, String web, boolean restaurante, boolean club,
-                        boolean autocarabana, String firma, boolean tienda, int capacidad, String codPostal,
+                        int certificado, String email, String web, int restaurante, int club,
+                        int autocarabana, String firma, int tienda, int capacidad, String codPostal,
                         String latlong, String municipio, String territorio, String json) {
         super(idTraduccion, idAlojamiento, idioma, tipo, resumen, descripcion);
         this.id = id;
@@ -137,43 +139,43 @@ public class Alojamientos extends Traducciones{
         this.direccion = direccion;
     }
 
-    public boolean isCertificado() {
+    public int getCertificado() {
         return certificado;
     }
 
-    public void setCertificado(boolean certificado) {
+    public void setCertificado(int certificado) {
         this.certificado = certificado;
     }
 
-    public boolean isClub() {
+    public int getClub() {
         return club;
     }
 
-    public void setClub(boolean club) {
+    public void setClub(int club) {
         this.club = club;
     }
 
-    public boolean isRestaurante() {
+    public int getRestaurante() {
         return restaurante;
     }
 
-    public void setRestaurante(boolean restaurante) {
+    public void setRestaurante(int restaurante) {
         this.restaurante = restaurante;
     }
 
-    public boolean isAutocarabana() {
+    public int getAutocarabana() {
         return autocarabana;
     }
 
-    public void setAutocarabana(boolean autocarabana) {
+    public void setAutocarabana(int autocarabana) {
         this.autocarabana = autocarabana;
     }
 
-    public boolean isTienda() {
+    public int getTienda() {
         return tienda;
     }
 
-    public void setTienda(boolean tienda) {
+    public void setTienda(int tienda) {
         this.tienda = tienda;
     }
 

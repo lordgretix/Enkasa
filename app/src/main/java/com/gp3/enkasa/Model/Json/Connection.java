@@ -1,7 +1,7 @@
 package com.gp3.enkasa.Model.Json;
 
 import com.google.gson.Gson;
-import com.gp3.enkasa.Model.Data;
+import com.gp3.enkasa.Model.JsonData;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -19,7 +19,7 @@ public class Connection {
     public static final String METHOD_GET = "GET";
     public static final String CONN_URL = "https://kasserver.synology.me/etazi/";
 
-    public static Data retriveData(String url, String api, String params, String method, boolean output, String charset) throws IOException {
+    public static JsonData retriveData(String url, String api, String params, String method, boolean output, String charset) throws IOException {
 
         HttpsURLConnection conn = (HttpsURLConnection) new URL(url+api).openConnection();
 
@@ -34,11 +34,11 @@ public class Connection {
             response.append(buff);
         }
 
-        return new Gson().fromJson(response.toString(), Data.class);
+        return new Gson().fromJson(response.toString(), JsonData.class);
     }
 
 
-    public static Data retriveData(String params) throws IOException {
+    public static JsonData retriveData(String params) throws IOException {
 
         HttpsURLConnection conn = (HttpsURLConnection) new URL(CONN_URL+GETTER_API).openConnection();
 
@@ -53,7 +53,7 @@ public class Connection {
             response.append(buff);
         }
 
-        return new Gson().fromJson(response.toString(), Data.class);
+        return new Gson().fromJson(response.toString(), JsonData.class);
     }
 
     public static boolean pushData(String url, String api, String params, String method, boolean output, String charset) throws IOException, JsonDataException {
@@ -71,9 +71,9 @@ public class Connection {
             response.append(buff);
         }
 
-        Data data =new Gson().fromJson(response.toString(), Data.class);
-        if(data.hashError()){
-            throw new JsonDataException(data.getError());
+        JsonData jsonData = new Gson().fromJson(response.toString(), JsonData.class);
+        if(jsonData.hashError()){
+            throw new JsonDataException(jsonData.getError());
         }
 
         return true;
@@ -94,9 +94,9 @@ public class Connection {
             response.append(buff);
         }
 
-        Data data =new Gson().fromJson(response.toString(), Data.class);
-        if(data.hashError()){
-            throw new JsonDataException(data.getError());
+        JsonData jsonData =new Gson().fromJson(response.toString(), JsonData.class);
+        if(jsonData.hashError()){
+            throw new JsonDataException(jsonData.getError());
         }
 
         return true;

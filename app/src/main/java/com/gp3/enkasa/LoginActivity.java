@@ -15,7 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.gp3.enkasa.Model.Data;
+import com.gp3.enkasa.Model.JsonData;
+import com.gp3.enkasa.Model.Json.Alojamientos;
 import com.gp3.enkasa.Model.Json.Connection;
 import com.gp3.enkasa.Model.Json.User;
 
@@ -24,7 +25,7 @@ import java.io.IOException;
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REGISTER = 0;
-    private static final String LUGARES = LoginActivity.class.getName()+".LUGARES";
+    public static final String LUGARES = LoginActivity.class.getName()+".LUGARES";
 
     private CardView mBtnLogin;
     private EditText mTxtUserName;
@@ -76,21 +77,23 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String params = "db=reto_gp3&users_table=usuarios&username_field=nombre&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&get_user=true";
+                    String params = "db=reto_gp3&users_table=usuarios&username_field=nombre&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&get_user=true";
 
                     if(hash) params+="&hash=sha256";
 
-                    Data data = Connection.retriveData(params);
+                    JsonData jsonData = Connection.retriveData(params);
 
-                    System.out.println("Data has error: "+data.hashError());
-                    if(data.hashError()){
+                    System.out.println("JsonData has error: "+ jsonData.hashError());
+                    if(jsonData.hashError()){
                         Toast.makeText(getApplicationContext(), R.string.login_status_failed, Toast.LENGTH_SHORT).show();
                         mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
                     }else{
                         Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
                         mTxtUserName.setError(getResources().getString(R.string.login_status_logged));
 
-                        createLugaressActivity(data);
+                        System.out.println("DATA: "+  new Gson().toJson(jsonData));
+
+                        createLugaressActivity(jsonData);
                     }
 
                 } catch (IOException e) {
@@ -104,11 +107,12 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    private void createLugaressActivity(Data data){
+    private void createLugaressActivity(JsonData jsonData){
         Intent intent = new Intent(this, AlojamientosActivity.class);
-        intent.putExtra(LUGARES, data);
+        intent.putExtra(LUGARES, new Gson().toJson(jsonData));
         startActivity(intent);
-        finish();
+        System.out.println("-------------------------------------------------------------------------------------");
+        //finish();
     }
 
     @Override

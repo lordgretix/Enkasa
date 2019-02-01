@@ -1,5 +1,7 @@
 package com.gp3.enkasa.Model.Json;
 
+import java.io.Serializable;
+
 public class Reservas {
 
     private int id;

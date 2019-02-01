@@ -1,42 +1,22 @@
-package com.gp3.enkasa.Model;
-
-import com.gp3.enkasa.Model.Json.Alojamientos;
-import com.gp3.enkasa.Model.Json.Reservas;
-import com.gp3.enkasa.Model.Json.Traducciones;
-import com.gp3.enkasa.Model.Json.User;
+package com.gp3.enkasa.Model.Json;
 
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Data implements Serializable {
+public class Data {
 
-    private User user;
     private ArrayList<Alojamientos> alojamientos = new ArrayList<>();
     private ArrayList<Reservas> reservas = new ArrayList<>();
-    private ArrayList<Traducciones> Traducciones = new ArrayList<>();
-    private String error;
+    private ArrayList<Traducciones> traducciones = new ArrayList<>();
 
     public Data() {
 
     }
 
-    public Data(String error) {
-        this.error = error;
-    }
-
     public Data(User user, ArrayList<Alojamientos> alojamientos, ArrayList<Reservas> reservas, ArrayList<com.gp3.enkasa.Model.Json.Traducciones> traducciones) {
-        this.user = user;
         this.alojamientos = alojamientos;
         this.reservas = reservas;
-        Traducciones = traducciones;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+        this.traducciones = traducciones;
     }
 
     public ArrayList<Alojamientos> getAlojamientos() {
@@ -56,23 +36,23 @@ public class Data implements Serializable {
     }
 
     public ArrayList<com.gp3.enkasa.Model.Json.Traducciones> getTraducciones() {
-        return Traducciones;
+        return this.traducciones;
     }
 
     public void setTraducciones(ArrayList<com.gp3.enkasa.Model.Json.Traducciones> traducciones) {
-        Traducciones = traducciones;
+        this.traducciones = traducciones;
     }
 
-    public String getError() {
-        return error;
-    }
+    public Traducciones getTraduccionByAlojaminetoID(int id, String lang){
 
-    public void setError(String error) {
-        this.error = error;
-    }
+        for (Traducciones tr : this.traducciones) {
 
-    public boolean hashError(){
-        return this.error != null;
+            if(tr.getIdAlojamiento()==id && tr.getIdioma().equals(lang)){
+                return tr;
+            }
+        }
+
+        return new Traducciones();
     }
 
 }

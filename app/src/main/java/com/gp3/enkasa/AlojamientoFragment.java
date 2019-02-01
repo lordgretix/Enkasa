@@ -2,7 +2,7 @@ package com.gp3.enkasa;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gp3.enkasa.Model.Json.Data;
+import com.gp3.enkasa.Model.JsonData;
 import com.gp3.enkasa.dummy.DummyContent;
 import com.gp3.enkasa.dummy.DummyContent.DummyItem;
 
@@ -22,16 +24,20 @@ import com.gp3.enkasa.dummy.DummyContent.DummyItem;
 public class AlojamientoFragment extends Fragment {
 
     // TODO: Customize parameter argument names
-    private static final String ARG_COLUMN_COUNT = "column-count";
+    public static final String ARG_COLUMN_COUNT = AlojamientoFragment.class.getName()+".ARG_COLUMN_COUNT";
+    public static final String ARG_DATA = AlojamientoFragment.class.getName()+".ARG_DATA";
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+
+    private JsonData mJsonData;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
     public AlojamientoFragment() {
+
     }
 
     // TODO: Customize parameter initialization
@@ -50,6 +56,7 @@ public class AlojamientoFragment extends Fragment {
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
+            mJsonData = (JsonData)getArguments().getSerializable(ARG_DATA);
         }
     }
 
@@ -67,7 +74,7 @@ public class AlojamientoFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new AlojamientoRecyclerViewAdapter(DummyContent.ITEMS, mListener));
+            recyclerView.setAdapter(new AlojamientoRecyclerViewAdapter(mJsonData.getData(), mListener));
         }
         return view;
     }
@@ -102,6 +109,6 @@ public class AlojamientoFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(DummyItem item);
+        void onListFragmentInteraction(Data data, int position);
     }
 }

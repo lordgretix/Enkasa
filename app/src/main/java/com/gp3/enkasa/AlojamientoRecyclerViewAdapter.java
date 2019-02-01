@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.gp3.enkasa.AlojamientoFragment.OnListFragmentInteractionListener;
+import com.gp3.enkasa.Model.Json.Alojamientos;
+import com.gp3.enkasa.Model.Json.Data;
 import com.gp3.enkasa.dummy.DummyContent.DummyItem;
 
 import java.util.List;
@@ -16,35 +18,36 @@ import java.util.List;
  * specified {@link OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<AlojamientoRecyclerViewAdapter.ViewHolder> {
+public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<AlojamientosViewHolder> {
 
-    private final List<DummyItem> mValues;
+    private final Data mData;
     private final OnListFragmentInteractionListener mListener;
 
-    public AlojamientoRecyclerViewAdapter(List<DummyItem> items, OnListFragmentInteractionListener listener) {
-        mValues = items;
+    public AlojamientoRecyclerViewAdapter(Data data, OnListFragmentInteractionListener listener) {
+        mData = data;
         mListener = listener;
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public AlojamientosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fragment_alojamiento, parent, false);
-        return new ViewHolder(view);
+        return new AlojamientosViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(position);
-        holder.mContentView.setText(mValues.get(position).content);
+    public void onBindViewHolder(final AlojamientosViewHolder holder, final int position) {
 
-        holder.mView.setOnClickListener(new View.OnClickListener() {
+        holder.setItem( mData.getAlojamientos().get(position));
+        holder.getTitle().setText(mData.getTraduccionByAlojaminetoID(holder.getItem().getId(), AlojamientosActivity.LANG).getResumen());
+
+        holder.getView().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(holder.mItem);
+                    mListener.onListFragmentInteraction(mData, position);
                 }
             }
         });
@@ -52,23 +55,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return mData.getAlojamientos().size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        public final View mView;
-        public final TextView mContentView;
-        public DummyItem mItem;
-
-        public ViewHolder(View view) {
-            super(view);
-            mView = view;
-            mContentView = (TextView) view.findViewById(R.id.content);
-        }
-
-        @Override
-        public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
-        }
-    }
 }
