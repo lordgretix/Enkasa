@@ -39,24 +39,25 @@
         app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
         app:layout_constraintTop_toBottomOf="@+id/name_alojamiento" />
 
-    <EditText
+    <TextView
         android:id="@+id/mail_alojamiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="24dp"
         android:ems="10"
+
         android:inputType="textEmailAddress"
         android:text="@string/mail"
 
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_alojamiento" />
 
-    <EditText
+    <TextView
         android:id="@+id/tel_alojamiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="phone"
@@ -64,11 +65,11 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail_alojamiento" />
 
-    <EditText
+    <TextView
         android:id="@+id/cp_alojamiento"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPostalAddress"
@@ -76,7 +77,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tel_alojamiento" />
 
-    <EditText
+    <TextView
         android:id="@+id/summary_alojamiento"
         android:layout_width="308dp"
         android:layout_height="188dp"

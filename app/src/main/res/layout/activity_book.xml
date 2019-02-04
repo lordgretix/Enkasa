@@ -22,7 +22,7 @@
         app:layout_constraintVertical_bias="0.397" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/textUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
@@ -32,14 +32,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/textAlojamientoName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="20dp"
         android:text="@string/place_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+        app:layout_constraintTop_toBottomOf="@+id/textUsername" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -54,14 +54,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView9" />
 
     <TextView
-        android:id="@+id/textView7"
+        android:id="@+id/textDireccion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
         android:layout_marginTop="20dp"
         android:text="@string/place_direction"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/textAlojamientoName" />
 
     <TextView
         android:id="@+id/textView9"
@@ -71,7 +71,7 @@
         android:layout_marginTop="28dp"
         android:text="@string/num_book"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textDireccion" />
 
     <Button
         android:id="@+id/button2"
@@ -86,7 +86,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.052"
         app:layout_constraintStart_toEndOf="@+id/button3"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCheckOut" />
 
     <Button
         android:id="@+id/button3"
@@ -98,7 +98,7 @@
         android:text="@string/cancel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCheckOut" />
 
     <TextView
         android:id="@+id/textView10"
@@ -118,10 +118,10 @@
         android:layout_marginTop="35dp"
         android:text="@string/end_date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        app:layout_constraintTop_toBottomOf="@+id/btnCheckIn" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnCheckIn"
         android:layout_width="246dp"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
@@ -134,7 +134,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btnCheckOut"
         android:layout_width="246dp"
         android:layout_height="37dp"
         android:layout_marginStart="8dp"
@@ -147,7 +147,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textView11" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/textNumReserva"
         android:layout_width="120dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
@@ -158,5 +158,5 @@
         android:enabled="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textView9"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+        app:layout_constraintTop_toBottomOf="@+id/textDireccion" />
 </android.support.constraint.ConstraintLayout>
