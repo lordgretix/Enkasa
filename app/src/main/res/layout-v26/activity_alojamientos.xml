@@ -7,17 +7,19 @@
     android:layout_height="match_parent"
     tools:context=".Activities.AlojamientosActivity">
 
-    <FrameLayout
+    <!--<FrameLayout
         android:id="@+id/fragment_alojamiento_list"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:layout="@layout/fragment_alojamiento_list" />
+        app:layout_constraintTop_toBottomOf="@+id/editText4"
+        tools:layout="@layout/fragment_alojamiento_list" />-->
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigation"
@@ -35,17 +37,31 @@
         android:id="@+id/editText4"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:autofillHints=""
         android:background="@android:color/transparent"
         android:drawableStart="@drawable/ic_search_icon_dark"
         android:drawableEnd="@drawable/ic_settings_icon_dark"
+        android:inputType=""
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints=""
-        android:inputType="" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText4">
+
+    </android.support.constraint.ConstraintLayout>
 
 
 </android.support.constraint.ConstraintLayout>

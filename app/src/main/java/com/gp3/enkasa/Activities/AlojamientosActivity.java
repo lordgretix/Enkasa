@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.gp3.enkasa.Fragments.AlojamientoFragment;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.JsonData;
+import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 public class AlojamientosActivity extends AppCompatActivity implements AlojamientoFragment.OnListFragmentInteractionListener {
@@ -68,10 +69,11 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
             transaction.add(R.id.fragment_alojamiento_list, fragment);
             transaction.commit();
         }
+
     }
 
     @Override
-    public void onListFragmentInteraction(Data data, int position) {
+    public void onListFragmentInteraction(Traducciones tr) {
 
     }
 }

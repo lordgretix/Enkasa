@@ -3,6 +3,8 @@ package com.gp3.enkasa.Activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -65,15 +67,8 @@ public class LoginActivity extends AppCompatActivity {
 
     private void logIn(final String username, final String password, final boolean hash){
 
-        final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage("Authenticating...");
-
-
-        progressDialog.show();
-
         try {
-            String params = "db=reto_gp3&users_table=usuarios&username_field=nombre&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&get_user=true";
+            String params = "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&get_user=true";
 
             if(hash) params+="&hash=sha256";
 
@@ -89,14 +84,14 @@ public class LoginActivity extends AppCompatActivity {
 
                 System.out.println("DATA: "+  new Gson().toJson(jsonData));
 
+                jsonData.getData().setAlojamientosToTraducciones();
+
                 AlojamientosActivity.jsonData=jsonData;
                 createLugaressActivity(jsonData);
             }
         } catch (IOException e) {
             e.printStackTrace();
 
-        } finally {
-            progressDialog.dismiss();
         }
 
         /*
@@ -138,8 +133,7 @@ public class LoginActivity extends AppCompatActivity {
     private void createLugaressActivity(JsonData jsonData){
         Intent intent = new Intent(this, AlojamientosActivity.class);
         startActivity(intent);
-        System.out.println("-------------------------------------------------------------------------------------");
-        //finish();
+        finish();
     }
 
     @Override

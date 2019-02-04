@@ -43,6 +43,17 @@ public class Data {
         return this.traducciones;
     }
 
+    public ArrayList<Traducciones> getTraducciones(String lang){
+        ArrayList<Traducciones> trs = new ArrayList<>();
+
+        for (Traducciones tr : this.traducciones) {
+            if(tr.getIdioma().equals(lang.toLowerCase())){
+                trs.add(tr);
+            }
+        }
+        return trs;
+    }
+
     public void setTraducciones(ArrayList<Traducciones> traducciones) {
         this.traducciones = traducciones;
     }
@@ -57,6 +68,21 @@ public class Data {
         }
 
         return new Traducciones();
+    }
+
+    public Alojamientos getAlojamientoByID(int id){
+        for (Alojamientos aloj : this.alojamientos) {
+            if(aloj.getId()==id){
+                return aloj;
+            }
+        }
+        return new Alojamientos();
+    }
+
+    public void setAlojamientosToTraducciones(){
+        for (Traducciones tr : this.traducciones) {
+            tr.setAlojamiento(getAlojamientoByID(tr.getIdAlojamiento()));
+        }
     }
 
 }

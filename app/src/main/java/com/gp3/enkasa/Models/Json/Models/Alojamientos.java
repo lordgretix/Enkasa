@@ -3,7 +3,7 @@ package com.gp3.enkasa.Models.Json.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Alojamientos{
+public class Alojamientos {
 
     @SerializedName("id")
     private int id;
@@ -63,10 +63,7 @@ public class Alojamientos{
 
     }
 
-    public Alojamientos( int id, String nombre, String localidad, String telefono, String direccion,
-                        int certificado, String email, String web, int restaurante, int club,
-                        int autocarabana, String firma, int tienda, int capacidad, String codPostal,
-                        String latlong, String municipio, String territorio, String json) {
+    public Alojamientos(int id, String nombre, String localidad, String telefono, String direccion, int certificado, String email, String web, int restaurante, int club, int autocarabana, String firma, int tienda, int capacidad, String codPostal, String latlong, String municipio, String territorio) {
         this.id = id;
         this.nombre = nombre;
         this.localidad = localidad;
@@ -93,14 +90,6 @@ public class Alojamientos{
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getIdTraduccion() {
-        return id;
-    }
-
-    public void setIdTraduccion(int idTraduccion) {
-        this.id = idTraduccion;
     }
 
     public String getNombre() {
@@ -143,38 +132,6 @@ public class Alojamientos{
         this.certificado = certificado;
     }
 
-    public int getClub() {
-        return club;
-    }
-
-    public void setClub(int club) {
-        this.club = club;
-    }
-
-    public int getRestaurante() {
-        return restaurante;
-    }
-
-    public void setRestaurante(int restaurante) {
-        this.restaurante = restaurante;
-    }
-
-    public int getAutocarabana() {
-        return autocarabana;
-    }
-
-    public void setAutocarabana(int autocarabana) {
-        this.autocarabana = autocarabana;
-    }
-
-    public int getTienda() {
-        return tienda;
-    }
-
-    public void setTienda(int tienda) {
-        this.tienda = tienda;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -189,6 +146,46 @@ public class Alojamientos{
 
     public void setWeb(String web) {
         this.web = web;
+    }
+
+    public int getRestaurante() {
+        return restaurante;
+    }
+
+    public void setRestaurante(int restaurante) {
+        this.restaurante = restaurante;
+    }
+
+    public int getClub() {
+        return club;
+    }
+
+    public void setClub(int club) {
+        this.club = club;
+    }
+
+    public int getAutocarabana() {
+        return autocarabana;
+    }
+
+    public void setAutocarabana(int autocarabana) {
+        this.autocarabana = autocarabana;
+    }
+
+    public String getFirma() {
+        return firma;
+    }
+
+    public void setFirma(String firma) {
+        this.firma = firma;
+    }
+
+    public int getTienda() {
+        return tienda;
+    }
+
+    public void setTienda(int tienda) {
+        this.tienda = tienda;
     }
 
     public int getCapacidad() {
@@ -229,13 +226,5 @@ public class Alojamientos{
 
     public void setTerritorio(String territorio) {
         this.territorio = territorio;
-    }
-
-    public String getFirma() {
-        return firma;
-    }
-
-    public void setFirma(String firma) {
-        this.firma = firma;
     }
 }
