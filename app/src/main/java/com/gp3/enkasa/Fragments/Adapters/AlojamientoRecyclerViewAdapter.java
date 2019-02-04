@@ -35,7 +35,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
 
         Traducciones tr = mTraducciones.get(position);
         holder.setItem( tr );
-        holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(R.drawable.ic_agroturismo));
+        holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(R.drawable.ic_agroturismo_icon));
         System.out.println("NOMBRE: "+tr.getNombre());
         holder.getTitle().setText(tr.getNombre());
         holder.getResume().setText(tr.getResumen());
