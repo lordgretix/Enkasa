@@ -1,10 +1,9 @@
 package com.gp3.enkasa.Models.Json.Models;
 
-
 import com.google.gson.annotations.SerializedName;
-public class Traducciones {
+public class Traducciones extends Alojamientos{
 
-    @SerializedName("id")
+    @SerializedName("id_traduccion")
     private int idTraduccion;
     @SerializedName("alojamiento")
     private int idAlojamiento;
@@ -76,5 +75,26 @@ public class Traducciones {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public void setAlojamiento(Alojamientos alojamiento){
+        this.setId(alojamiento.getId());
+        this.setNombre(alojamiento.getNombre());
+        this.setLocalidad(alojamiento.getLocalidad());
+        this.setTelefono(alojamiento.getTelefono());
+        this.setDireccion(alojamiento.getDireccion());
+        this.setCertificado(alojamiento.getCertificado());
+        this.setEmail(alojamiento.getEmail());
+        this.setWeb(alojamiento.getWeb());
+        this.setRestaurante(alojamiento.getRestaurante());
+        this.setClub(alojamiento.getClub());
+        this.setAutocarabana(alojamiento.getAutocarabana());
+        this.setFirma(alojamiento.getFirma());
+        this.setTienda(alojamiento.getTienda());
+        this.setCapacidad(alojamiento.getCapacidad());
+        this.setCodPostal(alojamiento.getCodPostal());
+        this.setLatlong(alojamiento.getLatlong());
+        this.setMunicipio(alojamiento.getMunicipio());
+        this.setTerritorio(alojamiento.getTerritorio());
     }
 }

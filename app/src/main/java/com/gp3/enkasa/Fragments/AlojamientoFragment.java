@@ -12,8 +12,10 @@ import android.view.ViewGroup;
 
 import com.gp3.enkasa.Fragments.Adapters.AlojamientoRecyclerViewAdapter;
 import com.gp3.enkasa.Activities.AlojamientosActivity;
+import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.JsonData;
+import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 /**
@@ -75,7 +77,7 @@ public class AlojamientoFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new AlojamientoRecyclerViewAdapter(mJsonData.getData(), mListener));
+            recyclerView.setAdapter(new AlojamientoRecyclerViewAdapter(mJsonData.getData().getTraducciones(AlojamientosActivity.LANG), mListener));
         }
         return view;
     }
@@ -98,6 +100,21 @@ public class AlojamientoFragment extends Fragment {
         mListener = null;
     }
 
+    private void updateUI(){
+        /*
+        mJsonData.getData()
+        List<Crime> crimes = crimeLab.getCrimes();
+
+        if(mAdapter==null) {
+            mAdapter = new CrimeAdapter(crimes);
+            mCrimeRecyclerView.setAdapter(mAdapter);
+        }else{
+            mAdapter.setCrimes(crimes);
+            mAdapter.notifyDataSetChanged();
+            //mAdapter.notifyItemChanged(crimeId);
+        }*/
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -110,6 +127,6 @@ public class AlojamientoFragment extends Fragment {
      */
     public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(Data data, int position);
+        void onListFragmentInteraction(Traducciones tr);
     }
 }

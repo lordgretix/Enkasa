@@ -5,22 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.gp3.enkasa.Activities.AlojamientosActivity;
 import com.gp3.enkasa.Fragments.AlojamientoFragment.OnListFragmentInteractionListener;
 import com.gp3.enkasa.Fragments.Holders.AlojamientosViewHolder;
-import com.gp3.enkasa.Models.Json.Models.Alojamientos;
-import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
+
+import java.util.ArrayList;
 
 
 public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<AlojamientosViewHolder> {
 
-    private final Data mData;
+    private final ArrayList<Traducciones> mTraducciones;
     private final OnListFragmentInteractionListener mListener;
 
-    public AlojamientoRecyclerViewAdapter(Data data, OnListFragmentInteractionListener listener) {
-        mData = data;
+    public AlojamientoRecyclerViewAdapter(ArrayList<Traducciones> traducciones, OnListFragmentInteractionListener listener) {
+        mTraducciones = traducciones;
         mListener = listener;
     }
 
@@ -34,10 +33,12 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
     @Override
     public void onBindViewHolder(final AlojamientosViewHolder holder, final int position) {
 
-        Alojamientos aloj = mData.getAlojamientos().get(position);
-        Traducciones tr = mData.getTraduccionByAlojaminetoID(aloj.getId(), AlojamientosActivity.LANG);
-        holder.setItem( aloj );
-        holder.getTitle().setText(tr.getResumen());
+        Traducciones tr = mTraducciones.get(position);
+        holder.setItem( tr );
+        holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(R.drawable.ic_agroturismo));
+        System.out.println("NOMBRE: "+tr.getNombre());
+        holder.getTitle().setText(tr.getNombre());
+        holder.getResume().setText(tr.getResumen());
 
         holder.getView().setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,7 +46,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
                 if (null != mListener) {
                     // Notify the active callbacks interface (the activity, if the
                     // fragment is attached to one) that an item has been selected.
-                    mListener.onListFragmentInteraction(AlojamientosActivity.jsonData.getData(), position);
+                    mListener.onListFragmentInteraction(mTraducciones.get(position));
                 }
             }
         });
@@ -53,7 +54,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
 
     @Override
     public int getItemCount() {
-        return mData.getAlojamientos().size();
+        return mTraducciones.size();
     }
 
 }
