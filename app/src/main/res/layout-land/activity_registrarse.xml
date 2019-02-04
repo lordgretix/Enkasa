@@ -33,7 +33,7 @@
                 tools:layout_editor_absoluteY="102dp" />
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/textNumReserva"
                 android:layout_width="300dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="10dp"
