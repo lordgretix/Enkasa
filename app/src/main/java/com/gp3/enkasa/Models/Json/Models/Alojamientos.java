@@ -11,9 +11,6 @@ public class Alojamientos {
     @SerializedName("nombre")
     private String nombre = "";
 
-    @SerializedName("localidad")
-    private String localidad = "";
-
     @SerializedName("telefono")
     private String telefono = "";
 
@@ -47,26 +44,23 @@ public class Alojamientos {
     @SerializedName("capacidad")
     private int capacidad = 0;
 
-    @SerializedName("codPostal")
-    private String codPostal = "";
+    @SerializedName("cod_postal")
+    private int codPostal = 0;
+
+    @SerializedName("cod_poblacion")
+    private int codPoblacion = 0;
 
     @SerializedName("latlong")
     private String latlong = "";
 
-    @SerializedName("municipio")
-    private String municipio = "";
-
-    @SerializedName("territorio")
-    private String territorio = "";
 
     public Alojamientos() {
 
     }
 
-    public Alojamientos(int id, String nombre, String localidad, String telefono, String direccion, int certificado, String email, String web, int restaurante, int club, int autocarabana, String firma, int tienda, int capacidad, String codPostal, String latlong, String municipio, String territorio) {
+    public Alojamientos(int id, String nombre, String telefono, String direccion, int certificado, String email, String web, int restaurante, int club, int autocarabana, String firma, int tienda, int capacidad, int codPostal, int codPoblacion, String latlong) {
         this.id = id;
         this.nombre = nombre;
-        this.localidad = localidad;
         this.telefono = telefono;
         this.direccion = direccion;
         this.certificado = certificado;
@@ -79,9 +73,8 @@ public class Alojamientos {
         this.tienda = tienda;
         this.capacidad = capacidad;
         this.codPostal = codPostal;
+        this.codPoblacion = codPoblacion;
         this.latlong = latlong;
-        this.municipio = municipio;
-        this.territorio = territorio;
     }
 
     public int getId() {
@@ -100,12 +93,12 @@ public class Alojamientos {
         this.nombre = nombre;
     }
 
-    public String getLocalidad() {
-        return localidad;
+    public int getCodPoblacion() {
+        return codPoblacion;
     }
 
-    public void setLocalidad(String localidad) {
-        this.localidad = localidad;
+    public void setCodPoblacion(int codPoblacion) {
+        this.codPoblacion = codPoblacion;
     }
 
     public String getTelefono() {
@@ -196,11 +189,11 @@ public class Alojamientos {
         this.capacidad = capacidad;
     }
 
-    public String getCodPostal() {
+    public int getCodPostal() {
         return codPostal;
     }
 
-    public void setCodPostal(String codPostal) {
+    public void setCodPostal(int codPostal) {
         this.codPostal = codPostal;
     }
 
@@ -212,19 +205,6 @@ public class Alojamientos {
         this.latlong = latlong;
     }
 
-    public String getMunicipio() {
-        return municipio;
-    }
 
-    public void setMunicipio(String municipio) {
-        this.municipio = municipio;
-    }
 
-    public String getTerritorio() {
-        return territorio;
-    }
-
-    public void setTerritorio(String territorio) {
-        this.territorio = territorio;
-    }
 }

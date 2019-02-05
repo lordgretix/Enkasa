@@ -68,4 +68,13 @@
         <item>Provincia</item>
         <item>Población</item>
     </string-array>
+
+    <string-array name="alojaminetos_tipos">
+        <item>Albergues</item>
+        <item>Campings</item>
+        <item>Agroturismos</item>
+        <item>Casas Rurales</item>
+    </string-array>
+
+    <string name="filter_select_todo_option">Todas</string>
 </resources>
