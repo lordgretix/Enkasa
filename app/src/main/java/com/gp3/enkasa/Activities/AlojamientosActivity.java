@@ -1,6 +1,7 @@
 package com.gp3.enkasa.Activities;
 
 import android.content.res.Resources;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -39,6 +40,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     public static String LANG = "es";
     public static JsonData jsonData = null;
     public static HashMap<String, ArrayList<String>> provs;
+    public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName()+".INTENT_DETALLE_ID";
 
     private TextView mTextMessage;
     private BottomNavigationView mBottomNavigationView;
@@ -248,7 +250,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
         FragmentManager manager = getSupportFragmentManager();
 
-        AlojamientoFragment fragment = (AlojamientoFragment) manager.findFragmentById(R.id.fragment_alojamiento_list);
+        Fragment fragment = manager.findFragmentById(R.id.fragment_alojamiento_list);
 
         if (fragment == null) {
             FragmentTransaction transaction = manager.beginTransaction();
@@ -351,5 +353,8 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     @Override
     public void onListFragmentInteraction(Traducciones tr) {
 
+        Intent mintent = new Intent(this, DetailsActivity.class);
+        mintent.putExtra(INTENT_DETALLE_ID, tr.getIdTraduccion());
+        startActivity(mintent);
     }
 }

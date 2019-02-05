@@ -32,6 +32,12 @@
             android:name=".Activities.AlojamientosActivity"
             android:label="@string/title_activity_lugares"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Activities.DetailsActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
+        <activity
+            android:name=".Activities.BookingActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
     </application>
 
 </manifest>
