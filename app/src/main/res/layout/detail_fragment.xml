@@ -19,146 +19,146 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-    <TextView
-        android:id="@+id/name_alojamiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="216dp"
-        android:text="@string/place_name"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/name_alojamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="216dp"
+            android:text="@string/place_name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/address_alojamiento"
-        android:layout_width="wrap_content"
-        android:layout_height="22dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="20dp"
-        android:text="@string/place_direction"
-        app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
-        app:layout_constraintTop_toBottomOf="@+id/name_alojamiento" />
+        <TextView
+            android:id="@+id/address_alojamiento"
+            android:layout_width="wrap_content"
+            android:layout_height="22dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:text="@string/place_direction"
+            app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
+            app:layout_constraintTop_toBottomOf="@+id/name_alojamiento" />
 
-    <TextView
-        android:id="@+id/mail_alojamiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
+            <TextView
+                android:id="@+id/mail_alojamiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="24dp"
+                android:ems="10"
 
-        android:inputType="textEmailAddress"
-        android:text="@string/mail"
+                android:inputType="textEmailAddress"
+                android:text="@string/mail"
 
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_alojamiento" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/image_alojamiento" />
 
-    <TextView
-        android:id="@+id/tel_alojamiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="phone"
-        android:text="@string/place_tel"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mail_alojamiento" />
+            <TextView
+                android:id="@+id/tel_alojamiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="phone"
+                android:text="@string/place_tel"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/mail_alojamiento" />
 
-    <TextView
-        android:id="@+id/cp_alojamiento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:inputType="textPostalAddress"
-        android:text="@string/codigo_postal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tel_alojamiento" />
+            <TextView
+                android:id="@+id/cp_alojamiento"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="30dp"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPostalAddress"
+                android:text="@string/codigo_postal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tel_alojamiento" />
 
-    <TextView
-        android:id="@+id/summary_alojamiento"
-        android:layout_width="308dp"
-        android:layout_height="188dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        android:text="@string/resumen"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_certificado" />
+            <TextView
+                android:id="@+id/summary_alojamiento"
+                android:layout_width="308dp"
+                android:layout_height="188dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="24dp"
+                android:ems="10"
+                android:inputType="textMultiLine"
+                android:text="@string/resumen"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox_certificado" />
 
-    <Button
-        android:id="@+id/button_reservar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="141dp"
-        android:layout_marginBottom="68dp"
-        android:text="@string/reservar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+            <Button
+                android:id="@+id/button_reservar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="141dp"
+                android:layout_marginBottom="68dp"
+                android:text="@string/reservar"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-    <CheckBox
-        android:id="@+id/checkBox_autocaravana"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/autocaravana"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
+            <CheckBox
+                android:id="@+id/checkBox_autocaravana"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/autocaravana"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
 
-    <CheckBox
-        android:id="@+id/checkBox_club"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/club"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_autocaravana"
-        app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
+            <CheckBox
+                android:id="@+id/checkBox_club"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/club"
+                app:layout_constraintStart_toEndOf="@+id/checkBox_autocaravana"
+                app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
 
-    <CheckBox
-        android:id="@+id/checkBox_tienda"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/tienda"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_club"
-        app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
+            <CheckBox
+                android:id="@+id/checkBox_tienda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="16dp"
+                android:text="@string/tienda"
+                app:layout_constraintStart_toEndOf="@+id/checkBox_club"
+                app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
 
-    <CheckBox
-        android:id="@+id/checkBox_certificado"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/certificado"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_autocaravana" />
+            <CheckBox
+                android:id="@+id/checkBox_certificado"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/certificado"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox_autocaravana" />
 
-    <CheckBox
-        android:id="@+id/checkBox_restaurante"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/restaurante"
-        app:layout_constraintStart_toEndOf="@+id/checkBox_certificado"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_club" />
+            <CheckBox
+                android:id="@+id/checkBox_restaurante"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="@string/restaurante"
+                app:layout_constraintStart_toEndOf="@+id/checkBox_certificado"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox_club" />
 
-    <View
-        android:id="@+id/separador"
-        android:layout_width="335dp"
-        android:layout_height="4dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox_restaurante" />
+            <View
+                android:id="@+id/separador"
+                android:layout_width="335dp"
+                android:layout_height="4dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@color/colorPrimary"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox_restaurante" />
 
 </android.support.constraint.ConstraintLayout>

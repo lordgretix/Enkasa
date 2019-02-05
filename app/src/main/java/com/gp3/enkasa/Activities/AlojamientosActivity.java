@@ -1,5 +1,6 @@
 package com.gp3.enkasa.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -20,6 +21,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
     public static String LANG = "es";
     public static JsonData jsonData = null;
+    public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName()+".INTENT_DETALLE_ID";
 
     private TextView mTextMessage;
 
@@ -75,5 +77,8 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     @Override
     public void onListFragmentInteraction(Traducciones tr) {
 
+        Intent mintent = new Intent(this, DetailsActivity.class);
+        mintent.putExtra(INTENT_DETALLE_ID, tr.getIdTraduccion());
+        startActivity(mintent);
     }
 }

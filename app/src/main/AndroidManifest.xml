@@ -14,9 +14,6 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity
-            android:name=".Activities.AlojamientosActivity2"
-            android:label="@string/title_activity_alojamientos2"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,6 +32,14 @@
             android:name=".Activities.AlojamientosActivity"
             android:label="@string/title_activity_lugares"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".Activities.DetailsActivity"
+            android:label="@string/title_activity_alojamientos2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
+        <activity
+            android:name=".Activities.BookingActivity"
+            android:label="@string/title_activity_alojamientos2"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
     </application>
 
 </manifest>
