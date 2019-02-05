@@ -41,7 +41,7 @@ public class DetailsActivity extends AppCompatActivity {
         mName=findViewById(R.id.name_alojamiento);
         mDireccion=findViewById(R.id.address_alojamiento);
         mMail=findViewById(R.id.mail_alojamiento);
-/*        mTel=findViewById(R.id.tel_alojamiento);
+        mTel=findViewById(R.id.tel_alojamiento);
         mCodPostal=findViewById(R.id.cp_alojamiento);
         mCertificado=findViewById(R.id.checkBox_certificado);
         mClub=findViewById(R.id.checkBox_club);
@@ -56,7 +56,7 @@ public class DetailsActivity extends AppCompatActivity {
 
             }
         });
-*/
+
         if (savedInstanceState != null){
             int id = savedInstanceState.getInt(AlojamientosActivity.INTENT_DETALLE_ID);
             mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
