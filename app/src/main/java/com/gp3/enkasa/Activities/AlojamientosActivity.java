@@ -1,5 +1,6 @@
 package com.gp3.enkasa.Activities;
 
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
@@ -15,8 +16,11 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.gp3.enkasa.Fragments.AlojamientoFragment;
@@ -26,6 +30,8 @@ import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 public class AlojamientosActivity extends AppCompatActivity implements AlojamientoFragment.OnListFragmentInteractionListener {
@@ -35,11 +41,25 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     public static HashMap<String, ArrayList<String>> provs;
 
     private TextView mTextMessage;
+    private BottomNavigationView mBottomNavigationView;
+
+    //Filters
     private ConstraintLayout mFilterOptions;
     private ImageView mFilterOptionIcon;
-    private BottomNavigationView mBottomNavigationView;
     private Spinner mSelectMunicipio;
     private Spinner mSelectTerritorio;
+    private Spinner mSelectSortBy;
+    private Switch mSwitchAgroturismo;
+    private Switch mSwitchAlbergues;
+    private Switch mSwitchCamping;
+    private Switch mSwitchRural;
+    private Switch mSwitchCertificado;
+    private Switch mSwitchRestaurante;
+    private Switch mSwitchTienda;
+    private Switch mSwitchClub;
+    private Switch mSwitchAutocaravana;
+    private Switch mSwitchOrden;
+
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -71,36 +91,60 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         //Filters
         mFilterOptions = findViewById(R.id.filter_options);
         mFilterOptionIcon = findViewById(R.id.filter_options_icon);
+        mSelectTerritorio = findViewById(R.id.selectTerritorio);
+        mSelectMunicipio = findViewById(R.id.selectMunicipio);
+        mSelectSortBy = findViewById(R.id.selectSortBy);
+        mSwitchAgroturismo = findViewById(R.id.switchAgroturismo);
+        mSwitchAlbergues = findViewById(R.id.switchAlbergues);
+        mSwitchCamping = findViewById(R.id.switchCamping);
+        mSwitchRural = findViewById(R.id.switchRural);
+        mSwitchCertificado = findViewById(R.id.switchCertificado);
+        mSwitchRestaurante = findViewById(R.id.switchRestaurante);
+        mSwitchTienda = findViewById(R.id.switchTienda);
+        mSwitchClub = findViewById(R.id.switchClub);
+        mSwitchAutocaravana = findViewById(R.id.switchAutocaravana);
+        mSwitchOrden = findViewById(R.id.switchOrden);
 
         provs = jsonData.getData().poblacionesByProvincias();
 
-        mSelectTerritorio = findViewById(R.id.selectTerritorio);
-        ArrayAdapter<String> territorioAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
-        territorioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        mSelectTerritorio.setAdapter(territorioAdapter);
+        // TerritorioSelect
+        ArrayAdapter<String> provinciaAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
+        provinciaAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSelectTerritorio.setAdapter(provinciaAdapter);
+
+        provinciaAdapter.add(getResources().getString(R.string.filter_select_todo_option));
 
         for(String provincia : provs.keySet()){
-            territorioAdapter.add(provincia);
+            provinciaAdapter.add(provincia);
         }
-        territorioAdapter.notifyDataSetChanged();
+        provinciaAdapter.notifyDataSetChanged();
 
-        mSelectMunicipio = findViewById(R.id.selectMunicipio);
+        ArrayAdapter<String> municipioAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
+        municipioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mSelectMunicipio.setAdapter(municipioAdapter);
+        municipioAdapter.add(getResources().getString(R.string.filter_select_todo_option));
+        municipioAdapter.notifyDataSetChanged();
 
         mSelectTerritorio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-                ArrayAdapter<String> municipioAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
+                ArrayAdapter<String> municipioAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
                 municipioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 mSelectMunicipio.setAdapter(municipioAdapter);
+                municipioAdapter.add(getResources().getString(R.string.filter_select_todo_option));
 
-                for(Object poblacion : provs.get(mSelectTerritorio.getAdapter().getItem(position))){
-                    String pob = (String) poblacion;
-                    if(pob.length()>15){
-                        pob=pob.substring(0,15);
+                if(position!=0){
+                    for(Object poblacion : provs.get(mSelectTerritorio.getAdapter().getItem(position))){
+                        String pob = (String) poblacion;
+                        if(pob.length()>15){
+                            pob=pob.substring(0,15);
+                        }
+                        municipioAdapter.add(pob);
                     }
-                    municipioAdapter.add(pob);
                 }
+                mSelectMunicipio.setSelection(0);
+                updateFragmentUI();
             }
 
             @Override
@@ -108,11 +152,21 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                 ArrayAdapter<String> municipioAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
                 municipioAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 mSelectMunicipio.setAdapter(municipioAdapter);
+                updateFragmentUI();
             }
         });
 
+        mSelectMunicipio.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateFragmentUI();
+            }
 
-
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+                updateFragmentUI();
+            }
+        });
 
         mFilterOptionIcon.setOnClickListener(new View.OnClickListener() {
             private boolean expanded = false;
@@ -170,11 +224,31 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
         });
 
+        CompoundButton.OnCheckedChangeListener onSwitchChangeListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                updateFragmentUI();
+            }
+        };
+
+
+        mSwitchAgroturismo.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchAlbergues.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchCamping.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchRural.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchCertificado.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchRestaurante.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchTienda.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchClub.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchClub.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchAutocaravana.setOnCheckedChangeListener(onSwitchChangeListener);
+        mSwitchOrden.setOnCheckedChangeListener(onSwitchChangeListener);
+
         mBottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         FragmentManager manager = getSupportFragmentManager();
 
-        Fragment fragment = manager.findFragmentById(R.id.fragment_alojamiento_list);
+        AlojamientoFragment fragment = (AlojamientoFragment) manager.findFragmentById(R.id.fragment_alojamiento_list);
 
         if (fragment == null) {
             FragmentTransaction transaction = manager.beginTransaction();
@@ -189,6 +263,89 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
             transaction.commit();
         }
 
+    }
+
+    public void updateFragmentUI(){
+
+        FragmentManager manager = getSupportFragmentManager();
+
+        AlojamientoFragment fragment = (AlojamientoFragment) manager.findFragmentById(R.id.fragment_alojamiento_list);
+
+        fragment.updateUI(filterTraducciones());
+    }
+
+    private ArrayList<Traducciones> filterTraducciones(){
+        ArrayList<Traducciones> traducciones = new ArrayList<>();
+        String[] tipos = getResources().getStringArray(R.array.alojaminetos_tipos);
+
+        int size= jsonData.getData().getTraducciones(LANG).size();
+        for (Traducciones tr : jsonData.getData().getTraducciones(LANG)) {
+
+            if(mSelectTerritorio.getSelectedItemPosition()!=0 && !mSelectTerritorio.getSelectedItem().toString().equals(jsonData.getData().getProvinciaByIDs(tr.getCodPostal(), tr.getCodPoblacion()))) continue;
+
+            if(mSelectMunicipio.getSelectedItemPosition()!=0 && !mSelectMunicipio.getSelectedItem().toString().equals(jsonData.getData().getPoblacionByIDs(tr.getCodPostal(), tr.getCodPoblacion()))) continue;
+
+            if(mSwitchAgroturismo.isChecked() && !tr.getTipo().equals(tipos[2]) && !(mSwitchAlbergues.isChecked() || mSwitchCamping.isChecked() || mSwitchRural.isChecked()) ) continue;
+
+            if(mSwitchAlbergues.isChecked() && !tr.getTipo().equals(tipos[0]) && !( mSwitchCamping.isChecked() || mSwitchRural.isChecked()) ) continue;
+
+            if(mSwitchCamping.isChecked() && !tr.getTipo().equals(tipos[1]) && !( mSwitchRural.isChecked()) ) continue;
+
+            if(mSwitchRural.isChecked() && !tr.getTipo().equals(tipos[3]) ) continue;
+
+            //TODO: Arreglar estos
+
+            if(mSwitchCertificado.isChecked() && tr.getCertificado()!=1) continue;
+
+            if(mSwitchRestaurante.isChecked() && tr.getCertificado()!=1) continue;
+
+            if(mSwitchTienda.isChecked() && tr.getCertificado()!=1) continue;
+
+            if(mSwitchClub.isChecked() && tr.getCertificado()!=1) continue;
+
+            if(mSwitchAutocaravana.isChecked() && tr.getCertificado()!=1) continue;
+
+
+            traducciones.add(tr);
+        }
+
+        switch (mSelectSortBy.getSelectedItemPosition()){
+            case 0:
+                Collections.sort(traducciones, new Comparator<Traducciones>() {
+                    @Override
+                    public int compare(Traducciones t1, Traducciones t2) {
+                        return t1.getNombre().compareToIgnoreCase(t2.getNombre());
+                    }
+                });
+
+                break;
+            case 1:
+                Collections.sort(traducciones, new Comparator<Traducciones>() {
+                    @Override
+                    public int compare(Traducciones t1, Traducciones t2) {
+                        String prov = jsonData.getData().getProvinciaByIDs(t1.getCodPostal(), t1.getCodPoblacion());
+                        String prov2 = jsonData.getData().getProvinciaByIDs(t2.getCodPostal(), t2.getCodPoblacion());
+                        return prov.compareToIgnoreCase(prov2);
+                    }
+                });
+                break;
+            case 2:
+                Collections.sort(traducciones, new Comparator<Traducciones>() {
+                    @Override
+                    public int compare(Traducciones t1, Traducciones t2) {
+                        String pob = jsonData.getData().getPoblacionByIDs(t1.getCodPostal(), t1.getCodPoblacion());
+                        String pob2 = jsonData.getData().getPoblacionByIDs(t2.getCodPostal(), t2.getCodPoblacion());
+                        return pob.compareToIgnoreCase(pob2);
+                    }
+                });
+                break;
+        }
+
+        if(!mSwitchOrden.isChecked()){
+            Collections.reverse(traducciones);
+        }
+
+        return traducciones;
     }
 
     @Override

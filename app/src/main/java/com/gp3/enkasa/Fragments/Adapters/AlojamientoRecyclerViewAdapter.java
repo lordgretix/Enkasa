@@ -1,10 +1,12 @@
 package com.gp3.enkasa.Fragments.Adapters;
 
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.gp3.enkasa.Fragments.AlojamientoFragment;
 import com.gp3.enkasa.Fragments.AlojamientoFragment.OnListFragmentInteractionListener;
 import com.gp3.enkasa.Fragments.Holders.AlojamientosViewHolder;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
@@ -15,7 +17,7 @@ import java.util.ArrayList;
 
 public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<AlojamientosViewHolder> {
 
-    private final ArrayList<Traducciones> mTraducciones;
+    private ArrayList<Traducciones> mTraducciones;
     private final OnListFragmentInteractionListener mListener;
 
     public AlojamientoRecyclerViewAdapter(ArrayList<Traducciones> traducciones, OnListFragmentInteractionListener listener) {
@@ -54,18 +56,14 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
     private int getAlojamientoIcon(String tipo){
 
         //TODO: Pasar esto a una array de String para las traducciones
+        String[] tipos = AlojamientoFragment.getmContext().getResources().getStringArray(R.array.alojaminetos_tipos);
 
-        switch (tipo){
-            case "Albergues": return R.drawable.ic_alberges_icon;
-            case "Aterpetxeak": return R.drawable.ic_alberges_icon;
-            case "Campings": return R.drawable.ic_camping_icon;
-            case "Kanpinak": return R.drawable.ic_camping_icon;
-            case "Agroturismos": return R.drawable.ic_agroturismo_icon;
-            case "Nekazaritza-turismoak": return R.drawable.ic_agroturismo_icon;
-            case "Casas Rurales": return R.drawable.ic_rural_icon;
-            case "Landetxeak": return R.drawable.ic_rural_icon;
+
+        int[] resources = {R.drawable.ic_alberges_icon, R.drawable.ic_camping_icon, R.drawable.ic_agroturismo_icon, R.drawable.ic_rural_icon};
+
+        for(int i=0; i<tipos.length; i++){
+            if(tipos[i].equals(tipo)) return resources[i];
         }
-
         return  R.drawable.ic_alberges_icon;
     }
 
@@ -74,4 +72,11 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
         return mTraducciones.size();
     }
 
+    public ArrayList<Traducciones> getTraducciones() {
+        return mTraducciones;
+    }
+
+    public void setTraducciones(ArrayList<Traducciones> traducciones) {
+        mTraducciones = traducciones;
+    }
 }

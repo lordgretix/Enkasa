@@ -18,6 +18,8 @@ import com.gp3.enkasa.Models.Json.JsonData;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
+import java.util.ArrayList;
+
 /**
  * A fragment representing a list of Items.
  * <p/>
@@ -34,6 +36,9 @@ public class AlojamientoFragment extends Fragment {
     private OnListFragmentInteractionListener mListener;
 
     private JsonData mJsonData;
+    private AlojamientoRecyclerViewAdapter mAdapter;
+
+    private static Context mContext;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -61,6 +66,8 @@ public class AlojamientoFragment extends Fragment {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
             mJsonData = AlojamientosActivity.jsonData;
         }
+
+        mContext = getContext();
     }
 
     @Override
@@ -77,7 +84,8 @@ public class AlojamientoFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new AlojamientoRecyclerViewAdapter(mJsonData.getData().getTraducciones(AlojamientosActivity.LANG), mListener));
+            mAdapter = new AlojamientoRecyclerViewAdapter(mJsonData.getData().getTraducciones(AlojamientosActivity.LANG), mListener);
+            recyclerView.setAdapter(mAdapter);
         }
         return view;
     }
@@ -100,19 +108,16 @@ public class AlojamientoFragment extends Fragment {
         mListener = null;
     }
 
-    private void updateUI(){
-        /*
-        mJsonData.getData()
-        List<Crime> crimes = crimeLab.getCrimes();
+    public void updateUI(ArrayList<Traducciones> traducciones){
 
-        if(mAdapter==null) {
-            mAdapter = new CrimeAdapter(crimes);
-            mCrimeRecyclerView.setAdapter(mAdapter);
-        }else{
-            mAdapter.setCrimes(crimes);
+        if(mAdapter!=null){
+            mAdapter.setTraducciones(traducciones);
             mAdapter.notifyDataSetChanged();
-            //mAdapter.notifyItemChanged(crimeId);
-        }*/
+        }
+    }
+
+    public static Context getmContext(){
+        return mContext;
     }
 
     /**

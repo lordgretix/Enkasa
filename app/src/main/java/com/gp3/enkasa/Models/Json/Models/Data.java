@@ -112,4 +112,23 @@ public class Data {
         return resultado;
     }
 
+    public String getProvinciaByIDs(int codPostal, int codPoblacion){
+
+        for (CodPostales cp : this.codPostales) {
+            if(cp.getCodPostal()==codPostal && cp.getCodPoblacion()==codPoblacion){
+                return cp.getProvincia();
+            }
+        }
+        return "";
+    }
+
+    public String getPoblacionByIDs(int codPostal, int codPoblacion){
+
+        for (CodPostales cp : this.codPostales) {
+            if(cp.getCodPostal()==codPostal && cp.getCodPoblacion()==codPoblacion){
+                return cp.getPoblacion();
+            }
+        }
+        return "";
+    }
 }
