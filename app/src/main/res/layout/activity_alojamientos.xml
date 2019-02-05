@@ -44,10 +44,11 @@
         android:autofillHints=""
         android:background="@android:color/transparent"
         android:drawableStart="@drawable/ic_search_icon_dark"
-        android:inputType=""
+        android:inputType="text"
         app:layout_constraintEnd_toStartOf="@+id/filter_options_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:maxLines="1"/>
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/filter_options"
@@ -56,13 +57,16 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
         android:background="@drawable/options_background"
         android:paddingBottom="16dp"
         android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtBuscar">
+        app:layout_constraintTop_toBottomOf="@+id/txtBuscar"
+        app:layout_constraintVertical_bias="0.0">
 
         <TextView
             android:id="@+id/txtOrden"

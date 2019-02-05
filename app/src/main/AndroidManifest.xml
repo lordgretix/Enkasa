@@ -31,7 +31,8 @@
         <activity
             android:name=".Activities.AlojamientosActivity"
             android:label="@string/title_activity_lugares"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Activities.DetailsActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>

@@ -19,6 +19,8 @@ import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 /**
  * A fragment representing a list of Items.
@@ -84,7 +86,16 @@ public class AlojamientoFragment extends Fragment {
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            mAdapter = new AlojamientoRecyclerViewAdapter(mJsonData.getData().getTraducciones(AlojamientosActivity.LANG), mListener);
+
+            ArrayList<Traducciones> traducciones = mJsonData.getData().getTraducciones(AlojamientosActivity.LANG);
+
+            Collections.sort(traducciones, new Comparator<Traducciones>() {
+                @Override
+                public int compare(Traducciones t1, Traducciones t2) {
+                    return t1.getNombre().compareToIgnoreCase(t2.getNombre());
+                }
+            });
+            mAdapter = new AlojamientoRecyclerViewAdapter(traducciones, mListener);
             recyclerView.setAdapter(mAdapter);
         }
         return view;

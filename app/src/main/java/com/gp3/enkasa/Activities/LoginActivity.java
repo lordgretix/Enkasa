@@ -80,9 +80,6 @@ public class LoginActivity extends AppCompatActivity {
                 mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
             }else{
                 Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
-                mTxtUserName.setError(getResources().getString(R.string.login_status_logged));
-
-                System.out.println("DATA: "+  new Gson().toJson(jsonData));
 
                 jsonData.getData().setAlojamientosToTraducciones();
 
@@ -142,14 +139,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if(requestCode==REGISTER){
             if(resultCode==RegisterActivity.REGISTER_SUCCESS){
-                Toast.makeText(this, "Resgistrado", Toast.LENGTH_SHORT ).show();
 
                 User user = new Gson().fromJson(data.getExtras().getString(RegisterActivity.REGISTER_USER), JsonData.class).getUser();
 
                 logIn(user.getUsername(), user.getPassword(), false);
-
-            }else{
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT ).show();
             }
         }
     }

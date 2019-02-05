@@ -10,6 +10,8 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
@@ -18,6 +20,7 @@ import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
@@ -46,6 +49,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     private BottomNavigationView mBottomNavigationView;
 
     //Filters
+    private EditText mTxtBuscar;
     private ConstraintLayout mFilterOptions;
     private ImageView mFilterOptionIcon;
     private Spinner mSelectMunicipio;
@@ -91,6 +95,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         mBottomNavigationView = findViewById(R.id.navigation);
 
         //Filters
+        mTxtBuscar = findViewById(R.id.txtBuscar);
         mFilterOptions = findViewById(R.id.filter_options);
         mFilterOptionIcon = findViewById(R.id.filter_options_icon);
         mSelectTerritorio = findViewById(R.id.selectTerritorio);
@@ -107,6 +112,8 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         mSwitchAutocaravana = findViewById(R.id.switchAutocaravana);
         mSwitchOrden = findViewById(R.id.switchOrden);
 
+        mTxtBuscar.setText("");
+
         provs = jsonData.getData().poblacionesByProvincias();
 
         // TerritorioSelect
@@ -119,6 +126,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         for(String provincia : provs.keySet()){
             provinciaAdapter.add(provincia);
         }
+        mSelectTerritorio.setSelection(0);
         provinciaAdapter.notifyDataSetChanged();
 
         ArrayAdapter<String> municipioAdapter = new ArrayAdapter<>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, android.R.id.text1);
@@ -246,6 +254,23 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         mSwitchAutocaravana.setOnCheckedChangeListener(onSwitchChangeListener);
         mSwitchOrden.setOnCheckedChangeListener(onSwitchChangeListener);
 
+        mTxtBuscar.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                updateFragmentUI();
+            }
+        });
+
         mBottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         FragmentManager manager = getSupportFragmentManager();
@@ -280,33 +305,35 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         ArrayList<Traducciones> traducciones = new ArrayList<>();
         String[] tipos = getResources().getStringArray(R.array.alojaminetos_tipos);
 
-        int size= jsonData.getData().getTraducciones(LANG).size();
+        ArrayList<String> tipo = new ArrayList<>();
+
+        if(mSwitchAlbergues.isChecked()) tipo.add(tipos[0]);
+        if(mSwitchCamping.isChecked()) tipo.add(tipos[1]);
+        if(mSwitchAgroturismo.isChecked()) tipo.add(tipos[2]);
+        if(mSwitchRural.isChecked()) tipo.add(tipos[3]);
+
+        if(mSelectTerritorio.getSelectedItem()==null) mSelectTerritorio.setSelection(0);
+        if(mSelectMunicipio.getSelectedItem()==null) mSelectMunicipio.setSelection(0);
+
         for (Traducciones tr : jsonData.getData().getTraducciones(LANG)) {
+
+            if(!tr.getNombre().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase()) && !tr.getDescripcion().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase())) continue;
 
             if(mSelectTerritorio.getSelectedItemPosition()!=0 && !mSelectTerritorio.getSelectedItem().toString().equals(jsonData.getData().getProvinciaByIDs(tr.getCodPostal(), tr.getCodPoblacion()))) continue;
 
             if(mSelectMunicipio.getSelectedItemPosition()!=0 && !mSelectMunicipio.getSelectedItem().toString().equals(jsonData.getData().getPoblacionByIDs(tr.getCodPostal(), tr.getCodPoblacion()))) continue;
 
-            if(mSwitchAgroturismo.isChecked() && !tr.getTipo().equals(tipos[2]) && !(mSwitchAlbergues.isChecked() || mSwitchCamping.isChecked() || mSwitchRural.isChecked()) ) continue;
-
-            if(mSwitchAlbergues.isChecked() && !tr.getTipo().equals(tipos[0]) && !( mSwitchCamping.isChecked() || mSwitchRural.isChecked()) ) continue;
-
-            if(mSwitchCamping.isChecked() && !tr.getTipo().equals(tipos[1]) && !( mSwitchRural.isChecked()) ) continue;
-
-            if(mSwitchRural.isChecked() && !tr.getTipo().equals(tipos[3]) ) continue;
-
-            //TODO: Arreglar estos
+            if(!tipo.isEmpty() && !tipo.contains(tr.getTipo())) continue;
 
             if(mSwitchCertificado.isChecked() && tr.getCertificado()!=1) continue;
 
-            if(mSwitchRestaurante.isChecked() && tr.getCertificado()!=1) continue;
+            if(mSwitchRestaurante.isChecked() && tr.getRestaurante()!=1) continue;
 
-            if(mSwitchTienda.isChecked() && tr.getCertificado()!=1) continue;
+            if(mSwitchTienda.isChecked() && tr.getTienda()!=1) continue;
 
-            if(mSwitchClub.isChecked() && tr.getCertificado()!=1) continue;
+            if(mSwitchClub.isChecked() && tr.getClub()!=1) continue;
 
-            if(mSwitchAutocaravana.isChecked() && tr.getCertificado()!=1) continue;
-
+            if(mSwitchAutocaravana.isChecked() && tr.getAutocarabana()!=1) continue;
 
             traducciones.add(tr);
         }

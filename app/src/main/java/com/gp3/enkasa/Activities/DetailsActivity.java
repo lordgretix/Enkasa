@@ -12,12 +12,13 @@ import android.widget.CheckBox;
 
 import android.widget.ImageView;
 import android.widget.TextView;
+
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 public class DetailsActivity extends AppCompatActivity {
 
-    public static final String SAVE_DETAIL_ID = DetailsActivity.class.getName()+".SAVE_DETAIL_ID";
+    public static final String SAVE_DETAIL_ID = DetailsActivity.class.getName() + ".SAVE_DETAIL_ID";
     private int id_Alojamiento;
 
     private ImageView mFoto;
@@ -43,41 +44,40 @@ public class DetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.detail_fragment);
 
-        mFoto=(ImageView) findViewById(R.id.image_alojamiento);
+        mFoto = findViewById(R.id.image_alojamiento);
 
-        mName=(TextView) findViewById(R.id.name_alojamiento);
-        mDireccion=(TextView) findViewById(R.id.address_alojamiento);
-        mMail=(TextView) findViewById(R.id.mail_alojamiento);
-        mTel=(TextView) findViewById(R.id.tel_alojamiento);
-        mCodPostal=(TextView) findViewById(R.id.cp_alojamiento);
-        mCertificado=(CheckBox) findViewById(R.id.checkBox_certificado);
-        mClub=(CheckBox) findViewById(R.id.checkBox_club);
-        mAutocaravana=(CheckBox) findViewById(R.id.checkBox_autocaravana);
-        mRestaurante=(CheckBox) findViewById(R.id.checkBox_restaurante);
-        mTienda=(CheckBox) findViewById(R.id.checkBox_tienda);
-        mDescripcion=(TextView) findViewById(R.id.summary_alojamiento);
-        mReservar=(Button) findViewById(R.id.button_reservar);
+        mName = findViewById(R.id.name_alojamiento);
+        mDireccion = findViewById(R.id.address_alojamiento);
+        mMail = findViewById(R.id.mail_alojamiento);
+        mTel = findViewById(R.id.tel_alojamiento);
+        mCodPostal = findViewById(R.id.cp_alojamiento);
+        mCertificado = findViewById(R.id.checkBox_certificado);
+        mClub = findViewById(R.id.checkBox_club);
+        mAutocaravana = findViewById(R.id.checkBox_autocaravana);
+        mRestaurante = findViewById(R.id.checkBox_restaurante);
+        mTienda = findViewById(R.id.checkBox_tienda);
+        mDescripcion = findViewById(R.id.summary_alojamiento);
+        mReservar = findViewById(R.id.button_reservar);
         mReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(DetailsActivity.this,BookingActivity.class);
-                mIntent.putExtra(SAVE_DETAIL_ID,id);
+                Intent mIntent = new Intent(DetailsActivity.this, BookingActivity.class);
+                mIntent.putExtra(SAVE_DETAIL_ID, id);
                 startActivity(mIntent);
             }
         });
 
 
+        if (savedInstanceState != null) {
+            id = savedInstanceState.getInt(AlojamientosActivity.INTENT_DETALLE_ID);
+            mTraducciones = AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
 
-        if (savedInstanceState != null){
-             id = savedInstanceState.getInt(AlojamientosActivity.INTENT_DETALLE_ID);
-            mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
-
-        }else {
-            id = getIntent().getIntExtra(AlojamientosActivity.INTENT_DETALLE_ID,0);
-            mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
+        } else {
+            id = getIntent().getIntExtra(AlojamientosActivity.INTENT_DETALLE_ID, 0);
+            mTraducciones = AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
         }
 
-       cargarDetalle(id);
+        cargarDetalle(id);
 
     }
 
@@ -85,7 +85,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onSaveInstanceState(Bundle guardaEstado) {
         super.onSaveInstanceState(guardaEstado);
         //lo "guardamos" el id en el Bundle
-        guardaEstado.putInt(SAVE_DETAIL_ID,id);
+        guardaEstado.putInt(SAVE_DETAIL_ID, id);
 
     }
 
@@ -97,28 +97,28 @@ public class DetailsActivity extends AppCompatActivity {
         cargarDetalle(id);
     }
 
-    private void cargarDetalle(int id){
-        mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
+    private void cargarDetalle(int id) {
+        mTraducciones = AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
         mName.setText(mTraducciones.getNombre());
         mDireccion.setText(mTraducciones.getDireccion());
         mMail.setText(mTraducciones.getEmail());
         mTel.setText(mTraducciones.getTelefono());
-        mCodPostal.setText(mTraducciones.getCodPostal());
+        mCodPostal.setText(String.valueOf(mTraducciones.getCodPostal()));
         mDescripcion.setText(mTraducciones.getDescripcion());
         mDescripcion.setMovementMethod(new ScrollingMovementMethod());
-        if (mTraducciones.getCertificado()==1){
+        if (mTraducciones.getCertificado() == 1) {
             mCertificado.setChecked(true);
         }
-        if (mTraducciones.getClub()==1){
+        if (mTraducciones.getClub() == 1) {
             mClub.setChecked(true);
         }
-        if (mTraducciones.getAutocarabana()==1){
+        if (mTraducciones.getAutocarabana() == 1) {
             mAutocaravana.setChecked(true);
         }
-        if (mTraducciones.getRestaurante()==1){
+        if (mTraducciones.getRestaurante() == 1) {
             mRestaurante.setChecked(true);
         }
-        if (mTraducciones.getTienda()==1){
+        if (mTraducciones.getTienda() == 1) {
             mTienda.setChecked(true);
         }
        /*
@@ -128,14 +128,14 @@ public class DetailsActivity extends AppCompatActivity {
           Agroturismos      Nekazaritza-turismoak
           Casas Rurales     Agroturismos
           */
-        String mTipo=mTraducciones.getTipo();
-        if (mTipo.equals("Albergues") || mTipo.equals("Aterpetxeak")){
+        String mTipo = mTraducciones.getTipo();
+        if (mTipo.equals("Albergues") || mTipo.equals("Aterpetxeak")) {
             mFoto.setImageResource(R.drawable.ic_alberges_icon);
-        }else if (mTipo.equals("Campings") || mTipo.equals("Kanpinak")){
+        } else if (mTipo.equals("Campings") || mTipo.equals("Kanpinak")) {
             mFoto.setImageResource(R.drawable.ic_camping_icon);
-        }else if (mTipo.equals("Agroturismos") || mTipo.equals("Agroturismos")){
+        } else if (mTipo.equals("Agroturismos") || mTipo.equals("Agroturismos")) {
             mFoto.setImageResource(R.drawable.ic_agroturismo_icon);
-        }else{
+        } else {
             mFoto.setImageResource(R.drawable.ic_rural_icon);
         }
     }
