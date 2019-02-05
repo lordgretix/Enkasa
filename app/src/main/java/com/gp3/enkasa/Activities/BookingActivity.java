@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 import java.util.Calendar;
@@ -23,6 +24,8 @@ public class BookingActivity  extends AppCompatActivity {
     private SeekBar mSeekBar;
     private Button mCheckIn;
     private Button mCheckOut;
+    private int id;
+    private Traducciones mTraducciones;
 
     Calendar c;
     DatePickerDialog dpd;
@@ -34,7 +37,7 @@ public class BookingActivity  extends AppCompatActivity {
         mUsername= findViewById(R.id.textUsername);
         mAloj_name=findViewById(R.id.textAlojamientoName);
         mDireccion=findViewById(R.id.textDireccion);
-
+/*
         mCheckIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -68,5 +71,15 @@ public class BookingActivity  extends AppCompatActivity {
                 dpd.show();
             }
         });
+*/
+        if (savedInstanceState != null){
+            id = savedInstanceState.getInt(DetailsActivity.SAVE_DETAIL_ID);
+            mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
+
+        }else {
+            id = getIntent().getIntExtra(DetailsActivity.SAVE_DETAIL_ID,0);
+            mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
+        }
+
     }
 }

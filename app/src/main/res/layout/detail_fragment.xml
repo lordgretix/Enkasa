@@ -9,10 +9,10 @@
         android:id="@+id/image_alojamiento"
         android:layout_width="112dp"
         android:layout_height="72dp"
-        android:contentDescription="@string/foto"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
         android:layout_marginEnd="8dp"
+        android:contentDescription="@string/foto"
         app:layout_constraintEnd_toStartOf="@+id/name_alojamiento"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -46,8 +46,6 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="24dp"
                 android:ems="10"
-
-                android:inputType="textEmailAddress"
                 android:text="@string/mail"
 
                 app:layout_constraintStart_toStartOf="parent"
@@ -60,7 +58,6 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="phone"
                 android:text="@string/place_tel"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/mail_alojamiento" />
@@ -72,7 +69,6 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:ems="10"
-                android:inputType="textPostalAddress"
                 android:text="@string/codigo_postal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tel_alojamiento" />
@@ -84,7 +80,6 @@
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="24dp"
                 android:ems="10"
-                android:inputType="textMultiLine"
                 android:scrollbars="vertical"
                 android:text="@string/resumen"
                 app:layout_constraintStart_toStartOf="parent"

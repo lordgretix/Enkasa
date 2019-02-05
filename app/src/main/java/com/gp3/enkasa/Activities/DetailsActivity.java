@@ -1,8 +1,10 @@
 package com.gp3.enkasa.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.method.ScrollingMovementMethod;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
@@ -15,6 +17,7 @@ import com.gp3.enkasa.R;
 
 public class DetailsActivity extends AppCompatActivity {
 
+    public static final String SAVE_DETAIL_ID = DetailsActivity.class.getName()+".SAVE_DETAIL_ID";
     private int id_Alojamiento;
 
     private ImageView mFoto;
@@ -32,7 +35,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private Button mReservar;
     private Traducciones mTraducciones;
-
+    private int id;
 
 
     @Override
@@ -57,26 +60,52 @@ public class DetailsActivity extends AppCompatActivity {
         mReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent mIntent = new Intent(DetailsActivity.this,BookingActivity.class);
+                mIntent.putExtra(SAVE_DETAIL_ID,id);
+                startActivity(mIntent);
             }
         });
-        int id;
-        id = getIntent().getIntExtra(AlojamientosActivity.INTENT_DETALLE_ID,0);
-        mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
+
+
 
         if (savedInstanceState != null){
              id = savedInstanceState.getInt(AlojamientosActivity.INTENT_DETALLE_ID);
             mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
 
+        }else {
+            id = getIntent().getIntExtra(AlojamientosActivity.INTENT_DETALLE_ID,0);
+            mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
         }
 
+       cargarDetalle(id);
+
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle guardaEstado) {
+        super.onSaveInstanceState(guardaEstado);
+        //lo "guardamos" el id en el Bundle
+        guardaEstado.putInt(SAVE_DETAIL_ID,id);
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle recuperaEstado) {
+        super.onRestoreInstanceState(recuperaEstado);
+        //recuperamos el String del Bundle
+        id = recuperaEstado.getInt(SAVE_DETAIL_ID);
+        cargarDetalle(id);
+    }
+
+    private void cargarDetalle(int id){
+        mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
         mName.setText(mTraducciones.getNombre());
         mDireccion.setText(mTraducciones.getDireccion());
         mMail.setText(mTraducciones.getEmail());
         mTel.setText(mTraducciones.getTelefono());
         mCodPostal.setText(mTraducciones.getCodPostal());
         mDescripcion.setText(mTraducciones.getDescripcion());
-
+        mDescripcion.setMovementMethod(new ScrollingMovementMethod());
         if (mTraducciones.getCertificado()==1){
             mCertificado.setChecked(true);
         }
@@ -109,9 +138,6 @@ public class DetailsActivity extends AppCompatActivity {
         }else{
             mFoto.setImageResource(R.drawable.ic_rural_icon);
         }
-
-
-
     }
 
 }
