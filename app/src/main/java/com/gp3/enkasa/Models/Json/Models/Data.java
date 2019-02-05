@@ -70,6 +70,16 @@ public class Data {
         return new Traducciones();
     }
 
+    public Traducciones getTraduccionByID(int id){
+        for (Traducciones tr : this.traducciones) {
+            if(tr.getIdTraduccion()==id){
+                return tr;
+            }
+        }
+        return new Traducciones();
+    }
+
+
     public Alojamientos getAlojamientoByID(int id){
         for (Alojamientos aloj : this.alojamientos) {
             if(aloj.getId()==id){
