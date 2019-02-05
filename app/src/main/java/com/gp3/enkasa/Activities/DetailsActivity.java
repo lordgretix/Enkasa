@@ -92,6 +92,26 @@ public class DetailsActivity extends AppCompatActivity {
         if (mTraducciones.getTienda()==1){
             mTienda.setChecked(true);
         }
+       /*
+          Los posibles tipos de alojamientos:
+          Albergues         Aterpetxeak
+          Campings          Kanpinak
+          Agroturismos      Nekazaritza-turismoak
+          Casas Rurales     Agroturismos
+          */
+        String mTipo=mTraducciones.getTipo();
+        if (mTipo.equals("Albergues") || mTipo.equals("Aterpetxeak")){
+            mFoto.setImageResource(R.drawable.ic_alberges_icon);
+        }else if (mTipo.equals("Campings") || mTipo.equals("Kanpinak")){
+            mFoto.setImageResource(R.drawable.ic_camping_icon);
+        }else if (mTipo.equals("Agroturismos") || mTipo.equals("Agroturismos")){
+            mFoto.setImageResource(R.drawable.ic_agroturismo_icon);
+        }else{
+            mFoto.setImageResource(R.drawable.ic_rural_icon);
+        }
+
+
+
     }
 
 }

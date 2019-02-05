@@ -34,11 +34,9 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activities.DetailsActivity"
-            android:label="@string/title_activity_alojamientos2"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
         <activity
             android:name=".Activities.BookingActivity"
-            android:label="@string/title_activity_alojamientos2"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" ></activity>
     </application>
 
