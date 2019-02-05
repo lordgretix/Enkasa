@@ -12,11 +12,14 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="16dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txtBuscar"
         tools:layout="@layout/fragment_alojamiento_list" />
 
     <android.support.design.widget.BottomNavigationView
@@ -32,52 +35,288 @@
         app:menu="@menu/navigation" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/txtBuscar"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:autofillHints=""
         android:background="@android:color/transparent"
         android:drawableStart="@drawable/ic_search_icon_dark"
-        android:drawableEnd="@drawable/ic_settings_icon_dark"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:inputType=""
+        app:layout_constraintEnd_toStartOf="@+id/filter_options_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:autofillHints=""
-        android:inputType="" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
+        android:id="@+id/filter_options"
         android:layout_width="0dp"
-        android:layout_height="357dp"
-        android:layout_marginStart="8dp"
+        android:layout_height="1dp"
+        android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/options_background"
+        android:paddingBottom="16dp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText4">
+        app:layout_constraintTop_toBottomOf="@+id/txtBuscar">
 
         <Spinner
-            android:id="@+id/spinner2"
-            android:layout_width="186dp"
-            android:layout_height="18dp"
+            android:id="@+id/selectMunicipio2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginEnd="16dp"
+            android:dropDownWidth="wrap_content"
+            android:entries="@array/filter_sortBy"
+            android:spinnerMode="dropdown"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/txtOrdenar"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/textView12"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/txtOrdenar" />
+
+        <Switch
+            android:id="@+id/switchAutocaravana"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Autocaravana"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchClub"
+            tools:checked="true" />
+
+        <Switch
+            android:id="@+id/switchTienda"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Tienda"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/switchRestaurante"
+            app:layout_goneMarginBottom="10dp"
+            tools:checked="true" />
+
+        <Switch
+            android:id="@+id/switchCertificado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Certificado"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            tools:checked="true" />
+
+        <Switch
+            android:id="@+id/switchRestaurante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Restaurante"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/switchCertificado"
+            tools:checked="true" />
+
+        <Switch
+            android:id="@+id/switchClub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Club"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider2"
+            tools:checked="true" />
+
+        <View
+            android:id="@+id/divider2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/background_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchAlbergues" />
+
+        <Switch
+            android:id="@+id/switchRural"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Rural"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/switchCamping"
+            tools:checked="true" />
+
+        <Switch
+            android:id="@+id/switchAlbergues"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Albergues"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/switchAgroturismo"
+            tools:checked="true" />
+
+        <Switch
+            android:id="@+id/switchCamping"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Camping"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:checked="true" />
+
+        <Spinner
+            android:id="@+id/selectMunicipio"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="16dp"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/txtMunicipio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toEndOf="@+id/txtMunicipio" />
 
         <TextView
-            android:id="@+id/textView12"
+            android:id="@+id/txtMunicipio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="16dp"
+            android:text="Municipio"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtTerritorio" />
+
+        <TextView
+            android:id="@+id/txtOrdenar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="Ordenar por"
+            android:textSize="18sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtMunicipio" />
+
+        <Spinner
+            android:id="@+id/selectTerritorio"
+            android:layout_width="wrap_content"
+            android:layout_height="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:dropDownWidth="wrap_content"
+            android:spinnerMode="dropdown"
+            android:textAlignment="textEnd"
+            app:layout_constraintBottom_toBottomOf="@+id/txtTerritorio"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txtTerritorio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
             android:text="Territorio"
+            android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@android:color/background_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtOrdenar" />
+
+        <Switch
+            android:id="@+id/switchAgroturismo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:checked="true"
+            android:switchPadding="@dimen/text_margin"
+            android:text="Agroturismo"
+            android:theme="@style/AppTheme"
+            app:layout_constraintEnd_toStartOf="@+id/divider3"
+            app:layout_constraintTop_toBottomOf="@+id/divider"
+            tools:checked="true" />
+
+        <View
+            android:id="@+id/divider3"
+            android:layout_width="1dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/listDivider"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
     </android.support.constraint.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/filter_options_icon"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_settings_icon_dark" />
 
 
 </android.support.constraint.ConstraintLayout>

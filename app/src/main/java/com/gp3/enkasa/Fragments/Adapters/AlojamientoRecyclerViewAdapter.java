@@ -35,8 +35,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
 
         Traducciones tr = mTraducciones.get(position);
         holder.setItem( tr );
-        holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(R.drawable.ic_agroturismo_icon));
-        System.out.println("NOMBRE: "+tr.getNombre());
+        holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(getAlojamientoIcon(tr.getTipo())));
         holder.getTitle().setText(tr.getNombre());
         holder.getResume().setText(tr.getResumen());
 
@@ -50,6 +49,24 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
                 }
             }
         });
+    }
+
+    private int getAlojamientoIcon(String tipo){
+
+        //TODO: Pasar esto a una array de String para las traducciones
+
+        switch (tipo){
+            case "Albergues": return R.drawable.ic_alberges_icon;
+            case "Aterpetxeak": return R.drawable.ic_alberges_icon;
+            case "Campings": return R.drawable.ic_camping_icon;
+            case "Kanpinak": return R.drawable.ic_camping_icon;
+            case "Agroturismos": return R.drawable.ic_agroturismo_icon;
+            case "Nekazaritza-turismoak": return R.drawable.ic_agroturismo_icon;
+            case "Casas Rurales": return R.drawable.ic_rural_icon;
+            case "Landetxeak": return R.drawable.ic_rural_icon;
+        }
+
+        return  R.drawable.ic_alberges_icon;
     }
 
     @Override

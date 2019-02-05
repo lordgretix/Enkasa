@@ -3,6 +3,7 @@ package com.gp3.enkasa.Models.Json.Models;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Data {
 
@@ -12,6 +13,8 @@ public class Data {
     private ArrayList<Reservas> reservas = new ArrayList<>();
     @SerializedName("traducciones")
     private ArrayList<Traducciones> traducciones = new ArrayList<>();
+    @SerializedName("codigos_postales")
+    private ArrayList<CodPostales> codPostales = new ArrayList<>();
 
     public Data() {
 
@@ -54,6 +57,14 @@ public class Data {
         return trs;
     }
 
+    public ArrayList<CodPostales> getCodPostales() {
+        return codPostales;
+    }
+
+    public void setCodPostales(ArrayList<CodPostales> codPostales) {
+        this.codPostales = codPostales;
+    }
+
     public void setTraducciones(ArrayList<Traducciones> traducciones) {
         this.traducciones = traducciones;
     }
@@ -83,6 +94,22 @@ public class Data {
         for (Traducciones tr : this.traducciones) {
             tr.setAlojamiento(getAlojamientoByID(tr.getIdAlojamiento()));
         }
+    }
+
+    public HashMap<String, ArrayList<String>> poblacionesByProvincias(){
+        HashMap<String, ArrayList<String>> resultado = new HashMap<>();
+
+        for (CodPostales cp : this.codPostales) {
+            if(!resultado.containsKey(cp.getProvincia())){
+                resultado.put(cp.getProvincia(), new ArrayList<String>());
+            }
+
+            if(!resultado.get(cp.getProvincia()).contains(cp.getPoblacion())){
+                resultado.get(cp.getProvincia()).add(cp.getPoblacion());
+            }
+        }
+
+        return resultado;
     }
 
 }

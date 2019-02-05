@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
     private void logIn(final String username, final String password, final boolean hash){
 
         try {
-            String params = "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&get_user=true";
+            String params = "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&data_table[]=codigos_postales&get_user=true";
 
             if(hash) params+="&hash=sha256";
 
