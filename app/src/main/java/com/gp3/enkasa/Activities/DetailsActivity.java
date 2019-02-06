@@ -37,7 +37,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     private Button mReservar;
     private Traducciones mTraducciones;
-private Button btnMapa;
+    private Alojamientos mAlojamiento;
+    private Button btnMapa;
     private int id;
 
 
@@ -81,13 +82,23 @@ private Button btnMapa;
 
         cargarDetalle(id);
 
+        if (savedInstanceState != null) {
+            id = savedInstanceState.getInt(AlojamientosActivity.INTENT_DETALLE_ID);
+            mAlojamiento = AlojamientosActivity.jsonData.getData().getAlojamientoByID(id);
+
+        } else {
+            id = getIntent().getIntExtra(AlojamientosActivity.INTENT_DETALLE_ID, 0);
+            mAlojamiento = AlojamientosActivity.jsonData.getData().getAlojamientoByID(id);
+        }
 
         btnMapa=findViewById(R.id.btnMapa);
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//Intent intent = MapsActivity.newIntent(getApplicationContext(),Alojamientos.get)
-                Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
+
+                Intent intent = MapsActivity.newIntent(getApplicationContext(),mAlojamiento);
+              //  Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
+
             startActivity(intent);
             }
         });

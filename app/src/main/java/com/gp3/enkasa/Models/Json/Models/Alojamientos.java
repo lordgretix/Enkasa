@@ -3,7 +3,10 @@ package com.gp3.enkasa.Models.Json.Models;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Alojamientos {
+import java.io.Serializable;
+
+
+public class Alojamientos implements Serializable {
 
     @SerializedName("id")
     private int id;
