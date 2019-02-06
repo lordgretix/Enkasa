@@ -11,33 +11,36 @@
         android:layout_height="72dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="48dp"
-        android:layout_marginEnd="8dp"
         android:contentDescription="@string/foto"
-        app:layout_constraintEnd_toStartOf="@+id/name_alojamiento"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:srcCompat="@tools:sample/avatars" />
 
-        <TextView
-            android:id="@+id/name_alojamiento"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="216dp"
-            android:text="@string/place_name"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/name_alojamiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/place_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/address_alojamiento"
-            android:layout_width="wrap_content"
-            android:layout_height="22dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/place_direction"
-            app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
-            app:layout_constraintTop_toBottomOf="@+id/name_alojamiento" />
+    <TextView
+        android:id="@+id/address_alojamiento"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/place_direction"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
+        app:layout_constraintTop_toBottomOf="@+id/name_alojamiento" />
 
             <TextView
                 android:id="@+id/mail_alojamiento"
@@ -73,17 +76,19 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tel_alojamiento" />
 
-            <TextView
-                android:id="@+id/summary_alojamiento"
-                android:layout_width="308dp"
-                android:layout_height="188dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="24dp"
-                android:ems="10"
-                android:scrollbars="vertical"
-                android:text="@string/resumen"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/checkBox_certificado" />
+    <TextView
+        android:id="@+id/summary_alojamiento"
+        android:layout_width="308dp"
+        android:layout_height="188dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:scrollbars="vertical"
+        android:text="@string/resumen"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/separador" />
 
     <Button
         android:id="@+id/btnMapa"

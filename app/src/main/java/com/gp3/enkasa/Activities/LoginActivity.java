@@ -72,7 +72,6 @@ public class LoginActivity extends AppCompatActivity {
 
         User user = getStoredUser();
 
-        System.out.println("");
         if(user!=null){
             logIn(user.getUsername(), user.getPassword(), false);
         }
