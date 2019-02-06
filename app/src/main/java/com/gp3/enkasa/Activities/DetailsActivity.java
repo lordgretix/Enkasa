@@ -13,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
@@ -85,6 +86,7 @@ private Button btnMapa;
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+//Intent intent = MapsActivity.newIntent(getApplicationContext(),Alojamientos.get)
                 Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
             startActivity(intent);
             }

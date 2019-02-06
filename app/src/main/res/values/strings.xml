@@ -80,4 +80,5 @@
     </string-array>
 
     <string name="filter_select_todo_option">Todas</string>
+    <string name="title_activity_maps_global">Map</string>
 </resources>

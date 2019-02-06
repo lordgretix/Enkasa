@@ -19,6 +19,7 @@ import java.util.UUID;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
+
     private static final String EXTRA_ALOJAMIENTOS= AlojamientosActivity.class.getName() + ".alojamiento_id";
     private GoogleMap mMap;
     private Alojamientos mAlojamientos;
@@ -32,12 +33,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        //AlojamientosActivity.jsonData.getData().getTraducciones(Al)
     }
 
-   /* private String createFragment(UUID alojamientos){
-        Fragment Alojamientos=new Fragment();
-        return  AlojamientosLab.class.getName()+alojamientos;
-    }*/
 
 
     public static Intent newIntent(Context context, UUID alojamientos) {

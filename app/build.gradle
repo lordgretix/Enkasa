@@ -7,7 +7,7 @@ android {
 
         def versionPropsFile = file('version.properties')
         def value = 0
-        multiDexEnabled=true
+        multiDexEnabled = true
         Properties versionProps = new Properties()
         if (!versionPropsFile.exists()) {
             versionProps['VERSION_PATCH'] = "0"

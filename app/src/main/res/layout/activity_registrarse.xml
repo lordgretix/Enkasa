@@ -12,14 +12,14 @@
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="white"
+        android:background="@color/white"
         android:layout_margin="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="721dp"
+            android:layout_height="754dp"
             android:layout_marginTop="20dp"
-
+            android:background="@color/white"
             android:orientation="vertical">
 
             <TextView
@@ -30,6 +30,7 @@
                 android:layout_marginTop="10dp"
                 android:text="@string/login_btn_register"
                 android:textAlignment="center"
+                android:textColor="@color/colorSecondary"
                 android:textSize="18sp" />
 
             <EditText
@@ -39,6 +40,7 @@
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
                 android:hint="@string/text_name"
+                android:textColor="@color/colorSecondary"
                 android:textSize="12sp" />
 
             <EditText
@@ -50,6 +52,7 @@
 
                 android:layout_marginTop="40dp"
                 android:hint="@string/text_apellidos"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
                 android:textSize="12sp" />
 
             <EditText
