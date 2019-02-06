@@ -69,12 +69,17 @@
         <item>Población</item>
     </string-array>
 
+    <string name="alojamientos_tipo_albergue">Albergues</string>
+
     <string-array name="alojaminetos_tipos">
-        <item>Albergues</item>
+        <item>@string/alojamientos_tipo_albergue</item>
         <item>Campings</item>
         <item>Agroturismos</item>
         <item>Casas Rurales</item>
     </string-array>
 
     <string name="filter_select_todo_option">Todas</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

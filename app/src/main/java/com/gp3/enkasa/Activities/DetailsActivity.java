@@ -61,7 +61,7 @@ public class DetailsActivity extends AppCompatActivity {
         mReservar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent mIntent = new Intent(DetailsActivity.this, BookingActivity.class);
+                Intent mIntent = new Intent(DetailsActivity.this, ReservasActivity.class);
                 mIntent.putExtra(SAVE_DETAIL_ID, id);
                 startActivity(mIntent);
             }

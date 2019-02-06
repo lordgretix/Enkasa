@@ -1,5 +1,6 @@
 package com.gp3.enkasa.Activities;
 
+import android.app.DatePickerDialog;
 import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
@@ -20,14 +21,17 @@ import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.gp3.enkasa.Fragments.AlojamientoFragment;
+import com.gp3.enkasa.Fragments.DatePickerFragment;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.JsonData;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
@@ -74,13 +78,26 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.lugares_navigation_search:
-                    mTextMessage.setText(R.string.lugares_navigation_search);
+                    //mTextMessage.setText(R.string.lugares_navigation_search);
                     break;
                 case R.id.lugares_navigation_center:
-                    mTextMessage.setText(R.string.title_dashboard);
+                    //mTextMessage.setText(R.string.title_dashboard);
+
+                    DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                            String selectedDate = year + "/" + twoDigits(month+1) + "/" + twoDigits(day);
+                        }
+
+                        private String twoDigits(int n) {
+                            return (n<=9) ? ("0"+n) : String.valueOf(n);
+                        }
+                    });
+                    newFragment.show(getSupportFragmentManager(), "datePicker");
+
                     break;
                 case R.id.lugares_navigation_profile:
-                    mTextMessage.setText(R.string.lugares_navigation_profile);
+                    //mTextMessage.setText(R.string.lugares_navigation_profile);
                     break;
             }
             return false;
@@ -112,7 +129,12 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         mSwitchAutocaravana = findViewById(R.id.switchAutocaravana);
         mSwitchOrden = findViewById(R.id.switchOrden);
 
-        mTxtBuscar.setText("");
+        mFilterOptions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
 
         provs = jsonData.getData().poblacionesByProvincias();
 
