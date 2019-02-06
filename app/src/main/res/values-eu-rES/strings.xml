@@ -51,4 +51,5 @@
     <string name="alojamientos_tipo_camping">Kanpinak</string>
     <string name="alojamientos_tipo_agroturismos">Nekazaritza-turismoak</string>
     <string name="alojamientos_tipo_rural">Baserri-Etxeak</string>
+    <string name="note">Ohar</string>
 </resources>
