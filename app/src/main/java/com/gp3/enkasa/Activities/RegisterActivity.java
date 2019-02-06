@@ -107,43 +107,56 @@ public class RegisterActivity extends AppCompatActivity {
     private boolean validate(){
         boolean valido=false;
         if(mTxtPassword.getText().toString().equals(mTxtPasswordRepeat.getText().toString())){
-            //despues de validar contraseña validamos los mails si tiene el formato correcto
-            if (validarEmail(mTxtEmail.getText().toString())){
-                if (mTxtUsuario.getText().toString().length()<=20){
-                    if (mTxtNombre.getText().toString().length()<=30){
-                        if(mTxtApellidos.getText().toString().length()<=60){
-                            if(mTxtEmail.getText().toString().length()<=100){
-                                if (mTxtPassword.getText().toString().length()<=16 && mTxtPassword.getText().toString().length()>=8){
-                                        valido= true;
-                                    }else {
-                                    //password fuera de rango o demasiado corto
-                                    mTxtPassword.setError(getResources().getString(R.string.error_length_password));
-                                }
-                            }else {
-                                //email fuera de rango
-                                mTxtEmail.setError(getResources().getString(R.string.error_out_of_range));
-                            }
-                        }else{
-                         //apellido fuera de rango
-                            mTxtApellidos.setError(getResources().getString(R.string.error_out_of_range));
-                        }
-                    }else{
-                       //nombre fuera de rango
-                        mTxtNombre.setError(getResources().getString(R.string.error_out_of_range));
-                    }
-                }else{
-                    //nombre de usuario fuera de rango
-                 mTxtUsuario.setError(getResources().getString(R.string.error_out_of_range));
-                }
-            }else{
-                //formato de mail no valido
-            mTxtEmail.setError(getResources().getString(R.string.error_format_mail));
-            }
         }else{
             //los passwords no conicide
             mTxtPassword.setError(getResources().getString(R.string.error_match_password));
+            return valido;
         }
 
+            //despues de validar contraseña validamos los mails si tiene el formato correcto
+        if (validarEmail(mTxtEmail.getText().toString())){
+        }else{
+            //formato de mail no valido
+            mTxtEmail.setError(getResources().getString(R.string.error_format_mail));
+            return valido;
+        }
+
+        if (mTxtUsuario.getText().toString().length()<=20){
+        }else{
+            //nombre de usuario fuera de rango
+            mTxtUsuario.setError(getResources().getString(R.string.error_out_of_range));
+            return valido;
+        }
+
+        if (mTxtNombre.getText().toString().length()<=30){
+        }else{
+            //nombre fuera de rango
+            mTxtNombre.setError(getResources().getString(R.string.error_out_of_range));
+            return valido;
+        }
+
+        if(mTxtApellidos.getText().toString().length()<=60){
+        }else{
+            //apellido fuera de rango
+            mTxtApellidos.setError(getResources().getString(R.string.error_out_of_range));
+            return valido;
+        }
+
+        if(mTxtEmail.getText().toString().length()<=100){
+        }else {
+            //email fuera de rango
+            mTxtEmail.setError(getResources().getString(R.string.error_out_of_range));
+            return valido;
+        }
+
+        if (mTxtPassword.getText().toString().length()<=16 && mTxtPassword.getText().toString().length()>=8){
+            valido= true;
+        }else {
+            //password fuera de rango o demasiado corto
+            mTxtPassword.setError(getResources().getString(R.string.error_length_password));
+            return valido;
+        }
+        
         return valido;
     }
 

@@ -45,7 +45,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     public static HashMap<String, ArrayList<String>> provs;
     public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName()+".INTENT_DETALLE_ID";
 
-    private TextView mTextMessage;
+   // private TextView mTextMessage;
     private BottomNavigationView mBottomNavigationView;
 
     //Filters
@@ -277,13 +277,15 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.lugares_navigation_map:
-                        mTextMessage.setText(R.string.lugares_navigation_map);
+                        //mTextMessage.setText(R.string.lugares_navigation_map);
+
                         break;
                     case R.id.lugares_navigation_center:
-                        mTextMessage.setText(R.string.title_dashboard);
+                        //mTextMessage.setText(R.string.title_dashboard);
                         break;
                     case R.id.lugares_navigation_profile:
-                        mTextMessage.setText(R.string.lugares_navigation_profile);
+
+                        //mTextMessage.setText(R.string.lugares_navigation_profile);
                         break;
                 }
                 return false;
