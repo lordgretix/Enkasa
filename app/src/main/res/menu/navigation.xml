@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item
-        android:id="@+id/menu_none"
-        android:visible="false"/>
 
     <item
-        android:id="@+id/lugares_navigation_search"
-        android:icon="@drawable/ic_search_icon"
-        android:title="@string/lugares_navigation_search"/>
+        android:id="@+id/blanco"
+        android:title="nada"
+        android:visible="false"/>
+    <item
+        android:id="@+id/lugares_navigation_map"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="@string/lugares_navigation_map"/>
 
     <item
         android:id="@+id/lugares_navigation_center"
