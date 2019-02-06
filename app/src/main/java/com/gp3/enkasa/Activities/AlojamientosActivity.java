@@ -77,7 +77,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.lugares_navigation_search:
+                case R.id.lugares_navigation_map:
                     //mTextMessage.setText(R.string.lugares_navigation_search);
                     break;
                 case R.id.lugares_navigation_center:
