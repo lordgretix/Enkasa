@@ -49,7 +49,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     public static HashMap<String, ArrayList<String>> provs;
     public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName()+".INTENT_DETALLE_ID";
 
-    private TextView mTextMessage;
+   // private TextView mTextMessage;
     private BottomNavigationView mBottomNavigationView;
 
     //Filters
