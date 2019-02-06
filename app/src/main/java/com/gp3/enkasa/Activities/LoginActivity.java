@@ -2,6 +2,7 @@ package com.gp3.enkasa.Activities;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -21,10 +22,13 @@ import com.gp3.enkasa.Models.Json.Models.User;
 import com.gp3.enkasa.R;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Set;
 
 public class LoginActivity extends AppCompatActivity {
 
     private static final int REGISTER = 0;
+    private static final String LOGIN_PREFERENCE = LoginActivity.class.getName()+".LOGIN_PREFERENCE";
     public static final String ALOJAMIENTOS = LoginActivity.class.getName()+".ALOJAMIENTOS";
 
     ProgressDialog progress;
@@ -65,6 +69,14 @@ public class LoginActivity extends AppCompatActivity {
                 startActivityForResult(register, REGISTER);
             }
         });
+
+        User user = getStoredUser();
+
+        System.out.println("");
+        if(user!=null){
+            logIn(user.getUsername(), user.getPassword(), false);
+        }
+
     }
 
     private void logIn(final String username, final String password, final boolean hash){
@@ -100,7 +112,7 @@ public class LoginActivity extends AppCompatActivity {
                                 mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
                             }else{
                                 Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
-
+                                setStoredUser(AlojamientosActivity.jsonData.getUser());
                                 createLugaressActivity();
                             }
                             progress.dismiss();
@@ -133,5 +145,24 @@ public class LoginActivity extends AppCompatActivity {
                 logIn(user.getUsername(), user.getPassword(), false);
             }
         }
+    }
+
+    private void setStoredUser(User user){
+
+        SharedPreferences.Editor editor = getSharedPreferences(LOGIN_PREFERENCE, 0).edit();
+        editor.putString("username", user.getUsername());
+        editor.putString("password", user.getPassword());
+        editor.commit();
+    }
+
+    private User getStoredUser(){
+
+        User user = new User();
+
+        SharedPreferences sp = getSharedPreferences(LOGIN_PREFERENCE, 0);
+        user.setUsername(sp.getString("username", null));
+        user.setPassword(sp.getString("password", null));
+
+        return user.getUsername() != null && user.getPassword() != null ? user : null;
     }
 }

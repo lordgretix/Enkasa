@@ -19,6 +19,9 @@ android {
         def runTasks = gradle.startParameter.taskNames
         if ('assemble' in runTasks) {
             value = 1
+            versionProps.load(new FileInputStream(versionPropsFile))
+            versionProps['VERSION_BUILD'] = "0"
+            versionProps.store(versionPropsFile.newWriter(), null)
         }
 
         def mVersionName = ""
