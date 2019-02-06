@@ -156,7 +156,7 @@ public class RegisterActivity extends AppCompatActivity {
             mTxtPassword.setError(getResources().getString(R.string.error_length_password));
             return valido;
         }
-        
+
         return valido;
     }
 
