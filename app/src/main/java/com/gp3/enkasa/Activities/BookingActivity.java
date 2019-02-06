@@ -37,8 +37,8 @@ public class BookingActivity  extends AppCompatActivity {
         mUsername= findViewById(R.id.textUsername);
         mAloj_name=findViewById(R.id.textAlojamientoName);
         mDireccion=findViewById(R.id.textDireccion);
-/*
-        mCheckIn.setOnClickListener(new View.OnClickListener() {
+
+/*        mCheckIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 c= Calendar.getInstance();
@@ -82,4 +82,5 @@ public class BookingActivity  extends AppCompatActivity {
         }
 
     }
+
 }

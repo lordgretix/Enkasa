@@ -60,6 +60,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="lugares_navigation_profile">Perfil</string>
     <string name="title_activity_filter">Filter</string>
+    <string name="lugares_navigation_map">Mapa</string>
 
     <!-- Strings related to Settings -->
 

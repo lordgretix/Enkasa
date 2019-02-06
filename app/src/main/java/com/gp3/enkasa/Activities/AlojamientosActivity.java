@@ -66,15 +66,15 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     private Switch mSwitchAutocaravana;
     private Switch mSwitchOrden;
 
-
+/*
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
 
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
-                case R.id.lugares_navigation_search:
-                    mTextMessage.setText(R.string.lugares_navigation_search);
+                case R.id.lugares_navigation_map:
+                    mTextMessage.setText(R.string.lugares_navigation_map);
                     break;
                 case R.id.lugares_navigation_center:
                     mTextMessage.setText(R.string.title_dashboard);
@@ -86,13 +86,13 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
             return false;
         }
     };
-
+*/
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alojamientos);
 
-        mBottomNavigationView = findViewById(R.id.navigation);
+        mBottomNavigationView =(BottomNavigationView) findViewById(R.id.navigation);
 
         //Filters
         mTxtBuscar = findViewById(R.id.txtBuscar);
@@ -271,7 +271,25 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
             }
         });
 
-        mBottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+
+        mBottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.lugares_navigation_map:
+                        mTextMessage.setText(R.string.lugares_navigation_map);
+                        break;
+                    case R.id.lugares_navigation_center:
+                        mTextMessage.setText(R.string.title_dashboard);
+                        break;
+                    case R.id.lugares_navigation_profile:
+                        mTextMessage.setText(R.string.lugares_navigation_profile);
+                        break;
+                }
+                return false;
+
+            }
+        });
 
         FragmentManager manager = getSupportFragmentManager();
 
