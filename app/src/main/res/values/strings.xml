@@ -6,6 +6,7 @@
     <string name="login_lbl_create_account">No tienes cuenta? Crear cuenta</string>
     <string name="logo">logo</string>
     <string name="username">Username</string>
+    <string name="mapa">Mapa</string>
 
     <string name="territorio">Territorio</string>
     <string name="municipio">Municipio</string>
@@ -68,4 +69,6 @@
         <item>Provincia</item>
         <item>Población</item>
     </string-array>
+    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_perfil">PerfilActivity</string>
 </resources>

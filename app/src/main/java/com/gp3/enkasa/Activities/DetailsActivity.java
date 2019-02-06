@@ -1,6 +1,7 @@
 package com.gp3.enkasa.Activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.AttributeSet;
@@ -31,7 +32,7 @@ public class DetailsActivity extends AppCompatActivity {
 
     private Button mReservar;
     private Traducciones mTraducciones;
-
+private Button btnMapa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +62,16 @@ public class DetailsActivity extends AppCompatActivity {
             int id = savedInstanceState.getInt(AlojamientosActivity.INTENT_DETALLE_ID);
             mTraducciones =  AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
         }
+
+
+        btnMapa=findViewById(R.id.btnMapa);
+        btnMapa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
+            startActivity(intent);
+            }
+        });
 
     }
 
