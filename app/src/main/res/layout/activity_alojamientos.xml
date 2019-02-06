@@ -75,7 +75,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Orden"
+            android:text="@string/alojamiento_orden"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtOrdenar" />
@@ -102,7 +102,7 @@
             android:layout_marginEnd="16dp"
             android:checked="false"
 
-            android:text="Autocaravana"
+            android:text="@string/autocaravana"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switchClub"
@@ -115,8 +115,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="false"
-
-            android:text="Tienda"
+            android:text="@string/tienda"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toStartOf="@+id/divider3"
             app:layout_constraintTop_toBottomOf="@+id/switchRestaurante"
@@ -130,8 +129,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="false"
-
-            android:text="Certificado"
+            android:text="@string/certificado"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toStartOf="@+id/divider3"
             app:layout_constraintTop_toBottomOf="@+id/divider2"
@@ -144,8 +142,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="false"
-
-            android:text="Restaurante"
+            android:text="@string/restaurante"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toStartOf="@+id/divider3"
             app:layout_constraintTop_toBottomOf="@+id/switchCertificado"
@@ -158,8 +155,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="false"
-
-            android:text="Club"
+            android:text="@string/club"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider2"
@@ -184,8 +180,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="false"
-
-            android:text="Rural"
+            android:text="@string/alojamientos_tipo_rural"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/switchCamping"
@@ -211,8 +206,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="false"
-
-            android:text="Camping"
+            android:text="@string/alojamientos_tipo_camping"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/divider"
@@ -238,7 +232,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Municipio"
+            android:text="@string/municipio"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtTerritorio" />
@@ -273,7 +267,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Provincia"
+            android:text="@string/provincia"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -298,8 +292,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="false"
-
-            android:text="Agroturismo"
+            android:text="@string/alojamientos_tipo_agroturismos"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toStartOf="@+id/divider3"
             app:layout_constraintTop_toBottomOf="@+id/divider"
@@ -312,8 +305,7 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:checked="true"
-
-            android:text="Ascendente"
+            android:text="@string/orden_asc"
             android:theme="@style/AppTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/selectSortBy"

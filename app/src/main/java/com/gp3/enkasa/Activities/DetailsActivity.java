@@ -139,7 +139,7 @@ private Button btnMapa;
           Albergues         Aterpetxeak
           Campings          Kanpinak
           Agroturismos      Nekazaritza-turismoak
-          Casas Rurales     Agroturismos
+          Casas Rurales     Baserri-Etxeak
           */
         String mTipo = mTraducciones.getTipo();
         if (mTipo.equals("Albergues") || mTipo.equals("Aterpetxeak")) {

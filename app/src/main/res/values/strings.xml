@@ -5,11 +5,11 @@
     <string name="login_status_failed">Nombre de usuario o contraseña incorrectos</string>
     <string name="login_lbl_create_account">No tienes cuenta? Crear cuenta</string>
     <string name="logo">logo</string>
-    <string name="username">Username</string>
-    <string name="mapa">Mapa</string>
+    <string name="username" translatable="false">Username</string>
+    <string name="mapa" translatable="false">Mapa</string>
 
+    <string name="provincia">Provincia</string>
     <string name="territorio">Territorio</string>
-    <string name="municipio">Municipio</string>
     <string name="categoria">Categoria</string>
     <string name="capacidad">Capacidad</string>
     <string name="certificado">Certificado</string>
@@ -29,39 +29,38 @@
     <string name="login_btn_register">Registrarse</string>
 
     <!-- Strings  login y registrarse -->
-    <string name="text_email">Email</string>
+    <string name="text_email" translatable="false">Email</string>
     <string name="text_apellidos">Apellidos</string>
-    <string name="text_password">Password</string>
-    <string name="text_passwordAgain">Confirme Password</string>
+    <string name="text_password" translatable="false">Password</string>
+    <string name="text_passwordAgain" translatable="false">Confirme Password</string>
     <string name="text_user">Usuario</string>
     <string name="text_name">Nombre</string>
     <string name="text_dir">Direccion</string>
     <!-- errores -->
 
     <string name="error_invalid_password">La contraseña es demasiado corta</string>
-    <string name="error_incorrect_password">Constraseña incorrecta</string>
+    <string name="error_incorrect_password">Contraseña incorrecta</string>
     <string name="error_field_required">Este campo es necesario</string>
     <string name="error_match_password">Las contraseñas no coindiden</string>
     <string name="error_format_mail">El formato de mail es incorrecto</string>
-    <string name="error_length_password">El longitud de contraseña debe estar entre 8-16 caracteres</string>
     <string name="error_out_of_range">Es demasiado largo</string>
 
     <string name="resumen">Resumen</string>
     <string name="codigo_postal">Codigo Postel</string>
-    <string name="mail">Mail</string>
+    <string name="mail" translatable="false">Mail</string>
     <string name="foto">Foto</string>
     <string name="num_book">Numero de reservas</string>
     <string name="start_date">Fecha de entrada</string>
     <string name="end_date">Fecha de salida</string>
-    <string name="cancel">Cancelar</string>
-    <string name="title_activity_lugares">LugaresActivity</string>
+    <string name="cancel" translatable="false">Cancel</string>
+    <string name="title_activity_lugares" translatable="false">LugaresActivity</string>
 
     <!-- menus -->
     <string name="lugares_navigation_search">Buscar</string>
-    <string name="title_dashboard">Dashboard</string>
+    <string name="title_dashboard" translatable="false">Dashboard</string>
     <string name="lugares_navigation_profile">Perfil</string>
-    <string name="title_activity_filter">Filter</string>
-    <string name="lugares_navigation_map">Mapa</string>
+    <string name="title_activity_filter" translatable="false">Filter</string>
+    <string name="lugares_navigation_map" translatable="false">Mapa</string>
 
     <!-- Strings related to Settings -->
 
@@ -70,18 +69,29 @@
         <item>Provincia</item>
         <item>Población</item>
     </string-array>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_perfil">PerfilActivity</string>
+    <string name="title_activity_maps" translatable="false">Map</string>
+    <string name="title_activity_perfil" translatable="false">PerfilActivity</string>
 
     <string name="alojamientos_tipo_albergue">Albergues</string>
+    <string name="alojamientos_tipo_rural">Casas Rurales</string>
+    <string name="alojamientos_tipo_camping">Campings</string>
+    <string name="alojamientos_tipo_agroturismos">Agroturismos</string>
 
     <string-array name="alojaminetos_tipos">
         <item>@string/alojamientos_tipo_albergue</item>
-        <item>Campings</item>
-        <item>Agroturismos</item>
-        <item>Casas Rurales</item>
+        <item>@string/alojamientos_tipo_camping</item>
+        <item>@string/alojamientos_tipo_agroturismos</item>
+        <item>@string/alojamientos_tipo_rural</item>
     </string-array>
 
     <string name="filter_select_todo_option">Todas</string>
-    <string name="title_activity_maps_global">Map</string>
+    <string name="title_activity_maps_global" translatable="false">Map</string>
+
+    <!-- ordels -->
+    <string name="alojamiento_orden">Orden</string>
+    <string name="orden_asc">Ascendente</string>
+    <string name="ordenar_con">Ordenar por</string>
+    <string name="municipio">Municipio</string>
+    <string name="error_length_password">El longitud de contraseña debe estar entre 8-16 caracteres</string>
+
 </resources>
