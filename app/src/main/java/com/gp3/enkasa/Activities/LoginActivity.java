@@ -27,6 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private static final int REGISTER = 0;
     public static final String ALOJAMIENTOS = LoginActivity.class.getName()+".ALOJAMIENTOS";
 
+    ProgressDialog progress;
+
     private CardView mBtnLogin;
     private EditText mTxtUserName;
     private EditText mTxtPassword;
@@ -67,70 +69,53 @@ public class LoginActivity extends AppCompatActivity {
 
     private void logIn(final String username, final String password, final boolean hash){
 
-        try {
-            String params = "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&data_table[]=codigos_postales&get_user=true";
+        progress = new ProgressDialog(this);
 
-            if(hash) params+="&hash=sha256";
+        progress.setMessage("Iniciando seseion...");
+        progress.setIndeterminate(true);
 
-            JsonData jsonData = Connection.retriveData(params);
+        progress.show();
 
-            System.out.println("JsonData has error: "+ jsonData.hashError());
-            if(jsonData.hashError()){
-                Toast.makeText(getApplicationContext(), R.string.login_status_failed, Toast.LENGTH_SHORT).show();
-                mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
-            }else{
-                Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
-                mTxtUserName.setError(getResources().getString(R.string.login_status_logged));
-
-                System.out.println("DATA: "+  new Gson().toJson(jsonData));
-
-                jsonData.getData().setAlojamientosToTraducciones();
-
-                AlojamientosActivity.jsonData=jsonData;
-                createLugaressActivity(jsonData);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-
-        }
-
-        /*
-        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+        new Thread(new Runnable() {
             @Override
-            public void run() {
+            public void run()
+            {
+
                 try {
-                    String params = "db=reto_gp3&users_table=usuarios&username_field=nombre&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&get_user=true";
+                    String params = "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&data_table[]=codigos_postales&get_user=true";
 
                     if(hash) params+="&hash=sha256";
 
                     JsonData jsonData = Connection.retriveData(params);
 
-                    System.out.println("JsonData has error: "+ jsonData.hashError());
-                    if(jsonData.hashError()){
-                        Toast.makeText(getApplicationContext(), R.string.login_status_failed, Toast.LENGTH_SHORT).show();
-                        mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
-                    }else{
-                        Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
-                        mTxtUserName.setError(getResources().getString(R.string.login_status_logged));
+                    jsonData.getData().setAlojamientosToTraducciones();
 
-                        System.out.println("DATA: "+  new Gson().toJson(jsonData));
+                    AlojamientosActivity.jsonData=jsonData;
 
-                        createLugaressActivity(jsonData);
-                    }
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            if(AlojamientosActivity.jsonData.hashError()){
+                                Toast.makeText(getApplicationContext(), R.string.login_status_failed, Toast.LENGTH_SHORT).show();
+                                mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
+                            }else{
+                                Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
 
+                                createLugaressActivity();
+                            }
+                            progress.dismiss();
+                        }
+                    });
                 } catch (IOException e) {
                     e.printStackTrace();
 
-                } finally {
-                    //progressDialog.dismiss();
                 }
             }
-        }, 1500);
-        */
+        }).start();
 
     }
 
-    private void createLugaressActivity(JsonData jsonData){
+    private void createLugaressActivity(){
         Intent intent = new Intent(this, AlojamientosActivity.class);
         startActivity(intent);
         finish();
@@ -142,14 +127,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if(requestCode==REGISTER){
             if(resultCode==RegisterActivity.REGISTER_SUCCESS){
-                Toast.makeText(this, "Resgistrado", Toast.LENGTH_SHORT ).show();
 
                 User user = new Gson().fromJson(data.getExtras().getString(RegisterActivity.REGISTER_USER), JsonData.class).getUser();
 
                 logIn(user.getUsername(), user.getPassword(), false);
-
-            }else{
-                Toast.makeText(this, "Error", Toast.LENGTH_SHORT ).show();
             }
         }
     }

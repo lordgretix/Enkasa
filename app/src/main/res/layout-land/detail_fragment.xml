@@ -20,7 +20,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="15dp"
         android:text="@string/place_name"
         app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
         app:layout_constraintTop_toTopOf="parent" />
@@ -42,7 +42,6 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textEmailAddress"
         android:text="@string/mail"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_alojamiento" />
@@ -54,7 +53,6 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="phone"
         android:text="@string/place_tel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail_alojamiento" />
@@ -66,20 +64,19 @@
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
         android:ems="10"
-        android:inputType="textPostalAddress"
         android:text="@string/codigo_postal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tel_alojamiento" />
 
-    <EditText
+    <TextView
         android:id="@+id/summary_alojamiento"
         android:layout_width="308dp"
         android:layout_height="188dp"
         android:layout_marginTop="104dp"
         android:layout_marginEnd="24dp"
         android:ems="10"
-        android:inputType="textMultiLine"
         android:text="@string/resumen"
+        android:scrollbars="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -103,6 +100,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/autocaravana"
+        android:enabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
 
@@ -113,6 +111,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/club"
+        android:enabled="false"
         app:layout_constraintStart_toEndOf="@+id/checkBox_autocaravana"
         app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
 
@@ -123,6 +122,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/tienda"
+        android:enabled="false"
         app:layout_constraintStart_toEndOf="@+id/checkBox_club"
         app:layout_constraintTop_toBottomOf="@+id/cp_alojamiento" />
 
@@ -133,6 +133,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:text="@string/certificado"
+        android:enabled="false"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_autocaravana" />
 
@@ -143,13 +144,14 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
         android:text="@string/restaurante"
+        android:enabled="false"
         app:layout_constraintStart_toEndOf="@+id/checkBox_certificado"
         app:layout_constraintTop_toBottomOf="@+id/checkBox_autocaravana" />
 
     <View
         android:id="@+id/separador"
-        android:layout_width="3dp"
-        android:layout_height="326dp"
+        android:layout_width="4dp"
+        android:layout_height="255dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"

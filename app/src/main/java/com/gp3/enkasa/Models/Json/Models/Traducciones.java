@@ -80,7 +80,7 @@ public class Traducciones extends Alojamientos{
     public void setAlojamiento(Alojamientos alojamiento){
         this.setId(alojamiento.getId());
         this.setNombre(alojamiento.getNombre());
-        this.setLocalidad(alojamiento.getLocalidad());
+        this.setCodPoblacion(alojamiento.getCodPoblacion());
         this.setTelefono(alojamiento.getTelefono());
         this.setDireccion(alojamiento.getDireccion());
         this.setCertificado(alojamiento.getCertificado());
@@ -94,7 +94,7 @@ public class Traducciones extends Alojamientos{
         this.setCapacidad(alojamiento.getCapacidad());
         this.setCodPostal(alojamiento.getCodPostal());
         this.setLatlong(alojamiento.getLatlong());
-        this.setMunicipio(alojamiento.getMunicipio());
-        this.setTerritorio(alojamiento.getTerritorio());
+        this.setCodPostal(alojamiento.getCodPostal());
+        this.setCodPoblacion(alojamiento.getCodPoblacion());
     }
 }
