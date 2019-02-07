@@ -77,30 +77,20 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.lugares_navigation_map:
-                      Intent intent = new Intent (getApplicationContext(),MapsGlobalActivity.class);
+
+                    Intent intent = new Intent (getApplicationContext(),MapsGlobalActivity.class);
                     startActivity(intent);
 
                     break;
-                case R.id.lugares_navigation_center:
-                    //mTextMessage.setText(R.string.title_dashboard);
+                case R.id.lugares_navigation_reservas:
 
-                    DatePickerFragment newFragment = DatePickerFragment.newInstance(new DatePickerDialog.OnDateSetListener() {
-                        @Override
-                        public void onDateSet(DatePicker datePicker, int year, int month, int day) {
-                            String selectedDate = year + "/" + twoDigits(month+1) + "/" + twoDigits(day);
-                        }
-
-                        private String twoDigits(int n) {
-                            return (n<=9) ? ("0"+n) : String.valueOf(n);
-                        }
-                    });
-                    newFragment.show(getSupportFragmentManager(), "datePicker");
+                    Intent intent2 = new Intent(getApplicationContext(), MisReservasActivity.class);
+                    startActivity(intent2);
 
                     break;
                 case R.id.lugares_navigation_profile:
-                    //mTextMessage.setText(R.string.lugares_navigation_profile);
-                    Intent intent3 = new Intent(getApplicationContext(),PerfilActivity.class);
 
+                    Intent intent3 = new Intent(getApplicationContext(),PerfilActivity.class);
                     startActivityForResult(intent3, PERFIL_REQUEST);
 
                     break;
@@ -308,12 +298,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
         if (fragment == null) {
             FragmentTransaction transaction = manager.beginTransaction();
-            fragment = new AlojamientoFragment();
-
-            Bundle args = new Bundle();
-            args.putInt(AlojamientoFragment.ARG_COLUMN_COUNT, 1);
-
-            fragment.setArguments(args);
+            fragment = AlojamientoFragment.newInstance(1);
 
             transaction.add(R.id.fragment_alojamiento_list, fragment);
             transaction.commit();

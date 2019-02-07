@@ -1,12 +1,10 @@
 package com.gp3.enkasa.Fragments.Holders;
 
-import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 

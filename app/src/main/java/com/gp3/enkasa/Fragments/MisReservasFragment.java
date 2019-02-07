@@ -11,36 +11,36 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gp3.enkasa.Activities.AlojamientosActivity;
-import com.gp3.enkasa.Fragments.Adapters.AlojamientoRecyclerViewAdapter;
-import com.gp3.enkasa.MainActivity;
-import com.gp3.enkasa.Models.Json.JsonData;
-import com.gp3.enkasa.Models.Json.Models.Traducciones;
+import com.gp3.enkasa.Fragments.Adapters.MisReservasRecyclerViewAdapter;
+import com.gp3.enkasa.Models.Json.Models.Reservas;
 import com.gp3.enkasa.R;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 
+/**
+ * A fragment representing a list of Items.
+ * <p/>
+ * Activities containing this fragment MUST implement the {@link OnListFragmentInteractionListener}
+ * interface.
+ */
+public class MisReservasFragment extends Fragment {
 
-public class AlojamientoFragment extends Fragment {
-
-    private static final String ARG_COLUMN_COUNT = AlojamientoFragment.class.getName()+".ARG_COLUMN_COUNT";
+    private static final String ARG_COLUMN_COUNT = MisReservasFragment.class.getName()+".ARG_COLUMN_COUNT";
     private int mColumnCount = 1;
-    private OnListFragmentInteractionListener mListener;
+    private MisReservasFragment.OnListFragmentInteractionListener mListener;
 
-    private JsonData mJsonData;
-    private AlojamientoRecyclerViewAdapter mAdapter;
+    private MisReservasRecyclerViewAdapter mAdapter;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-    public AlojamientoFragment() {
+    public MisReservasFragment() {
 
     }
 
-    public static AlojamientoFragment newInstance(int columnCount) {
-        AlojamientoFragment fragment = new AlojamientoFragment();
+    public static MisReservasFragment newInstance(int columnCount) {
+        MisReservasFragment fragment = new MisReservasFragment();
         Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, columnCount);
         fragment.setArguments(args);
@@ -53,7 +53,6 @@ public class AlojamientoFragment extends Fragment {
 
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
-            mJsonData = AlojamientosActivity.jsonData;
         }
 
     }
@@ -61,7 +60,7 @@ public class AlojamientoFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_alojamiento_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_mis_reservas_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -73,15 +72,9 @@ public class AlojamientoFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            ArrayList<Traducciones> traducciones = mJsonData.getData().getTraducciones(MainActivity.getCurrentLang());
+            ArrayList<Reservas> reservas = AlojamientosActivity.jsonData.getData().getReservasByUserID(AlojamientosActivity.jsonData.getUser().getID());
 
-            Collections.sort(traducciones, new Comparator<Traducciones>() {
-                @Override
-                public int compare(Traducciones t1, Traducciones t2) {
-                    return t1.getNombre().compareToIgnoreCase(t2.getNombre());
-                }
-            });
-            mAdapter = new AlojamientoRecyclerViewAdapter(traducciones, mListener);
+            mAdapter = new MisReservasRecyclerViewAdapter(reservas, mListener);
             recyclerView.setAdapter(mAdapter);
         }
         return view;
@@ -91,8 +84,8 @@ public class AlojamientoFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof OnListFragmentInteractionListener) {
-            mListener = (OnListFragmentInteractionListener) context;
+        if (context instanceof MisReservasFragment.OnListFragmentInteractionListener) {
+            mListener = (MisReservasFragment.OnListFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnListFragmentInteractionListener");
@@ -105,15 +98,16 @@ public class AlojamientoFragment extends Fragment {
         mListener = null;
     }
 
-    public void updateUI(ArrayList<Traducciones> traducciones){
+    public void updateUI(ArrayList<Reservas> resevas){
 
         if(mAdapter!=null){
-            mAdapter.setTraducciones(traducciones);
+            mAdapter.setReservas(resevas);
             mAdapter.notifyDataSetChanged();
         }
     }
 
     public interface OnListFragmentInteractionListener {
-        void onListFragmentInteraction(Traducciones tr);
+        void onListFragmentInteraction(Reservas rs);
+        void onListFragmentDeleteIconClick(Reservas rs);
     }
 }

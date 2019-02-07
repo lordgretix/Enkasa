@@ -66,6 +66,7 @@
     <string name="title_activity_lugares" translatable="false">LugaresActivity</string>
     <string name="note">Nota</string>
     <string name="reserva">Reserva</string>
+    <string name="mis_reservas">Mis Reservas</string>
 
     <!-- menus -->
     <string name="lugares_navigation_search">Buscar</string>
@@ -120,6 +121,8 @@
     <string name="reservado">Se ha realizado la reserva</string>
     <string name="iniciando">Iniciando sesión...</string>
     <string name="no_result">No se han encontrado resultados</string>
-
+    <string name="reserva_delete_confirm">¿Estas seguro de que deseas borrar esta reserva?</string>
+    <string name="confirm_yes">Si</string>
+    <string name="confirm_no">No</string>
 
 </resources>

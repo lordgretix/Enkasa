@@ -146,6 +146,18 @@ public class Data {
         return "";
     }
 
+    public ArrayList<Reservas> getReservasByUserID(int userID){
+
+        ArrayList<Reservas> rsvs = new ArrayList<>();
+
+        for (Reservas tr : this.reservas) {
+            if(tr.getUsuario()==userID){
+                rsvs.add(tr);
+            }
+        }
+        return rsvs;
+    }
+
     public static int getAlojamientoIcon(Context context, String tipo){
 
         String[] tipos = context.getResources().getStringArray(R.array.alojaminetos_tipos);
@@ -169,4 +181,5 @@ public class Data {
         }
         return  R.drawable.rural;
     }
+
 }

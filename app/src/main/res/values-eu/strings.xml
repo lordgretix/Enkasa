@@ -67,4 +67,8 @@
     <string name="no_result">Ez da emaitzarik aurkitu</string>
     <string name="buscar">Bilaketa</string>
     <string name="reserva">Erreserba</string>
+    <string name="mis_reservas">Nire Erreserbak</string>
+    <string name="reserva_delete_confirm">Ziur al zaude erreserba hau ezabatu nahi duzula?</string>
+    <string name="confirm_yes">Bai</string>
+    <string name="confirm_no">Ez</string>
 </resources>

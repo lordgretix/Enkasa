@@ -66,10 +66,11 @@ public class Reservas {
     public String getFechaInicio() {
         return fechaInicio;
     }
+
     public String getFechaInicio(boolean formated) {
         if(formated){
             String[] fecha = fechaInicio.split("-");
-            return fecha[2]+fecha[1]+fecha[0];
+            return fecha[2]+"/"+fecha[1]+"/"+fecha[0];
         }
         return fechaInicio;
     }
@@ -85,7 +86,7 @@ public class Reservas {
     public String getFechaFin(boolean formated) {
         if(formated){
             String[] fecha = fechaFin.split("-");
-            return fecha[2]+fecha[1]+fecha[0];
+            return fecha[2]+"/"+fecha[1]+"/"+fecha[0];
         }
         return fechaFin;
     }
