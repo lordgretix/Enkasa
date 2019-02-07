@@ -23,6 +23,7 @@
     <string name="autocaravana">Autocaravana</string>
     <string name="filtral">Filtrar</string>
     <string name="reservar">Reservar</string>
+    <string name="buscar">Buscar</string>
 
     <string name="place_name">Nombre</string>
     <string name="place_direction">Direccion</string>
@@ -48,6 +49,10 @@
     <string name="error_match_password">Las contraseñas no coindiden</string>
     <string name="error_format_mail">El formato de mail es incorrecto</string>
     <string name="error_out_of_range">Es demasiado largo</string>
+    <string name="error_fechaini_miss">Debe seleccionar una fecha de inicio</string>
+    <string name="error_fechafin_miss">Debes selecionar una fecha de fin</string>
+    <string name="error_as_zero">El valor debe ser mayor que 0</string>
+
 
     <!-- reserva -->
     <string name="resumen">Resumen</string>
@@ -109,5 +114,11 @@
         <item>@string/es</item>
         <item>@string/eus</item>
     </string-array>
+
+    <!-- mesenge -->
+    <string name="reservado">Se ha realizado la reserva</string>
+    <string name="iniciando">Iniciando sesión...</string>
+    <string name="no_result">No se han encontrado resultados</string>
+
 
 </resources>

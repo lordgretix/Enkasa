@@ -5,6 +5,7 @@ import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -152,9 +153,9 @@ public class ReservasActivity extends AppCompatActivity {
 
                     AlojamientosActivity.jsonData.getData().setReservas(reservas);
 
-                    //TODO: Pasar esto a @string
-
-                    Toast.makeText(getApplicationContext(), "Se ha realizado la reserva", Toast.LENGTH_LONG).show();
+                    Resources res = getResources();
+                    String msg = String.format(res.getString(R.string.reservado));
+                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
 
                     finish();
 
@@ -170,20 +171,23 @@ public class ReservasActivity extends AppCompatActivity {
 
     private boolean validate(){
 
-        //TODO: Pasar los errores a @string
-
+        Resources res = getResources();
+        String error_msg= "";
         if(mTxtDateStart.getText().toString().isEmpty()){
-            mTxtDateStart.setError("Debe seleccionar una fecha de inicio");
+            error_msg=String.format(getString(R.string.error_fechaini_miss));
+            mTxtDateStart.setError(error_msg);
             return false;
         }
 
         if(mTxtDateEnd.getText().toString().isEmpty()){
-            mTxtDateEnd.setError("Debes selecionar una fecha de fin");
+            error_msg=String.format(getString(R.string.error_fechafin_miss));
+            mTxtDateEnd.setError(error_msg);
             return false;
         }
 
         if(mTxtAmount.getText().toString().isEmpty() || Integer.parseInt(mTxtAmount.getText().toString())<=0){
-            mTxtAmount.setError("El valor debe ser mayor que 0");
+            error_msg=String.format(getString(R.string.error_as_zero));
+            mTxtAmount.setError(error_msg);
             return false;
         }
 

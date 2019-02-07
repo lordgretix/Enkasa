@@ -3,6 +3,7 @@ package com.gp3.enkasa.Activities;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -84,7 +85,9 @@ public class LoginActivity extends AppCompatActivity {
 
         progress = new ProgressDialog(this);
 
-        progress.setMessage("Iniciando seseion...");
+        Resources res = getResources();
+        String msg_sesion = String.format(res.getString(R.string.iniciando));
+        progress.setMessage(msg_sesion);
         progress.setIndeterminate(true);
 
         progress.show();
