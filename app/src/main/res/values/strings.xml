@@ -7,6 +7,10 @@
     <string name="logo">logo</string>
     <string name="username" translatable="false">Username</string>
     <string name="mapa" translatable="false">Mapa</string>
+    <string name="cambiar_password">Cambiar contraseña</string>
+    <string name="logout_btn_logout_label">Cerrar Sesión</string>
+    <string name="save">Guardar</string>
+    <string name="setting">Configuración</string>
 
     <string name="provincia">Provincia</string>
     <string name="territorio">Territorio</string>
@@ -93,5 +97,15 @@
     <string name="ordenar_con">Ordenar por</string>
     <string name="municipio">Municipio</string>
     <string name="error_length_password">El longitud de contraseña debe estar entre 8-16 caracteres</string>
+
+    <!-- idiomas -->
+    <string name="cambiar_idioma">Cambiar Idioma</string>
+    <string name="es">Castellano</string>
+    <string name="eus">Euskera</string>
+
+    <string-array name="idiomas">
+        <item>@string/es</item>
+        <item>@string/eus</item>
+    </string-array>
 
 </resources>

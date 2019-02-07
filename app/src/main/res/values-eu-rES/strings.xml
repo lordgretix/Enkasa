@@ -51,4 +51,11 @@
     <string name="alojamientos_tipo_camping">Kanpinak</string>
     <string name="alojamientos_tipo_agroturismos">Nekazaritza-turismoak</string>
     <string name="alojamientos_tipo_rural">Baserri-Etxeak</string>
+    <string name="es">Gaztelako</string>
+    <string name="eus">Euskara</string>
+    <string name="cambiar_idioma">Aldatu hizkuntza</string>
+    <string name="cambiar_password">Aldatu pasahitza</string>
+    <string name="logout_btn_logout_label">Saio itxia</string>
+    <string name="save">Gorde</string>
+    <string name="setting">Konfigurazioa</string>
 </resources>
