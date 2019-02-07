@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.gp3.enkasa.MainActivity;
 import com.gp3.enkasa.Models.Json.Models.Alojamientos;
+import com.gp3.enkasa.Models.Json.Models.User;
 import com.gp3.enkasa.R;
 
 import java.util.Locale;
@@ -78,8 +79,13 @@ public class PerfilActivity extends AppCompatActivity {
         mGuardar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                setResult(mIdioma.getSelectedItemPosition());
-                finish();
+                if (validarPassword()){
+                    User user = new User();
+                    user.setPassword(mPassword.getText().toString(), true);
+                    setResult(mIdioma.getSelectedItemPosition());
+                    finish();
+                }
+
             }
         });
 
@@ -91,8 +97,19 @@ public class PerfilActivity extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
 
+    private Boolean validarPassword(){
+        if(mPassword.getText().toString().equals(mPasswordRep.getText().toString())){
+        }else{
+            //los passwords no conicide
+            mPassword.setError(getResources().getString(R.string.error_match_password));
+            return false;
+        }
 
+        return true;
+    }
 
 }

@@ -59,4 +59,11 @@
     <string name="save">Gorde</string>
     <string name="setting">Konfigurazioa</string>
     <string name="note">Ohar</string>
+    <string name="reservado">Erreserba egin da</string>
+    <string name="iniciando">Saio hasiera...</string>
+    <string name="error_fechaini_miss">Hasierako data hautatu behar duzu</string>
+    <string name="error_fechafin_miss">Amaiera-data bat hautatu behar duzu</string>
+    <string name="error_as_zero">Balioa 0 baino handiagoa izan behar du</string>
+    <string name="no_result">Ez da emaitzarik aurkitu</string>
+    <string name="buscar">Bilaketa</string>
 </resources>
