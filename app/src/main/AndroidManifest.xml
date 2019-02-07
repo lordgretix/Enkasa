@@ -35,8 +35,8 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".MapsGlobalActivity"
-            android:label="@string/title_activity_maps_global"></activity>
+            android:name=".Activities.MapsGlobalActivity"
+            android:label="@string/title_activity_maps_global" />
         <activity
             android:name=".Activities.PerfilActivity"
             android:label="@string/title_activity_perfil" />

@@ -45,6 +45,7 @@
     <string name="error_format_mail">El formato de mail es incorrecto</string>
     <string name="error_out_of_range">Es demasiado largo</string>
 
+    <!-- reserva -->
     <string name="resumen">Resumen</string>
     <string name="codigo_postal">Codigo Postel</string>
     <string name="mail" translatable="false">Mail</string>
@@ -54,6 +55,7 @@
     <string name="end_date">Fecha de salida</string>
     <string name="cancel" translatable="false">Cancel</string>
     <string name="title_activity_lugares" translatable="false">LugaresActivity</string>
+    <string name="note">Nota</string>
 
     <!-- menus -->
     <string name="lugares_navigation_search">Buscar</string>
@@ -92,6 +94,6 @@
     <string name="orden_asc">Ascendente</string>
     <string name="ordenar_con">Ordenar por</string>
     <string name="municipio">Municipio</string>
-    <string name="error_length_password">El longitud de contraseña debe estar entre 8-16 caracteres</string>
+    <string name="error_length_password">El longitud de contraseña debe estar entre 8&#8211;16 caracteres</string>
 
 </resources>
