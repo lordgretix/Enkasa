@@ -1,6 +1,10 @@
 package com.gp3.enkasa.Models.Json.Models;
 
+import android.content.Context;
+
 import com.google.gson.annotations.SerializedName;
+import com.gp3.enkasa.Fragments.AlojamientoFragment;
+import com.gp3.enkasa.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -140,5 +144,17 @@ public class Data {
             }
         }
         return "";
+    }
+
+    public static int getAlojamientoIcon(Context context, String tipo){
+
+        String[] tipos = context.getResources().getStringArray(R.array.alojaminetos_tipos);
+
+        int[] resources = {R.drawable.ic_alberges_icon, R.drawable.ic_camping_icon, R.drawable.ic_agroturismo_icon, R.drawable.ic_rural_icon};
+
+        for(int i=0; i<tipos.length; i++){
+            if(tipos[i].equals(tipo)) return resources[i];
+        }
+        return  R.drawable.ic_alberges_icon;
     }
 }

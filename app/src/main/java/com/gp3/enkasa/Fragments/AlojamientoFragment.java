@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 
 import com.gp3.enkasa.Fragments.Adapters.AlojamientoRecyclerViewAdapter;
 import com.gp3.enkasa.Activities.AlojamientosActivity;
+import com.gp3.enkasa.MainActivity;
 import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.JsonData;
@@ -87,7 +88,7 @@ public class AlojamientoFragment extends Fragment {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
 
-            ArrayList<Traducciones> traducciones = mJsonData.getData().getTraducciones(AlojamientosActivity.LANG);
+            ArrayList<Traducciones> traducciones = mJsonData.getData().getTraducciones(MainActivity.getCurrentLang());
 
             Collections.sort(traducciones, new Comparator<Traducciones>() {
                 @Override

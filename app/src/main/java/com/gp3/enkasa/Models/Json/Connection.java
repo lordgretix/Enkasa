@@ -13,11 +13,10 @@ import javax.net.ssl.HttpsURLConnection;
 
 public class Connection {
 
-    public static final String GETTER_API = "get_json.php";
-    public static final String SETTER_API = "set_json.php";
-    public static final String METHOD_POST = "POST";
-    public static final String METHOD_GET = "GET";
-    public static final String CONN_URL = "https://kasserver.synology.me/etazi/";
+    private static final String GETTER_API = "get_json.php";
+    private static final String SETTER_API = "set_json.php";
+    private static final String METHOD_POST = "POST";
+    private static final String CONN_URL = "https://kasserver.synology.me/etazi/";
 
     public static JsonData retriveData(String url, String api, String params, String method, boolean output, String charset) throws IOException {
 

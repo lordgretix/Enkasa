@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.gp3.enkasa.Fragments.AlojamientoFragment;
 import com.gp3.enkasa.Fragments.AlojamientoFragment.OnListFragmentInteractionListener;
 import com.gp3.enkasa.Fragments.Holders.AlojamientosViewHolder;
+import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
@@ -27,8 +28,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
 
     @Override
     public AlojamientosViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.fragment_alojamiento, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_alojamiento, parent, false);
         return new AlojamientosViewHolder(view);
     }
 
@@ -37,7 +37,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
 
         Traducciones tr = mTraducciones.get(position);
         holder.setItem( tr );
-        holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(getAlojamientoIcon(tr.getTipo())));
+        holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(Data.getAlojamientoIcon(holder.getView().getContext(), tr.getTipo())));
         holder.getTitle().setText(tr.getNombre());
         holder.getResume().setText(tr.getResumen());
 
@@ -53,19 +53,6 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
         });
     }
 
-    private int getAlojamientoIcon(String tipo){
-
-        //TODO: Pasar esto a una array de String para las traducciones
-        String[] tipos = AlojamientoFragment.getmContext().getResources().getStringArray(R.array.alojaminetos_tipos);
-
-
-        int[] resources = {R.drawable.ic_alberges_icon, R.drawable.ic_camping_icon, R.drawable.ic_agroturismo_icon, R.drawable.ic_rural_icon};
-
-        for(int i=0; i<tipos.length; i++){
-            if(tipos[i].equals(tipo)) return resources[i];
-        }
-        return  R.drawable.ic_alberges_icon;
-    }
 
     @Override
     public int getItemCount() {
