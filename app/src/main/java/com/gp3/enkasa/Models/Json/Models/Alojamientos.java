@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName;
 import java.io.Serializable;
 
 
-public class Alojamientos implements Serializable {
+public class Alojamientos {
 
     @SerializedName("id")
     private int id;

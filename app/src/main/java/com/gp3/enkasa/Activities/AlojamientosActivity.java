@@ -52,6 +52,8 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
    // private TextView mTextMessage;
     private BottomNavigationView mBottomNavigationView;
 
+    private TextView mLblEmpty;
+
     //Filters
     private EditText mTxtBuscar;
     private ConstraintLayout mFilterOptions;
@@ -110,6 +112,8 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         setContentView(R.layout.activity_alojamientos);
 
         mBottomNavigationView = findViewById(R.id.navigation);
+
+        mLblEmpty = findViewById(R.id.lblEmpty);
 
         //Filters
         mTxtBuscar = findViewById(R.id.txtBuscar);
@@ -394,6 +398,12 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
         if(!mSwitchOrden.isChecked()){
             Collections.reverse(traducciones);
+        }
+
+        if(traducciones.size()==0){
+            mLblEmpty.setVisibility(View.VISIBLE);
+        }else{
+            mLblEmpty.setVisibility(View.GONE);
         }
 
         return traducciones;

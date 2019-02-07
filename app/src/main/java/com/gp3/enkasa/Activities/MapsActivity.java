@@ -22,7 +22,7 @@ import java.util.UUID;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
 
-    private static final String EXTRA_ALOJAMIENTOS= AlojamientosActivity.class.getName() + ".alojamiento_id";
+    private static final String EXTRA_ALOJAMIENTOS = MapsActivity.class.getName() + ".EXTRA_ALOJAMIENTOS";
     private GoogleMap mMap;
     private Alojamientos mAlojamientos;
     private Marker marcador;
@@ -30,7 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        mAlojamientos = (Alojamientos) getIntent().getSerializableExtra(EXTRA_ALOJAMIENTOS);
+        mAlojamientos = AlojamientosActivity.jsonData.getData().getTraduccionByID(getIntent().getIntExtra(EXTRA_ALOJAMIENTOS, 0));
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -41,9 +41,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-    public static Intent newIntent(Context context, Alojamientos alojamientos) {
+    public static Intent newIntent(Context context, int id) {
         Intent intent = new Intent(context, MapsActivity.class);
-        intent.putExtra(EXTRA_ALOJAMIENTOS, alojamientos);
+        intent.putExtra(EXTRA_ALOJAMIENTOS, id);
         return intent;
     }
 
