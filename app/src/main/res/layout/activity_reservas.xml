@@ -1,188 +1,200 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ReservasActivity"
-    android:background="#EEFFEE">
+    android:background="#EEFFEE"
+    android:isScrollContainer="true"
+    android:orientation="vertical"
+    tools:context=".Activities.ReservasActivity">
 
-    <TextView
-        android:id="@+id/lblReservasMessage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="Nota"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReservasAmount" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/lblReservasAmount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:text="Numero de reservas"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReservasDateEnd" />
+        <TextView
+            android:id="@+id/lblReservasMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:text="Nota"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtReservasAmount" />
 
-    <TextView
-        android:id="@+id/lblReservasDateEnd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/end_date"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/txtReservasDateEnd"
-        app:layout_constraintTop_toTopOf="@+id/lblReservasDateStart" />
+        <TextView
+            android:id="@+id/lblReservasAmount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="Numero de reservas"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtReservasDateEnd" />
 
-    <EditText
-        android:id="@+id/txtReservasDateEnd"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:drawableEnd="@drawable/ic_calendar_icon"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:focusable="false"
-        android:inputType="date"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblReservasDateEnd"
-        tools:text="2019-02-06" />
+        <TextView
+            android:id="@+id/lblReservasDateEnd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/end_date"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/txtReservasDateEnd"
+            app:layout_constraintTop_toTopOf="@+id/lblReservasDateStart" />
 
-    <ImageView
-        android:id="@+id/imgReservasIcon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_alberges_icon" />
+        <EditText
+            android:id="@+id/txtReservasDateEnd"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:drawableEnd="@drawable/ic_calendar_icon"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="date"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblReservasDateEnd"
+            tools:text="2019-02-06" />
 
-    <TextView
-        android:id="@+id/txtReservasTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imgReservasIcon"
-        app:layout_constraintTop_toTopOf="@+id/imgReservasIcon"
-        tools:text="BARRIKA SURF CAMP" />
+        <ImageView
+            android:id="@+id/imgReservasIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_alberges_icon" />
 
-    <TextView
-        android:id="@+id/txtReservasResume"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="16dp"
+        <TextView
+            android:id="@+id/txtReservasTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgReservasIcon"
+            app:layout_constraintTop_toTopOf="@+id/imgReservasIcon"
+            tools:text="BARRIKA SURF CAMP" />
 
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imgReservasIcon"
-        app:layout_constraintTop_toBottomOf="@+id/txtReservasTitle"
-        tools:text="El albergue Barrika Surf Camp se encuentra en Barrika, pequeña población situada al borde de acan..." />
+        <TextView
+            android:id="@+id/txtReservasResume"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
 
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="0dp"
-        android:layout_height="5dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgReservasIcon" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/imgReservasIcon"
+            app:layout_constraintTop_toBottomOf="@+id/txtReservasTitle"
+            tools:text="El albergue Barrika Surf Camp se encuentra en Barrika, pequeña población situada al borde de acan..." />
 
-    <TextView
-        android:id="@+id/lblReservasDateStart"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/start_date"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblReservasReserve" />
+        <View
+            android:id="@+id/divider4"
+            android:layout_width="0dp"
+            android:layout_height="5dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imgReservasIcon" />
 
-    <EditText
-        android:id="@+id/txtReservasDateStart"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_calendar_icon"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:focusable="false"
-        android:inputType="date"
-        android:singleLine="true"
-        android:textSize="16sp"
-        app:layout_constraintStart_toStartOf="@+id/lblReservasDateStart"
-        app:layout_constraintTop_toBottomOf="@+id/lblReservasDateStart"
-        tools:text="2019-02-06" />
+        <TextView
+            android:id="@+id/lblReservasDateStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="24dp"
+            android:text="@string/start_date"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblReservasReserve" />
 
-    <TextView
-        android:id="@+id/lblReservasReserve"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="8dp"
-        android:text="Reserva"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider4" />
+        <EditText
+            android:id="@+id/txtReservasDateStart"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_calendar_icon"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:focusable="false"
+            android:inputType="date"
+            android:singleLine="true"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/lblReservasDateStart"
+            app:layout_constraintTop_toBottomOf="@+id/lblReservasDateStart"
+            tools:text="2019-02-06" />
 
-    <Button
-        android:id="@+id/btnReservasReserve"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/button_background_secondary"
-        android:text="@string/reservar"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtReservasMessage" />
+        <TextView
+            android:id="@+id/lblReservasReserve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="Reserva"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider4" />
 
-    <EditText
-        android:id="@+id/txtReservasMessage"
-        android:layout_width="0dp"
-        android:layout_height="100dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:background="@drawable/text_edit_background"
-        android:ems="10"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/lblReservasMessage" />
+        <Button
+            android:id="@+id/btnReservasReserve"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/button_background_secondary"
+            android:text="@string/reservar"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtReservasMessage" />
 
-    <EditText
-        android:id="@+id/txtReservasAmount"
-        android:layout_width="100dp"
-        android:layout_height="wrap_content"
-        android:drawableEnd="@drawable/ic_reservas_icon"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:inputType="number"
-        android:textAlignment="viewStart"
-        app:layout_constraintStart_toStartOf="@+id/lblReservasAmount"
-        app:layout_constraintTop_toBottomOf="@+id/lblReservasAmount"
-        tools:text="10" />
+        <EditText
+            android:id="@+id/txtReservasMessage"
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:background="@drawable/text_edit_background"
+            android:ems="10"
+            android:inputType="textMultiLine"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lblReservasMessage" />
 
-</android.support.constraint.ConstraintLayout>
+        <EditText
+            android:id="@+id/txtReservasAmount"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:drawableEnd="@drawable/ic_reservas_icon"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:inputType="number"
+            android:textAlignment="viewStart"
+            app:layout_constraintStart_toStartOf="@+id/lblReservasAmount"
+            app:layout_constraintTop_toBottomOf="@+id/lblReservasAmount"
+            tools:text="10" />
+
+    </android.support.constraint.ConstraintLayout>
+
+
+</ScrollView>
+

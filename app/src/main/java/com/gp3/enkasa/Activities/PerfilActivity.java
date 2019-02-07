@@ -1,12 +1,7 @@
 package com.gp3.enkasa.Activities;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
-import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -15,11 +10,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.gp3.enkasa.MainActivity;
-import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.User;
 import com.gp3.enkasa.R;
-
-import java.util.Locale;
 
 public class PerfilActivity extends AppCompatActivity {
 
