@@ -32,11 +32,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+
+import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCallback {
 
-    private ArrayList<Alojamientos> alojamientos;
+    private ArrayList<Traducciones> alojamientos;
     private GoogleMap mMap;
 
     private Marker marcador;
@@ -54,7 +56,7 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        alojamientos=AlojamientosActivity.jsonData.getData().getAlojamientos();
+        alojamientos=AlojamientosActivity.jsonData.getData().getTraducciones();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -167,32 +169,25 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
         miUbicacion();
 
         LatLng target = null;
-
-        for (Alojamientos aloj : alojamientos) {
+        //Recorremos nuestros alojamientos
+        for (Traducciones aloj : alojamientos) {
             String[] coordenadas;
-
+        if(aloj.getIdioma().equalsIgnoreCase("es")){
             if(aloj.getLatlong().isEmpty()){
                 Toast toast= Toast.makeText(this,"No hay nada",Toast.LENGTH_SHORT);
                 toast.show();
-            }else{
-                coordenadas=aloj.getLatlong().split(",");
-             Log.d("MapaActivity",coordenadas[0]+ coordenadas[1]);
+            }else {
+                coordenadas = aloj.getLatlong().split(",");
+                Log.d("MapaActivity", coordenadas[0] + coordenadas[1]);
                 target = new LatLng(Double.parseDouble(coordenadas[0]), Double.parseDouble(coordenadas[1]));
+                //Añadimos la marca
                 mMap.addMarker(new MarkerOptions()
                         .position(target)
-                        .title("" +aloj.getNombre())
+                        .title("" + aloj.getNombre())
                         .snippet(aloj.getDireccion())
-                        //.icon(BitmapDescriptorFactory.fromResource(R.drawable.rural)));
-                        .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+                        .icon(BitmapDescriptorFactory.fromResource(Data.getAlojamientoIconPNG(this, aloj.getTipo()))));
             }
-
-        }
-
-        /*for(int i=0;i<alojamientos.size();i++){
-
-
-        }*/
-        //Poner el Zoom en la marca
+        //Poner el Zoom
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target, 7));
-    }
-}
+    }}
+}}
