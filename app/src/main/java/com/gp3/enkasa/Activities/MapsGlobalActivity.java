@@ -14,6 +14,9 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -40,12 +43,14 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
 
     private ArrayList<Traducciones> alojamientos;
     private GoogleMap mMap;
+    private Spinner filtro_radio;
 
     private Marker marcador;
     double lat = 0.0;
     double log = 0.0;
     String mensaje1 = "";
     String direccion = "";
+    String[]datos ={"1km","5km","10km"};
 
     public static Intent newIntent(Context packageContect) {
         Intent intent = new Intent(packageContect,MapsGlobalActivity.class);
@@ -61,6 +66,12 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+        /*filtro_radio=(Spinner) findViewById(R.id.filtro_radio);
+        ArrayAdapter<String> adaptador =new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,datos);
+        filtro_radio.setAdapter(adaptador);*/
+
+
     }
 
     //Activar los permisos del gps cuando esten apagados
@@ -174,8 +185,8 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
             String[] coordenadas;
         if(aloj.getIdioma().equalsIgnoreCase("es")){
             if(aloj.getLatlong().isEmpty()){
-                Toast toast= Toast.makeText(this,"No hay nada",Toast.LENGTH_SHORT);
-                toast.show();
+                //Toast toast= Toast.makeText(this,"No hay nada",Toast.LENGTH_SHORT);
+                //toast.show();
             }else {
                 coordenadas = aloj.getLatlong().split(",");
                 Log.d("MapaActivity", coordenadas[0] + coordenadas[1]);

@@ -18,7 +18,7 @@
 
     <item
         android:id="@+id/lugares_navigation_profile"
-        android:icon="@drawable/ic_user_icon_dark"
+        android:icon="@drawable/ic_user_icon_white"
         android:title="@string/lugares_navigation_profile" />
 
 </menu>
