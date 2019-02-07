@@ -157,4 +157,16 @@ public class Data {
         }
         return  R.drawable.ic_alberges_icon;
     }
+
+    public static int getAlojamientoIconPNG(Context context, String tipo){
+
+        String[] tipos = context.getResources().getStringArray(R.array.alojaminetos_tipos);
+
+        int[] resources = {R.drawable.albergues, R.drawable.camping, R.drawable.agroturismo, R.drawable.rural};
+
+        for(int i=0; i<tipos.length; i++){
+            if(tipos[i].equals(tipo)) return resources[i];
+        }
+        return  R.drawable.rural;
+    }
 }
