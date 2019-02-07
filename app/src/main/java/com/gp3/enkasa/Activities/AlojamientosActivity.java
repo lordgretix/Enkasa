@@ -79,8 +79,6 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                 case R.id.lugares_navigation_map:
                       Intent intent = new Intent (getApplicationContext(),MapsGlobalActivity.class);
                     startActivity(intent);
-                            //Intent todoMapita= (Intent) MapsGlobalActivity.newIntent(getBaseContext());
-                            //startActivity(todoMapita);
 
                     break;
                 case R.id.lugares_navigation_center:
