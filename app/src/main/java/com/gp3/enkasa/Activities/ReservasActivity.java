@@ -1,9 +1,7 @@
 package com.gp3.enkasa.Activities;
 
-import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -19,7 +17,6 @@ import android.widget.Toast;
 import com.gp3.enkasa.Fragments.DatePickerFragment;
 import com.gp3.enkasa.Models.Json.Connection;
 import com.gp3.enkasa.Models.Json.Exceptions.JsonDataException;
-import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.Models.Reservas;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
@@ -153,9 +150,7 @@ public class ReservasActivity extends AppCompatActivity {
 
                     AlojamientosActivity.jsonData.getData().setReservas(reservas);
 
-                    Resources res = getResources();
-                    String msg = String.format(res.getString(R.string.reservado));
-                    Toast.makeText(getApplicationContext(), msg, Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.reservado), Toast.LENGTH_LONG).show();
 
                     finish();
 
@@ -171,23 +166,18 @@ public class ReservasActivity extends AppCompatActivity {
 
     private boolean validate(){
 
-        Resources res = getResources();
-        String error_msg= "";
         if(mTxtDateStart.getText().toString().isEmpty()){
-            error_msg=String.format(getString(R.string.error_fechaini_miss));
-            mTxtDateStart.setError(error_msg);
+            mTxtDateStart.setError(getResources().getString(R.string.error_fechaini_miss));
             return false;
         }
 
         if(mTxtDateEnd.getText().toString().isEmpty()){
-            error_msg=String.format(getString(R.string.error_fechafin_miss));
-            mTxtDateEnd.setError(error_msg);
+            mTxtDateEnd.setError(getResources().getString(R.string.error_fechafin_miss));
             return false;
         }
 
         if(mTxtAmount.getText().toString().isEmpty() || Integer.parseInt(mTxtAmount.getText().toString())<=0){
-            error_msg=String.format(getString(R.string.error_as_zero));
-            mTxtAmount.setError(error_msg);
+            mTxtAmount.setError(getResources().getString(R.string.error_as_zero));
             return false;
         }
 
