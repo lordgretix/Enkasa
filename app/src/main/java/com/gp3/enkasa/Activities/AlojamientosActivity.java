@@ -1,7 +1,6 @@
 package com.gp3.enkasa.Activities;
 
 import android.app.DatePickerDialog;
-import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -17,29 +16,22 @@ import android.text.TextWatcher;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Switch;
-import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.gson.Gson;
 import com.gp3.enkasa.Fragments.AlojamientoFragment;
 import com.gp3.enkasa.Fragments.DatePickerFragment;
 import com.gp3.enkasa.MainActivity;
-import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.JsonData;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
-import com.gp3.enkasa.Models.Json.Models.User;
 import com.gp3.enkasa.R;
 
 import java.util.ArrayList;
@@ -49,8 +41,7 @@ import java.util.HashMap;
 
 public class AlojamientosActivity extends AppCompatActivity implements AlojamientoFragment.OnListFragmentInteractionListener {
 
-    private static int LANG_REQUEST = 1;
-    private static int LOG_OUT = 2;
+    private static int PERFIL_REQUEST = 1;
     public static JsonData jsonData = null;
     public static HashMap<String, ArrayList<String>> provs;
     public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName()+".INTENT_DETALLE_ID";
@@ -112,7 +103,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                     //mTextMessage.setText(R.string.lugares_navigation_profile);
                     Intent intent3 = new Intent(getApplicationContext(),PerfilActivity.class);
 
-                    startActivityForResult(intent3, LANG_REQUEST);
+                    startActivityForResult(intent3, PERFIL_REQUEST);
 
                     break;
             }
@@ -435,7 +426,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode==LANG_REQUEST){
+        if(requestCode== PERFIL_REQUEST){
             switch (resultCode){
                 case PerfilActivity.LANG_ES:
                     MainActivity.setLocale(this, "es");
@@ -443,14 +434,12 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                 case PerfilActivity.LANG_EUS:
                     MainActivity.setLocale(this, "eu");
                     break;
+                case PerfilActivity.LOGED_OUT:
+                    Intent intent = new Intent(this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                    break;
             }
-        }
-
-        if(requestCode==LOG_OUT && resultCode==PerfilActivity.LOGED_OUT){
-
-            Intent intent = new Intent(this, LoginActivity.class);
-            startActivity(intent);
-            finish();
         }
 
         recreate();
