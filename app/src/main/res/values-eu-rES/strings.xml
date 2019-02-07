@@ -58,4 +58,5 @@
     <string name="logout_btn_logout_label">Saio itxia</string>
     <string name="save">Gorde</string>
     <string name="setting">Konfigurazioa</string>
+    <string name="note">Ohar</string>
 </resources>

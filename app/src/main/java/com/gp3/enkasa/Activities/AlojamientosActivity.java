@@ -20,6 +20,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -52,6 +53,8 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
    // private TextView mTextMessage;
     private BottomNavigationView mBottomNavigationView;
 
+    private TextView mLblEmpty;
+
     //Filters
     private EditText mTxtBuscar;
     private ConstraintLayout mFilterOptions;
@@ -78,7 +81,11 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             switch (item.getItemId()) {
                 case R.id.lugares_navigation_map:
-                    //mTextMessage.setText(R.string.lugares_navigation_search);
+                      Intent intent = new Intent (getApplicationContext(),MapsGlobalActivity.class);
+                    startActivity(intent);
+                            //Intent todoMapita= (Intent) MapsGlobalActivity.newIntent(getBaseContext());
+                            //startActivity(todoMapita);
+
                     break;
                 case R.id.lugares_navigation_center:
                     //mTextMessage.setText(R.string.title_dashboard);
@@ -110,6 +117,8 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         setContentView(R.layout.activity_alojamientos);
 
         mBottomNavigationView = findViewById(R.id.navigation);
+
+        mLblEmpty = findViewById(R.id.lblEmpty);
 
         //Filters
         mTxtBuscar = findViewById(R.id.txtBuscar);
@@ -394,6 +403,12 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
         if(!mSwitchOrden.isChecked()){
             Collections.reverse(traducciones);
+        }
+
+        if(traducciones.size()==0){
+            mLblEmpty.setVisibility(View.VISIBLE);
+        }else{
+            mLblEmpty.setVisibility(View.GONE);
         }
 
         return traducciones;

@@ -1,12 +1,16 @@
 package com.gp3.enkasa.Models.Json;
 
+import com.google.gson.annotations.SerializedName;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.Models.User;
 
 public class JsonData{
 
+    @SerializedName("user")
     private User user;
+    @SerializedName("data")
     private Data data;
+    @SerializedName("error")
     private String error;
 
     public JsonData() {

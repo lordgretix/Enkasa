@@ -1,26 +1,21 @@
 package com.gp3.enkasa.Activities;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.method.ScrollingMovementMethod;
-import android.util.AttributeSet;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
-
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
 import com.gp3.enkasa.R;
 
 public class DetailsActivity extends AppCompatActivity {
 
     public static final String SAVE_DETAIL_ID = DetailsActivity.class.getName() + ".SAVE_DETAIL_ID";
-    private int id_Alojamiento;
 
     private ImageView mFoto;
     private TextView mName;
@@ -37,8 +32,8 @@ public class DetailsActivity extends AppCompatActivity {
 
     private Button mReservar;
     private Traducciones mTraducciones;
-private Button btnMapa;
-    private int id;
+    private Button btnMapa;
+    private int id; //ID de la traduccion
 
 
     @Override
@@ -60,15 +55,6 @@ private Button btnMapa;
         mTienda = findViewById(R.id.checkBox_tienda);
         mDescripcion = findViewById(R.id.summary_alojamiento);
         mReservar = findViewById(R.id.button_reservar);
-        mReservar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent mIntent = new Intent(DetailsActivity.this, ReservasActivity.class);
-                mIntent.putExtra(SAVE_DETAIL_ID, id);
-                startActivity(mIntent);
-            }
-        });
-
 
         if (savedInstanceState != null) {
             id = savedInstanceState.getInt(AlojamientosActivity.INTENT_DETALLE_ID);
@@ -79,6 +65,14 @@ private Button btnMapa;
             mTraducciones = AlojamientosActivity.jsonData.getData().getTraduccionByID(id);
         }
 
+        mReservar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = ReservasActivity.newIntent(getApplicationContext(), id);
+                startActivity(intent);
+            }
+        });
+
         cargarDetalle(id);
 
 
@@ -86,11 +80,14 @@ private Button btnMapa;
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//Intent intent = MapsActivity.newIntent(getApplicationContext(),Alojamientos.get)
-                Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
+
+                Intent intent = MapsActivity.newIntent(getApplicationContext(), id);
+              //  Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
+
             startActivity(intent);
             }
         });
+
 
     }
 

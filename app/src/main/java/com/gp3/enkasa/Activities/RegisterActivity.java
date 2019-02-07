@@ -63,8 +63,6 @@ public class RegisterActivity extends AppCompatActivity {
                     user.setEmail(mTxtEmail.getText().toString());
                     user.setPassword(mTxtPassword.getText().toString(), true);
                     user.setRole(3);
-
-                    System.out.println("USUARIO: "+ new Gson().toJson(user));
                     
                     String params = "json={" +
                                 "'db':'reto_gp3'," +
@@ -97,7 +95,6 @@ public class RegisterActivity extends AppCompatActivity {
                     e.printStackTrace();
                 } catch (JsonDataException e) {
                     e.printStackTrace();
-                    System.out.println(e.getMessage());
                 }
             }
         });

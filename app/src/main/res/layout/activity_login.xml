@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,7 +14,12 @@
         android:layout_height="200dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/enkasa2" />
 
     <EditText
@@ -23,13 +28,18 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/txtPassword"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="20dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
         android:drawableLeft="@drawable/ic_user_icon"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Username"
         android:inputType="textPersonName"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/txtPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/txtPassword"
@@ -37,41 +47,34 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/btnLogin"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="64dp"
         android:drawableLeft="@drawable/ic_password_icon"
         android:drawablePadding="10dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toTopOf="@+id/btnLogin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
-    <android.support.v7.widget.CardView
+    <Button
         android:id="@+id/btnLogin"
-        android:layout_width="300dp"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_above="@+id/lblRegister"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="0dp"
-        android:layout_marginBottom="30dp"
-        app:cardBackgroundColor="@color/colorSecondary"
-        app:cardCornerRadius="25dp">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:id="@+id/btnLoginLabel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_centerVertical="true"
-                android:text="@string/login_btn_login_label"
-                android:textColor="@android:color/white"
-                android:textSize="20dp" />
-        </RelativeLayout>
-
-    </android.support.v7.widget.CardView>
+        android:layout_marginStart="64dp"
+        android:layout_marginEnd="64dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/button_background_secondary"
+        android:text="@string/login_btn_login"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/lblRegister"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/lblRegister"
@@ -79,9 +82,15 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="50dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/login_lbl_create_account"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 
-</RelativeLayout>
+</android.support.constraint.ConstraintLayout>

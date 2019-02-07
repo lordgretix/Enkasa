@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -33,7 +34,7 @@ public class LoginActivity extends AppCompatActivity {
 
     ProgressDialog progress;
 
-    private CardView mBtnLogin;
+    private Button mBtnLogin;
     private EditText mTxtUserName;
     private EditText mTxtPassword;
     private TextView mLblRegister;
@@ -93,7 +94,7 @@ public class LoginActivity extends AppCompatActivity {
             {
 
                 try {
-                    String params = "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&data_table[]=codigos_postales&get_user=true";
+                    String params = "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+username+"&password="+password+"&data_table[]=alojamientos&data_table[]=traducciones&data_table[]=codigos_postales&data_table[]=reservas&get_user=true";
 
                     if(hash) params+="&hash=sha256";
 

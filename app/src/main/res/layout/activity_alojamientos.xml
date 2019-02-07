@@ -5,7 +5,24 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorBackgroundLight"
     tools:context=".Activities.AlojamientosActivity">
+
+    <!-- TODO: Pasar strings a @string-->
+
+    <TextView
+        android:id="@+id/lblEmpty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="No se han encontrado resultados"
+        android:textSize="18sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/fragment_alojamiento_list"
+        app:layout_constraintEnd_toEndOf="@+id/fragment_alojamiento_list"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/fragment_alojamiento_list" />
 
     <FrameLayout
         android:id="@+id/fragment_alojamiento_list"
@@ -14,7 +31,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@android:color/transparent"
         android:visibility="visible"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -26,9 +44,7 @@
         android:id="@+id/navigation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="0dp"
-        android:layout_marginEnd="0dp"
-        android:background="@android:color/transparent"
+        android:background="@color/colorPrimary"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -42,14 +58,15 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:autofillHints=""
-        android:background="@android:color/transparent"
+        android:background="@drawable/text_edit_background"
         android:drawableStart="@drawable/ic_search_icon_dark"
+        android:drawablePadding="10dp"
+        android:hint="Buscar"
         android:inputType="text"
+        android:maxLines="1"
         app:layout_constraintEnd_toStartOf="@+id/filter_options_icon"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:maxLines="1"/>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/filter_options"
@@ -59,7 +76,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:layout_marginBottom="8dp"
-        android:background="@drawable/options_background"
+        android:background="@drawable/text_edit_background"
         android:paddingBottom="16dp"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@+id/navigation"
@@ -243,7 +260,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="Ordenar por"
+            android:text="@string/ordenar_con"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txtMunicipio" />
