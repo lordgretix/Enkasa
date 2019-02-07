@@ -5,6 +5,7 @@ import android.content.res.Resources;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -31,11 +32,14 @@ import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
 import com.gp3.enkasa.Fragments.AlojamientoFragment;
 import com.gp3.enkasa.Fragments.DatePickerFragment;
+import com.gp3.enkasa.MainActivity;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.JsonData;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
+import com.gp3.enkasa.Models.Json.Models.User;
 import com.gp3.enkasa.R;
 
 import java.util.ArrayList;
@@ -45,7 +49,8 @@ import java.util.HashMap;
 
 public class AlojamientosActivity extends AppCompatActivity implements AlojamientoFragment.OnListFragmentInteractionListener {
 
-    public static String LANG = "es";
+    private static int LANG_REQUEST = 1;
+    private static int LOG_OUT = 2;
     public static JsonData jsonData = null;
     public static HashMap<String, ArrayList<String>> provs;
     public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName()+".INTENT_DETALLE_ID";
@@ -105,6 +110,10 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                     break;
                 case R.id.lugares_navigation_profile:
                     //mTextMessage.setText(R.string.lugares_navigation_profile);
+                    Intent intent3 = new Intent(getApplicationContext(),PerfilActivity.class);
+
+                    startActivityForResult(intent3, LANG_REQUEST);
+
                     break;
             }
             return false;
@@ -346,7 +355,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         if(mSelectTerritorio.getSelectedItem()==null) mSelectTerritorio.setSelection(0);
         if(mSelectMunicipio.getSelectedItem()==null) mSelectMunicipio.setSelection(0);
 
-        for (Traducciones tr : jsonData.getData().getTraducciones(LANG)) {
+        for (Traducciones tr : jsonData.getData().getTraducciones(MainActivity.getCurrentLang())) {
 
             if(!tr.getNombre().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase()) && !tr.getDescripcion().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase())) continue;
 
@@ -420,5 +429,30 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         Intent mintent = new Intent(this, DetailsActivity.class);
         mintent.putExtra(INTENT_DETALLE_ID, tr.getIdTraduccion());
         startActivity(mintent);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==LANG_REQUEST){
+            switch (resultCode){
+                case PerfilActivity.LANG_ES:
+                    MainActivity.setLocale(this, "es");
+                    break;
+                case PerfilActivity.LANG_EUS:
+                    MainActivity.setLocale(this, "eu");
+                    break;
+            }
+        }
+
+        if(requestCode==LOG_OUT && resultCode==PerfilActivity.LOGED_OUT){
+
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        recreate();
     }
 }
