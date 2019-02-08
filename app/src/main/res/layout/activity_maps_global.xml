@@ -23,10 +23,6 @@
         android:layout_marginBottom="10dp">
 
 
-        <Spinner
-            android:id="@+id/filtro_radio"
-            android:layout_width="269dp"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
 
