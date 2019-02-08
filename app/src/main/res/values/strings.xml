@@ -70,7 +70,7 @@
 
     <!-- menus -->
     <string name="lugares_navigation_search">Buscar</string>
-    <string name="title_dashboard" translatable="false">Dashboard</string>
+    <string name="lugares_navigation_reserves">@string/mis_reservas</string>
     <string name="lugares_navigation_profile">Perfil</string>
     <string name="title_activity_filter" translatable="false">Filter</string>
     <string name="lugares_navigation_map" translatable="false">Mapa</string>
@@ -124,5 +124,6 @@
     <string name="reserva_delete_confirm">¿Estas seguro de que deseas borrar esta reserva?</string>
     <string name="confirm_yes">Si</string>
     <string name="confirm_no">No</string>
+    <string name="update_reserve">Actualizar reserva</string>
 
 </resources>

@@ -68,8 +68,8 @@
                 android:layout_marginTop="40dp"
                 android:ems="10"
                 android:hint="@string/text_user"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark"
-                android:textColorLink="@color/colorSecondary"
                 android:textSize="12sp" />
 
             <EditText
@@ -82,8 +82,8 @@
                 android:layout_marginTop="40dp"
                 android:ems="10"
                 android:hint="@string/text_email"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark"
-                android:textColorLink="@color/colorSecondary"
                 android:textSize="12sp" />
 
             <EditText
@@ -97,8 +97,8 @@
                 android:ems="10"
                 android:hint="@string/text_password"
                 android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark"
-                android:textColorLink="@color/colorSecondary"
                 android:textSize="12sp" />
 
             <EditText
@@ -112,8 +112,8 @@
                 android:ems="10"
                 android:hint="@string/text_passwordAgain"
                 android:inputType="textPassword"
+                android:textColor="@color/colorPrimaryDark"
                 android:textColorHint="@color/colorPrimaryDark"
-                android:textColorLink="@color/colorSecondary"
                 android:textSize="12sp" />
 
             <android.support.v7.widget.CardView
@@ -131,8 +131,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                   >
+                    android:layout_height="match_parent">
 
                     <TextView
                         android:id="@+id/btnRegisterLabel"

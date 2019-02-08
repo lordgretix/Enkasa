@@ -158,6 +158,16 @@ public class Data {
         return rsvs;
     }
 
+    public Reservas getReservaByID(int id){
+
+        for (Reservas rs : this.reservas) {
+            if(rs.getId()==id){
+                return rs;
+            }
+        }
+        return new Reservas();
+    }
+
     public static int getAlojamientoIcon(Context context, String tipo){
 
         String[] tipos = context.getResources().getStringArray(R.array.alojaminetos_tipos);

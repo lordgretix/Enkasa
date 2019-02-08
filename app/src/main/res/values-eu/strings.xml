@@ -71,4 +71,6 @@
     <string name="reserva_delete_confirm">Ziur al zaude erreserba hau ezabatu nahi duzula?</string>
     <string name="confirm_yes">Bai</string>
     <string name="confirm_no">Ez</string>
+    <string name="update_reserve">Eguneratu erreserba</string>
+    <string name="lugares_navigation_reserves">@string/mis_reservas</string>
 </resources>

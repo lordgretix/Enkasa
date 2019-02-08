@@ -1,7 +1,9 @@
 package com.gp3.enkasa.Activities;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -9,6 +11,7 @@ import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 
 import com.gp3.enkasa.Fragments.MisReservasFragment;
+import com.gp3.enkasa.MainActivity;
 import com.gp3.enkasa.Models.Json.Connection;
 import com.gp3.enkasa.Models.Json.Exceptions.JsonDataException;
 import com.gp3.enkasa.Models.Json.Models.Reservas;
@@ -17,6 +20,8 @@ import com.gp3.enkasa.R;
 import java.io.IOException;
 
 public class MisReservasActivity extends AppCompatActivity implements MisReservasFragment.OnListFragmentInteractionListener {
+
+    private static final int UPDATE = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +43,11 @@ public class MisReservasActivity extends AppCompatActivity implements MisReserva
 
     @Override
     public void onListFragmentInteraction(Reservas rs) {
+
+        int id = AlojamientosActivity.jsonData.getData().getTraduccionByAlojaminetoID(rs.getAlojamiento(), MainActivity.getCurrentLang()).getId();
+        Intent intent = ReservasActivity.newIntent(this, id, rs.getId());
+
+        startActivityForResult(intent, UPDATE);
 
     }
 
@@ -92,5 +102,15 @@ public class MisReservasActivity extends AppCompatActivity implements MisReserva
         MisReservasFragment fragment = (MisReservasFragment) manager.findFragmentById(R.id.fragment_mis_reservas_list);
 
         fragment.updateUI(AlojamientosActivity.jsonData.getData().getReservasByUserID(AlojamientosActivity.jsonData.getUser().getID()));
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+
+        if(requestCode==UPDATE){
+            if (resultCode == ReservasActivity.UPDATED){
+                recreate();
+            }
+        }
     }
 }

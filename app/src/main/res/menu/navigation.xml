@@ -14,7 +14,7 @@
     <item
         android:id="@+id/lugares_navigation_reservas"
         android:icon="@drawable/ic_reservas_icon"
-        android:title="@string/title_dashboard" />
+        android:title="@string/lugares_navigation_reserves" />
 
     <item
         android:id="@+id/lugares_navigation_profile"

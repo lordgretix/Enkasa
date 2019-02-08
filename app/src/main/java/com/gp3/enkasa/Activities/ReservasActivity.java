@@ -30,6 +30,8 @@ import java.util.ArrayList;
 public class ReservasActivity extends AppCompatActivity {
 
     private static final String EXTRA_ID = ReservasActivity.class.getName()+".EXTRA_ID";
+    private static final String UPDATE = ReservasActivity.class.getName()+".UPDATE";
+    public static final int UPDATED = 1;
 
     private Traducciones mTraduccion;
 
@@ -47,6 +49,13 @@ public class ReservasActivity extends AppCompatActivity {
     public static Intent newIntent(Context context, int id) {
         Intent intent = new Intent(context, ReservasActivity.class);
         intent.putExtra(EXTRA_ID, id);
+        return intent;
+    }
+
+    public static Intent newIntent(Context context, int id, int res) {
+        Intent intent = new Intent(context, ReservasActivity.class);
+        intent.putExtra(EXTRA_ID, id);
+        intent.putExtra(UPDATE, res);
         return intent;
     }
 
@@ -115,53 +124,123 @@ public class ReservasActivity extends AppCompatActivity {
             }
         });
 
-        mBtnReserve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(!validate()) return;
-
-                mReserva.setNumReservas(Integer.parseInt(mTxtAmount.getText().toString()));
-                mReserva.setMensaje(mTxtMessage.getText().toString());
 
 
-                try{
-                    String params = "json={" +
+        int resID = getIntent().getIntExtra(UPDATE, 0);
+
+        if(resID==0){
+
+            mBtnReserve.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if(!validate()) return;
+
+                    mReserva.setNumReservas(Integer.parseInt(mTxtAmount.getText().toString()));
+                    mReserva.setMensaje(mTxtMessage.getText().toString());
+
+                    try{
+                        String params = "json={" +
                                 "'db':'reto_gp3'," +
                                 "'user':'gp3'," +
                                 "'password':'IFZWx5dEG12yt8QW'," +
                                 "'tables':{" +
-                                    "'reservas':{" +
-                                        "'action':'insert'," +
-                                        "'values':[" +
-                                            mReserva.toJson() +
-                                        "]" +
-                                    "}" +
+                                "'reservas':{" +
+                                "'action':'insert'," +
+                                "'values':[" +
+                                mReserva.toJson() +
+                                "]" +
                                 "}" +
-                            "}";
-                    params=params.replaceAll("'", "\"");
+                                "}" +
+                                "}";
+                        params=params.replaceAll("'", "\"");
 
-                    Connection.pushData(params);
+                        Connection.pushData(params);
 
-                    User user = AlojamientosActivity.jsonData.getUser();
+                        User user = AlojamientosActivity.jsonData.getUser();
 
-                    params =  "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+user.getUsername()+"&password="+user.getPassword()+"&data_table[]=reservas&get_user=true";
+                        params =  "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+user.getUsername()+"&password="+user.getPassword()+"&data_table[]=reservas&get_user=true";
 
-                    ArrayList<Reservas> reservas = Connection.retriveData(params).getData().getReservas();
+                        ArrayList<Reservas> reservas = Connection.retriveData(params).getData().getReservas();
 
-                    AlojamientosActivity.jsonData.getData().setReservas(reservas);
+                        AlojamientosActivity.jsonData.getData().setReservas(reservas);
 
-                    Toast.makeText(getApplicationContext(), getResources().getString(R.string.reservado), Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.reservado), Toast.LENGTH_LONG).show();
 
-                    finish();
+                        finish();
 
-                } catch (JsonDataException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    } catch (JsonDataException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
-            }
-        });
+            });
 
+        }else{
+            mReserva = AlojamientosActivity.jsonData.getData().getReservaByID(resID);
+
+            mTxtDateStart.setText(mReserva.getFechaInicio(true));
+            mTxtDateEnd.setText(mReserva.getFechaFin(true));
+            mTxtAmount.setText(String.valueOf(mReserva.getNumReservas()));
+            mTxtMessage.setText(mReserva.getMensaje());
+
+            mBtnReserve.setText(R.string.update_reserve);
+
+            mBtnReserve.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    try{
+                        String params = "json={" +
+                                "'db':'reto_gp3'," +
+                                "'user':'gp3'," +
+                                "'password':'IFZWx5dEG12yt8QW'," +
+                                "'tables':{" +
+                                "'reservas':{" +
+                                "'action':'update'," +
+                                "'values':[" +
+                                "{" +
+                                "'fecha_inicio':'"+mReserva.getFechaFin()+"'," +
+                                "'fecha_fin':'"+mReserva.getFechaFin()+"'," +
+                                "'num_reservas':"+Integer.parseInt(mTxtAmount.getText().toString())+"," +
+                                "'mensaje':'"+mTxtMessage.getText().toString()+"'" +
+                                "}" +
+                                "]," +
+                                "'where':[" +
+                                "{" +
+                                "'field':'id'," +
+                                "'value':" + mReserva.getId()+
+                                "}" +
+                                "]" +
+                                "}" +
+                                "}" +
+                                "}";
+                        params=params.replaceAll("'", "\"");
+
+                        Connection.pushData(params);
+
+                        User user = AlojamientosActivity.jsonData.getUser();
+
+                        params =  "db=reto_gp3&users_table=usuarios&username_field=usuario&password_field=password&username="+user.getUsername()+"&password="+user.getPassword()+"&data_table[]=reservas&get_user=true";
+
+                        ArrayList<Reservas> reservas = Connection.retriveData(params).getData().getReservas();
+
+                        AlojamientosActivity.jsonData.getData().setReservas(reservas);
+
+                        Toast.makeText(getApplicationContext(), getResources().getString(R.string.reservado), Toast.LENGTH_LONG).show();
+
+                        setResult(UPDATED);
+                        finish();
+
+                    } catch (JsonDataException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+        }
     }
 
     private boolean validate(){
