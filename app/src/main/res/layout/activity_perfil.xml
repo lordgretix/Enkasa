@@ -1,167 +1,178 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.PerfilActivity">
+    tools:layout_editor_absoluteX="229dp"
+    tools:layout_editor_absoluteY="309dp">
 
-    <View
-        android:id="@+id/divider5"
-        android:layout_width="0dp"
-        android:layout_height="10dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_idioma" />
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".Activities.PerfilActivity">
 
-    <View
-        android:id="@+id/divider6"
-        android:layout_width="0dp"
-        android:layout_height="9dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:background="@color/colorPrimary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/perfil_userImage" />
+        <View
+            android:id="@+id/divider5"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_idioma" />
 
-    <ImageView
-        android:id="@+id/perfil_userImage"
-        android:layout_width="129dp"
-        android:layout_height="124dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_image_perfil"
-        tools:src="@tools:sample/avatars[12]" />
+        <View
+            android:id="@+id/divider6"
+            android:layout_width="0dp"
+            android:layout_height="9dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:background="@color/colorPrimary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/perfil_userImage" />
 
-    <TextView
-        android:id="@+id/perfil_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="24dp"
-        android:drawableStart="@drawable/ic_user_icon_dark"
-        android:drawablePadding="8dp"
-        android:text="@string/text_name"
-        app:layout_constraintStart_toEndOf="@+id/perfil_userImage"
-        app:layout_constraintTop_toTopOf="@+id/perfil_userImage" />
+        <ImageView
+            android:id="@+id/perfil_userImage"
+            android:layout_width="129dp"
+            android:layout_height="124dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_image_perfil"
+            tools:src="@tools:sample/avatars[12]" />
 
-    <TextView
-        android:id="@+id/textView14"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/setting"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider6" />
+        <TextView
+            android:id="@+id/perfil_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="24dp"
+            android:drawableStart="@drawable/ic_user_icon_dark"
+            android:drawablePadding="8dp"
+            android:text="@string/text_name"
+            app:layout_constraintStart_toEndOf="@+id/perfil_userImage"
+            app:layout_constraintTop_toTopOf="@+id/perfil_userImage" />
 
-    <Spinner
-        android:id="@+id/spinner_idioma"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginTop="8dp"
-        android:entries="@array/idiomas"
-        android:spinnerMode="dropdown"
-        app:layout_constraintStart_toStartOf="@+id/textView20"
-        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+        <TextView
+            android:id="@+id/textView14"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/setting"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider6" />
 
-    <TextView
-        android:id="@+id/textView20"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:text="@string/cambiar_idioma"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+        <Spinner
+            android:id="@+id/spinner_idioma"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginTop="8dp"
+            android:entries="@array/idiomas"
+            android:spinnerMode="dropdown"
+            app:layout_constraintStart_toStartOf="@+id/textView20"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
-    <TextView
-        android:id="@+id/perfil_mail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:drawableStart="@drawable/ic_email_icon"
-        android:drawablePadding="8dp"
-        android:text="@string/mail"
-        app:layout_constraintStart_toStartOf="@+id/perfil_name"
-        app:layout_constraintTop_toBottomOf="@+id/perfil_name" />
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/cambiar_idioma"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
-    <EditText
-        android:id="@+id/txtPassword"
-        android:layout_width="254dp"
-        android:layout_height="39dp"
-        android:layout_gravity="center_vertical"
+        <TextView
+            android:id="@+id/perfil_mail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/ic_email_icon"
+            android:drawablePadding="8dp"
+            android:text="@string/mail"
+            app:layout_constraintStart_toStartOf="@+id/perfil_name"
+            app:layout_constraintTop_toBottomOf="@+id/perfil_name" />
 
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="@string/text_password"
-        android:inputType="textPassword"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/switchPerfilPasswordChange"
-        app:layout_constraintTop_toBottomOf="@+id/switchPerfilPasswordChange" />
+        <EditText
+            android:id="@+id/txtPassword"
+            android:layout_width="254dp"
+            android:layout_height="39dp"
+            android:layout_gravity="center_vertical"
 
-    <EditText
-        android:id="@+id/txtPasswordRepeat"
-        android:layout_width="253dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center_vertical"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/text_password"
+            android:inputType="textPassword"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/switchPerfilPasswordChange"
+            app:layout_constraintTop_toBottomOf="@+id/switchPerfilPasswordChange" />
 
-        android:layout_marginTop="8dp"
-        android:ems="10"
-        android:enabled="false"
-        android:hint="@string/text_passwordAgain"
-        android:inputType="textPassword"
-        android:textSize="12sp"
-        app:layout_constraintStart_toStartOf="@+id/txtPassword"
-        app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
+        <EditText
+            android:id="@+id/txtPasswordRepeat"
+            android:layout_width="253dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center_vertical"
 
-    <Button
-        android:id="@+id/btnPerfilGuardar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:text="@string/save"
-        android:background="@drawable/button_background_secondary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtPasswordRepeat" />
+            android:layout_marginTop="8dp"
+            android:ems="10"
+            android:enabled="false"
+            android:hint="@string/text_passwordAgain"
+            android:inputType="textPassword"
+            android:textSize="12sp"
+            app:layout_constraintStart_toStartOf="@+id/txtPassword"
+            app:layout_constraintTop_toBottomOf="@+id/txtPassword" />
 
-    <ImageView
-        android:id="@+id/imgPerfilLogOut"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_log_out_icon" />
+        <Button
+            android:id="@+id/btnPerfilGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/button_background_secondary"
+            android:text="@string/save"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.446"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtPasswordRepeat" />
 
-    <Switch
-        android:id="@+id/switchPerfilPasswordChange"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
-        android:switchPadding="16dp"
-        android:text="@string/cambiar_password"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/divider5" />
-</android.support.constraint.ConstraintLayout>
+        <ImageView
+            android:id="@+id/imgPerfilLogOut"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_log_out_icon" />
+
+        <Switch
+            android:id="@+id/switchPerfilPasswordChange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:switchPadding="16dp"
+            android:text="@string/cambiar_password"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+
+    </android.support.constraint.ConstraintLayout>
+
+</ScrollView>
