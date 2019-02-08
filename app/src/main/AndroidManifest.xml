@@ -53,6 +53,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activities.DetailsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activities.ReservasActivity"
@@ -70,6 +71,7 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".Activities.MisReservasActivity"
+
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
     </application>
 
