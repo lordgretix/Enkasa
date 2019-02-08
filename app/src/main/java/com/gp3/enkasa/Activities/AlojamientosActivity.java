@@ -409,22 +409,12 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode== PERFIL_REQUEST){
-            switch (resultCode){
-                case PerfilActivity.LANG_ES:
-                    MainActivity.setLocale(this, "es");
-                    break;
-                case PerfilActivity.LANG_EUS:
-                    MainActivity.setLocale(this, "eu");
-                    break;
-                case PerfilActivity.LOGED_OUT:
-                    Intent intent = new Intent(this, LoginActivity.class);
-                    startActivity(intent);
-                    finish();
-                    break;
-            }
-        }
+        if(requestCode== PERFIL_REQUEST && resultCode==PerfilActivity.LOGED_OUT){
 
+            Intent intent = new Intent(this, LoginActivity.class);
+            startActivity(intent);
+            finish();
+        }
         recreate();
     }
 }

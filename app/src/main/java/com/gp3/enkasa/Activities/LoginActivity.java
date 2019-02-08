@@ -104,8 +104,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     JsonData jsonData = Connection.retriveData(params);
 
-                    jsonData.getData().setAlojamientosToTraducciones();
-
                     AlojamientosActivity.jsonData=jsonData;
 
                     runOnUiThread(new Runnable() {
@@ -115,8 +113,11 @@ public class LoginActivity extends AppCompatActivity {
                                 Toast.makeText(getApplicationContext(), R.string.login_status_failed, Toast.LENGTH_SHORT).show();
                                 mTxtUserName.setError(getResources().getString(R.string.login_status_failed));
                             }else{
+                                mTxtUserName.setError(null);
                                 Toast.makeText(getApplicationContext(), R.string.login_status_logged, Toast.LENGTH_SHORT).show();
                                 MainActivity.setStoredUser(getApplicationContext(), AlojamientosActivity.jsonData.getUser());
+                                AlojamientosActivity.jsonData.getData().setAlojamientosToTraducciones();
+
                                 createLugaressActivity();
                             }
                             progress.dismiss();

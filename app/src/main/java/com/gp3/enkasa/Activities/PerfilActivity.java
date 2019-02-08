@@ -5,13 +5,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.gp3.enkasa.MainActivity;
+import com.gp3.enkasa.Models.Json.Connection;
+import com.gp3.enkasa.Models.Json.Exceptions.JsonDataException;
+import com.gp3.enkasa.Models.Json.Models.Alojamientos;
 import com.gp3.enkasa.Models.Json.Models.User;
 import com.gp3.enkasa.R;
+
+import java.io.IOException;
 
 public class PerfilActivity extends AppCompatActivity {
 
@@ -21,14 +29,13 @@ public class PerfilActivity extends AppCompatActivity {
 
     private Spinner mIdioma;
     private Button mGuardar;
-    private Button mCerrarseion;
+    private ImageView mCerrarseion;
     private TextView mNombre;
     private TextView mApellido;
     private TextView mMail;
     private EditText mPassword;
     private EditText mPasswordRep;
-
-
+    private Switch mPasswordChange;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,21 +44,77 @@ public class PerfilActivity extends AppCompatActivity {
 
         mIdioma= findViewById(R.id.spinner_idioma);
         mGuardar = findViewById(R.id.btnPerfilGuardar);
-        mCerrarseion=findViewById(R.id.btnPerfilLogOut);
+        mCerrarseion=findViewById(R.id.imgPerfilLogOut);
         mNombre=findViewById(R.id.perfil_name);
-        mApellido=findViewById(R.id.perfil_apellido);
         mMail=findViewById(R.id.perfil_mail);
         mPassword=findViewById(R.id.txtPassword);
         mPasswordRep=findViewById(R.id.txtPasswordRepeat);
+        mPasswordChange=findViewById(R.id.switchPerfilPasswordChange);
 
         mNombre.setText(AlojamientosActivity.jsonData.getUser().getNombre());
-        mApellido.setText(AlojamientosActivity.jsonData.getUser().getApellidos());
         mMail.setText(AlojamientosActivity.jsonData.getUser().getEmail());
 
+        int selected = MainActivity.getCurrentLang() == "es" ? LANG_ES : LANG_EUS;
 
-        mIdioma.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        mIdioma.setSelection(selected);
+
+        mPasswordChange.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+                mPassword.setEnabled(isChecked);
+                mPasswordRep.setEnabled(isChecked);
+            }
+        });
+
+        mPasswordChange.setChecked(false);
+
+        mGuardar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if(mPasswordChange.isChecked()){
+
+                   if(!validarPassword()) return;
+
+                    try {
+                        AlojamientosActivity.jsonData.getUser().setPassword(mPassword.getText().toString(), true);
+
+                        String params = "json={" +
+                                "'db':'reto_gp3'," +
+                                "'user':'gp3'," +
+                                "'password':'IFZWx5dEG12yt8QW'," +
+                                "'tables':{" +
+                                "'usuarios':{" +
+                                "'action':'update'," +
+                                "'values':[" +
+                                "{" +
+                                "'password':'"+ AlojamientosActivity.jsonData.getUser().getPassword() +"'" +
+                                "}" +
+                                "]," +
+                                "'where':[" +
+                                "{" +
+                                "'field':'id'," +
+                                "'value':"+AlojamientosActivity.jsonData.getUser().getID()+
+                                "}" +
+                                "]" +
+                                "}" +
+                                "}" +
+                                "}";
+
+                        params=params.replaceAll("'", "\"");
+                        Connection.pushData(params);
+
+                        MainActivity.setStoredUser(getApplicationContext(), AlojamientosActivity.jsonData.getUser());
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (JsonDataException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+
                 switch (mIdioma.getSelectedItemPosition()){
                     case 0:
                         MainActivity.setLocale(getApplicationContext(), "es");
@@ -60,24 +123,8 @@ public class PerfilActivity extends AppCompatActivity {
                         MainActivity.setLocale(getApplicationContext(),"eu");
                         break;
                 }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
-        mGuardar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (validarPassword()){
-                    User user = new User();
-                    user.setPassword(mPassword.getText().toString(), true);
-                    setResult(mIdioma.getSelectedItemPosition());
-                    finish();
-                }
-
+                setResult(mIdioma.getSelectedItemPosition());
+                finish();
             }
         });
 
@@ -94,9 +141,7 @@ public class PerfilActivity extends AppCompatActivity {
     }
 
     private Boolean validarPassword(){
-        if(mPassword.getText().toString().equals(mPasswordRep.getText().toString())){
-        }else{
-            //los passwords no conicide
+        if(!mPassword.getText().toString().equals(mPasswordRep.getText().toString())){
             mPassword.setError(getResources().getString(R.string.error_match_password));
             return false;
         }

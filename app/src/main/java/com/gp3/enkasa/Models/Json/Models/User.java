@@ -21,13 +21,13 @@ public class User{
     private int role;
 
     @SerializedName("nombre")
-    private String nombre;
+    private String nombre="";
 
     @SerializedName("apellidos")
-    private String apellidos;
+    private String apellidos="";
 
     @SerializedName("email")
-    private String email;
+    private String email="";
 
     public User() {
     }
