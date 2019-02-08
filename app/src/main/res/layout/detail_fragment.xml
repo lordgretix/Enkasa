@@ -23,6 +23,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="@string/place_name"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
@@ -36,6 +37,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
         android:text="@string/place_direction"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/image_alojamiento"
@@ -86,7 +88,7 @@
 
     <TextView
         android:id="@+id/summary_alojamiento"
-        android:layout_width="308dp"
+        android:layout_width="346dp"
         android:layout_height="188dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="8dp"
@@ -105,6 +107,7 @@
         android:layout_marginStart="64dp"
         android:layout_marginTop="16dp"
         android:text="@string/mapa"
+        android:background="@drawable/button_background_secondary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/summary_alojamiento" />
 
@@ -116,6 +119,7 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:text="@string/reservar"
+        android:background="@drawable/button_background_secondary"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/btnMapa"
@@ -195,6 +199,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:text="@string/mail"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image_alojamiento" />
 
@@ -205,6 +210,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:text="@string/place_tel"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/mail_alojamiento" />
 
@@ -215,6 +221,7 @@
         android:layout_marginStart="30dp"
         android:layout_marginTop="8dp"
         android:text="@string/codigo_postal"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tel_alojamiento" />
 
