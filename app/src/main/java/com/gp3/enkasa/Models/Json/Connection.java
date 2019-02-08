@@ -20,7 +20,7 @@ public class Connection {
 
     public static JsonData retriveData(String url, String api, String params, String method, boolean output, String charset) throws IOException {
 
-        HttpsURLConnection conn = (HttpsURLConnection) new URL(url+api).openConnection();
+        HttpsURLConnection conn = (HttpsURLConnection) new URL(url + api).openConnection();
 
         conn.setRequestMethod(method);
         conn.setDoOutput(output);
@@ -29,7 +29,7 @@ public class Connection {
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), charset));
         StringBuilder response = new StringBuilder();
         String buff;
-        while((buff = in.readLine())!=null){
+        while ((buff = in.readLine()) != null) {
             response.append(buff);
         }
 
@@ -39,7 +39,7 @@ public class Connection {
 
     public static JsonData retriveData(String params) throws IOException {
 
-        HttpsURLConnection conn = (HttpsURLConnection) new URL(CONN_URL+GETTER_API).openConnection();
+        HttpsURLConnection conn = (HttpsURLConnection) new URL(CONN_URL + GETTER_API).openConnection();
 
         conn.setRequestMethod(METHOD_POST);
         conn.setDoOutput(true);
@@ -48,7 +48,7 @@ public class Connection {
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
         StringBuilder response = new StringBuilder();
         String buff;
-        while((buff = in.readLine())!=null){
+        while ((buff = in.readLine()) != null) {
             response.append(buff);
         }
 
@@ -57,7 +57,7 @@ public class Connection {
 
     public static boolean pushData(String url, String api, String params, String method, boolean output, String charset) throws IOException, JsonDataException {
 
-        HttpsURLConnection conn = (HttpsURLConnection) new URL(url+api).openConnection();
+        HttpsURLConnection conn = (HttpsURLConnection) new URL(url + api).openConnection();
 
         conn.setRequestMethod(method);
         conn.setDoOutput(output);
@@ -66,12 +66,12 @@ public class Connection {
         BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), charset));
         StringBuilder response = new StringBuilder();
         String buff;
-        while((buff = in.readLine())!=null){
+        while ((buff = in.readLine()) != null) {
             response.append(buff);
         }
 
         JsonData jsonData = new Gson().fromJson(response.toString(), JsonData.class);
-        if(jsonData.hashError()){
+        if (jsonData.hashError()) {
             throw new JsonDataException(jsonData.getError());
         }
 
@@ -80,21 +80,21 @@ public class Connection {
 
     public static boolean pushData(String params) throws IOException, JsonDataException {
 
-        HttpsURLConnection conn = (HttpsURLConnection) new URL(CONN_URL+SETTER_API).openConnection();
+        HttpsURLConnection conn = (HttpsURLConnection) new URL(CONN_URL + SETTER_API).openConnection();
 
         conn.setRequestMethod(METHOD_POST);
         conn.setDoOutput(true);
         conn.getOutputStream().write(params.getBytes(StandardCharsets.UTF_8));
 
-        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(),  StandardCharsets.UTF_8));
+        BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream(), StandardCharsets.UTF_8));
         StringBuilder response = new StringBuilder();
         String buff;
-        while((buff = in.readLine())!=null){
+        while ((buff = in.readLine()) != null) {
             response.append(buff);
         }
 
-        JsonData jsonData =new Gson().fromJson(response.toString(), JsonData.class);
-        if(jsonData.hashError()){
+        JsonData jsonData = new Gson().fromJson(response.toString(), JsonData.class);
+        if (jsonData.hashError()) {
             throw new JsonDataException(jsonData.getError());
         }
 

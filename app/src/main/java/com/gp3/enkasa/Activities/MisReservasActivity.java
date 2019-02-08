@@ -57,28 +57,27 @@ public class MisReservasActivity extends AppCompatActivity implements MisReserva
         new AlertDialog.Builder(this)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .setMessage(R.string.reserva_delete_confirm)
-                .setPositiveButton(R.string.confirm_yes, new DialogInterface.OnClickListener()
-                {
+                .setPositiveButton(R.string.confirm_yes, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         AlojamientosActivity.jsonData.getData().getReservas().remove(rs);
                         String params = "json={" +
-                                    "'db':'reto_gp3'," +
-                                    "'user':'gp3'," +
-                                    "'password':'IFZWx5dEG12yt8QW'," +
-                                    "'tables':{" +
-                                        "'reservas':{" +
-                                            "'action':'delete'," +
-                                            "'where':[" +
-                                                "{"+
-                                                    "'field':'id'," +
-                                                    "'value':"+rs.getId()+
-                                                "}"+
-                                            "]" +
-                                        "}" +
-                                    "}" +
+                                "'db':'reto_gp3'," +
+                                "'user':'gp3'," +
+                                "'password':'IFZWx5dEG12yt8QW'," +
+                                "'tables':{" +
+                                "'reservas':{" +
+                                "'action':'delete'," +
+                                "'where':[" +
+                                "{" +
+                                "'field':'id'," +
+                                "'value':" + rs.getId() +
+                                "}" +
+                                "]" +
+                                "}" +
+                                "}" +
                                 "}";
-                        params=params.replaceAll("'", "\"");
+                        params = params.replaceAll("'", "\"");
                         try {
                             Connection.pushData(params);
                         } catch (IOException e) {
@@ -95,7 +94,7 @@ public class MisReservasActivity extends AppCompatActivity implements MisReserva
                 .show();
     }
 
-    public void updateFragmentUI(){
+    public void updateFragmentUI() {
 
         FragmentManager manager = getSupportFragmentManager();
 
@@ -107,8 +106,8 @@ public class MisReservasActivity extends AppCompatActivity implements MisReserva
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
 
-        if(requestCode==UPDATE){
-            if (resultCode == ReservasActivity.UPDATED){
+        if (requestCode == UPDATE) {
+            if (resultCode == ReservasActivity.UPDATED) {
                 recreate();
             }
         }

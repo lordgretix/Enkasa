@@ -4,6 +4,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import com.gp3.enkasa.Fragments.AlojamientoFragment.OnListFragmentInteractionListener;
 import com.gp3.enkasa.Fragments.Holders.AlojamientosViewHolder;
 import com.gp3.enkasa.Models.Json.Models.Data;
@@ -33,7 +34,7 @@ public class AlojamientoRecyclerViewAdapter extends RecyclerView.Adapter<Alojami
     public void onBindViewHolder(final AlojamientosViewHolder holder, final int position) {
 
         Traducciones tr = mTraducciones.get(position);
-        holder.setItem( tr );
+        holder.setItem(tr);
         holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(Data.getAlojamientoIcon(holder.getView().getContext(), tr.getTipo())));
         holder.getTitle().setText(tr.getNombre());
         holder.getResume().setText(tr.getResumen());

@@ -1,6 +1,5 @@
 package com.gp3.enkasa.Activities;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,7 +19,6 @@ import android.view.animation.Transformation;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CompoundButton;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -28,7 +26,6 @@ import android.widget.Switch;
 import android.widget.TextView;
 
 import com.gp3.enkasa.Fragments.AlojamientoFragment;
-import com.gp3.enkasa.Fragments.DatePickerFragment;
 import com.gp3.enkasa.MainActivity;
 import com.gp3.enkasa.Models.Json.JsonData;
 import com.gp3.enkasa.Models.Json.Models.Traducciones;
@@ -44,9 +41,9 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     private static int PERFIL_REQUEST = 1;
     public static JsonData jsonData = null;
     public static HashMap<String, ArrayList<String>> provs;
-    public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName()+".INTENT_DETALLE_ID";
+    public static final String INTENT_DETALLE_ID = AlojamientosActivity.class.getName() + ".INTENT_DETALLE_ID";
 
-   // private TextView mTextMessage;
+    // private TextView mTextMessage;
     private BottomNavigationView mBottomNavigationView;
 
     private TextView mLblEmpty;
@@ -78,7 +75,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
             switch (item.getItemId()) {
                 case R.id.lugares_navigation_map:
 
-                    Intent intent = new Intent (getApplicationContext(),MapsGlobalActivity.class);
+                    Intent intent = new Intent(getApplicationContext(), MapsGlobalActivity.class);
                     startActivity(intent);
 
                     break;
@@ -90,7 +87,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                     break;
                 case R.id.lugares_navigation_profile:
 
-                    Intent intent3 = new Intent(getApplicationContext(),PerfilActivity.class);
+                    Intent intent3 = new Intent(getApplicationContext(), PerfilActivity.class);
                     startActivityForResult(intent3, PERFIL_REQUEST);
 
                     break;
@@ -142,7 +139,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
         provinciaAdapter.add(getResources().getString(R.string.filter_select_todo_option));
 
-        for(String provincia : provs.keySet()){
+        for (String provincia : provs.keySet()) {
             provinciaAdapter.add(provincia);
         }
         mSelectTerritorio.setSelection(0);
@@ -163,11 +160,11 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                 mSelectMunicipio.setAdapter(municipioAdapter);
                 municipioAdapter.add(getResources().getString(R.string.filter_select_todo_option));
 
-                if(position!=0){
-                    for(Object poblacion : provs.get(mSelectTerritorio.getAdapter().getItem(position))){
+                if (position != 0) {
+                    for (Object poblacion : provs.get(mSelectTerritorio.getAdapter().getItem(position))) {
                         String pob = (String) poblacion;
-                        if(pob.length()>15){
-                            pob=pob.substring(0,15);
+                        if (pob.length() > 15) {
+                            pob = pob.substring(0, 15);
                         }
                         municipioAdapter.add(pob);
                     }
@@ -306,7 +303,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
 
     }
 
-    public void updateFragmentUI(){
+    public void updateFragmentUI() {
 
         FragmentManager manager = getSupportFragmentManager();
 
@@ -315,44 +312,47 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
         fragment.updateUI(filterTraducciones());
     }
 
-    private ArrayList<Traducciones> filterTraducciones(){
+    private ArrayList<Traducciones> filterTraducciones() {
         ArrayList<Traducciones> traducciones = new ArrayList<>();
         String[] tipos = getResources().getStringArray(R.array.alojaminetos_tipos);
 
         ArrayList<String> tipo = new ArrayList<>();
 
-        if(mSwitchAlbergues.isChecked()) tipo.add(tipos[0]);
-        if(mSwitchCamping.isChecked()) tipo.add(tipos[1]);
-        if(mSwitchAgroturismo.isChecked()) tipo.add(tipos[2]);
-        if(mSwitchRural.isChecked()) tipo.add(tipos[3]);
+        if (mSwitchAlbergues.isChecked()) tipo.add(tipos[0]);
+        if (mSwitchCamping.isChecked()) tipo.add(tipos[1]);
+        if (mSwitchAgroturismo.isChecked()) tipo.add(tipos[2]);
+        if (mSwitchRural.isChecked()) tipo.add(tipos[3]);
 
-        if(mSelectTerritorio.getSelectedItem()==null) mSelectTerritorio.setSelection(0);
-        if(mSelectMunicipio.getSelectedItem()==null) mSelectMunicipio.setSelection(0);
+        if (mSelectTerritorio.getSelectedItem() == null) mSelectTerritorio.setSelection(0);
+        if (mSelectMunicipio.getSelectedItem() == null) mSelectMunicipio.setSelection(0);
 
         for (Traducciones tr : jsonData.getData().getTraducciones(MainActivity.getCurrentLang())) {
 
-            if(!tr.getNombre().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase()) && !tr.getDescripcion().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase())) continue;
+            if (!tr.getNombre().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase()) && !tr.getDescripcion().toLowerCase().contains(mTxtBuscar.getText().toString().toLowerCase()))
+                continue;
 
-            if(mSelectTerritorio.getSelectedItemPosition()!=0 && !mSelectTerritorio.getSelectedItem().toString().equals(jsonData.getData().getProvinciaByIDs(tr.getCodPostal(), tr.getCodPoblacion()))) continue;
+            if (mSelectTerritorio.getSelectedItemPosition() != 0 && !mSelectTerritorio.getSelectedItem().toString().equals(jsonData.getData().getProvinciaByIDs(tr.getCodPostal(), tr.getCodPoblacion())))
+                continue;
 
-            if(mSelectMunicipio.getSelectedItemPosition()!=0 && !mSelectMunicipio.getSelectedItem().toString().equals(jsonData.getData().getPoblacionByIDs(tr.getCodPostal(), tr.getCodPoblacion()))) continue;
+            if (mSelectMunicipio.getSelectedItemPosition() != 0 && !mSelectMunicipio.getSelectedItem().toString().equals(jsonData.getData().getPoblacionByIDs(tr.getCodPostal(), tr.getCodPoblacion())))
+                continue;
 
-            if(!tipo.isEmpty() && !tipo.contains(tr.getTipo())) continue;
+            if (!tipo.isEmpty() && !tipo.contains(tr.getTipo())) continue;
 
-            if(mSwitchCertificado.isChecked() && tr.getCertificado()!=1) continue;
+            if (mSwitchCertificado.isChecked() && tr.getCertificado() != 1) continue;
 
-            if(mSwitchRestaurante.isChecked() && tr.getRestaurante()!=1) continue;
+            if (mSwitchRestaurante.isChecked() && tr.getRestaurante() != 1) continue;
 
-            if(mSwitchTienda.isChecked() && tr.getTienda()!=1) continue;
+            if (mSwitchTienda.isChecked() && tr.getTienda() != 1) continue;
 
-            if(mSwitchClub.isChecked() && tr.getClub()!=1) continue;
+            if (mSwitchClub.isChecked() && tr.getClub() != 1) continue;
 
-            if(mSwitchAutocaravana.isChecked() && tr.getAutocarabana()!=1) continue;
+            if (mSwitchAutocaravana.isChecked() && tr.getAutocarabana() != 1) continue;
 
             traducciones.add(tr);
         }
 
-        switch (mSelectSortBy.getSelectedItemPosition()){
+        switch (mSelectSortBy.getSelectedItemPosition()) {
             case 0:
                 Collections.sort(traducciones, new Comparator<Traducciones>() {
                     @Override
@@ -384,13 +384,13 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
                 break;
         }
 
-        if(!mSwitchOrden.isChecked()){
+        if (!mSwitchOrden.isChecked()) {
             Collections.reverse(traducciones);
         }
 
-        if(traducciones.size()==0){
+        if (traducciones.size() == 0) {
             mLblEmpty.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             mLblEmpty.setVisibility(View.GONE);
         }
 
@@ -409,7 +409,7 @@ public class AlojamientosActivity extends AppCompatActivity implements Alojamien
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if(requestCode== PERFIL_REQUEST && resultCode==PerfilActivity.LOGED_OUT){
+        if (requestCode == PERFIL_REQUEST && resultCode == PerfilActivity.LOGED_OUT) {
 
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);

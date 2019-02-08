@@ -4,7 +4,7 @@ import com.google.gson.annotations.SerializedName;
 import com.gp3.enkasa.Models.Json.Models.Data;
 import com.gp3.enkasa.Models.Json.Models.User;
 
-public class JsonData{
+public class JsonData {
 
     @SerializedName("user")
     private User user;
@@ -49,7 +49,7 @@ public class JsonData{
         this.error = error;
     }
 
-    public boolean hashError(){
-        return this.error!=null;
+    public boolean hashError() {
+        return this.error != null;
     }
 }

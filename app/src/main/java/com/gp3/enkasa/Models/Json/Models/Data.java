@@ -3,7 +3,6 @@ package com.gp3.enkasa.Models.Json.Models;
 import android.content.Context;
 
 import com.google.gson.annotations.SerializedName;
-import com.gp3.enkasa.Fragments.AlojamientoFragment;
 import com.gp3.enkasa.R;
 
 import java.util.ArrayList;
@@ -50,11 +49,11 @@ public class Data {
         return this.traducciones;
     }
 
-    public ArrayList<Traducciones> getTraducciones(String lang){
+    public ArrayList<Traducciones> getTraducciones(String lang) {
         ArrayList<Traducciones> trs = new ArrayList<>();
 
         for (Traducciones tr : this.traducciones) {
-            if(tr.getIdioma().equals(lang.toLowerCase())){
+            if (tr.getIdioma().equals(lang.toLowerCase())) {
                 trs.add(tr);
             }
         }
@@ -73,11 +72,11 @@ public class Data {
         this.traducciones = traducciones;
     }
 
-    public Traducciones getTraduccionByAlojaminetoID(int id, String lang){
+    public Traducciones getTraduccionByAlojaminetoID(int id, String lang) {
 
         for (Traducciones tr : this.traducciones) {
 
-            if(tr.getIdAlojamiento()==id && tr.getIdioma().equals(lang)){
+            if (tr.getIdAlojamiento() == id && tr.getIdioma().equals(lang)) {
                 return tr;
             }
         }
@@ -85,9 +84,9 @@ public class Data {
         return new Traducciones();
     }
 
-    public Traducciones getTraduccionByID(int id){
+    public Traducciones getTraduccionByID(int id) {
         for (Traducciones tr : this.traducciones) {
-            if(tr.getIdTraduccion()==id){
+            if (tr.getIdTraduccion() == id) {
                 return tr;
             }
         }
@@ -95,30 +94,30 @@ public class Data {
     }
 
 
-    public Alojamientos getAlojamientoByID(int id){
+    public Alojamientos getAlojamientoByID(int id) {
         for (Alojamientos aloj : this.alojamientos) {
-            if(aloj.getId()==id){
+            if (aloj.getId() == id) {
                 return aloj;
             }
         }
         return new Alojamientos();
     }
 
-    public void setAlojamientosToTraducciones(){
+    public void setAlojamientosToTraducciones() {
         for (Traducciones tr : this.traducciones) {
             tr.setAlojamiento(getAlojamientoByID(tr.getIdAlojamiento()));
         }
     }
 
-    public HashMap<String, ArrayList<String>> poblacionesByProvincias(){
+    public HashMap<String, ArrayList<String>> poblacionesByProvincias() {
         HashMap<String, ArrayList<String>> resultado = new HashMap<>();
 
         for (CodPostales cp : this.codPostales) {
-            if(!resultado.containsKey(cp.getProvincia())){
+            if (!resultado.containsKey(cp.getProvincia())) {
                 resultado.put(cp.getProvincia(), new ArrayList<String>());
             }
 
-            if(!resultado.get(cp.getProvincia()).contains(cp.getPoblacion())){
+            if (!resultado.get(cp.getProvincia()).contains(cp.getPoblacion())) {
                 resultado.get(cp.getProvincia()).add(cp.getPoblacion());
             }
         }
@@ -126,70 +125,70 @@ public class Data {
         return resultado;
     }
 
-    public String getProvinciaByIDs(int codPostal, int codPoblacion){
+    public String getProvinciaByIDs(int codPostal, int codPoblacion) {
 
         for (CodPostales cp : this.codPostales) {
-            if(cp.getCodPostal()==codPostal && cp.getCodPoblacion()==codPoblacion){
+            if (cp.getCodPostal() == codPostal && cp.getCodPoblacion() == codPoblacion) {
                 return cp.getProvincia();
             }
         }
         return "";
     }
 
-    public String getPoblacionByIDs(int codPostal, int codPoblacion){
+    public String getPoblacionByIDs(int codPostal, int codPoblacion) {
 
         for (CodPostales cp : this.codPostales) {
-            if(cp.getCodPostal()==codPostal && cp.getCodPoblacion()==codPoblacion){
+            if (cp.getCodPostal() == codPostal && cp.getCodPoblacion() == codPoblacion) {
                 return cp.getPoblacion();
             }
         }
         return "";
     }
 
-    public ArrayList<Reservas> getReservasByUserID(int userID){
+    public ArrayList<Reservas> getReservasByUserID(int userID) {
 
         ArrayList<Reservas> rsvs = new ArrayList<>();
 
         for (Reservas tr : this.reservas) {
-            if(tr.getUsuario()==userID){
+            if (tr.getUsuario() == userID) {
                 rsvs.add(tr);
             }
         }
         return rsvs;
     }
 
-    public Reservas getReservaByID(int id){
+    public Reservas getReservaByID(int id) {
 
         for (Reservas rs : this.reservas) {
-            if(rs.getId()==id){
+            if (rs.getId() == id) {
                 return rs;
             }
         }
         return new Reservas();
     }
 
-    public static int getAlojamientoIcon(Context context, String tipo){
+    public static int getAlojamientoIcon(Context context, String tipo) {
 
         String[] tipos = context.getResources().getStringArray(R.array.alojaminetos_tipos);
 
         int[] resources = {R.drawable.ic_alberges_icon, R.drawable.ic_camping_icon, R.drawable.ic_agroturismo_icon, R.drawable.ic_rural_icon};
 
-        for(int i=0; i<tipos.length; i++){
-            if(tipos[i].equals(tipo)) return resources[i];
+        for (int i = 0; i < tipos.length; i++) {
+            if (tipos[i].equals(tipo)) return resources[i];
         }
-        return  R.drawable.ic_alberges_icon;
+        return R.drawable.ic_alberges_icon;
     }
 
-    public static int getAlojamientoIconPNG(Context context, String tipo){
+    public static int getAlojamientoIconPNG(Context context, String tipo) {
 
         String[] tipos = context.getResources().getStringArray(R.array.alojaminetos_tipos);
 
         int[] resources = {R.drawable.albergues, R.drawable.camping, R.drawable.agroturismo, R.drawable.rural};
 
-        for(int i=0; i<tipos.length; i++){
-            if(tipos[i].equals(tipo)) return resources[i];
+        for (int i = 0; i < tipos.length; i++) {
+            if (tipos[i].equals(tipo)) return resources[i];
         }
-        return  R.drawable.rural;
+        return R.drawable.rural;
     }
 
 }

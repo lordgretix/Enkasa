@@ -17,8 +17,8 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
 
     private static String CURRENT_LANG = "es";
-    private static final String LOGIN_PREFERENCE = MainActivity.class.getName()+".LOGIN_PREFERENCE";
-    private static final String LANG_PREFERENCE = MainActivity.class.getName()+".LANG_PREFERENCE";
+    private static final String LOGIN_PREFERENCE = MainActivity.class.getName() + ".LOGIN_PREFERENCE";
+    private static final String LANG_PREFERENCE = MainActivity.class.getName() + ".LANG_PREFERENCE";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public static void setLocale(Context context, String lang){
+    public static void setLocale(Context context, String lang) {
         Locale myLocale = new Locale(lang);
         Resources res = context.getResources();
         DisplayMetrics dm = res.getDisplayMetrics();
@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         return CURRENT_LANG;
     }
 
-    public static void setStoredUser(Context context, User user){
+    public static void setStoredUser(Context context, User user) {
 
         SharedPreferences.Editor editor = context.getSharedPreferences(LOGIN_PREFERENCE, 0).edit();
         editor.putString("username", user.getUsername());
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         editor.commit();
     }
 
-    public static User getStoredUser(Context context){
+    public static User getStoredUser(Context context) {
 
         User user = new User();
 
@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         return user.getUsername() != null && user.getPassword() != null ? user : null;
     }
 
-    public static void removeStoredUser(Context context){
+    public static void removeStoredUser(Context context) {
 
         SharedPreferences.Editor editor = context.getSharedPreferences(LOGIN_PREFERENCE, 0).edit();
         editor.clear();
@@ -76,19 +76,19 @@ public class MainActivity extends AppCompatActivity {
         removeStoredLocale(context);
     }
 
-    public static String getStoredLocale(Context context){
+    public static String getStoredLocale(Context context) {
         SharedPreferences sp = context.getSharedPreferences(LANG_PREFERENCE, 0);
         return sp.getString("lang", "es");
     }
 
-    public static void setStoredLocale(Context context, String lang){
+    public static void setStoredLocale(Context context, String lang) {
 
         SharedPreferences.Editor editor = context.getSharedPreferences(LANG_PREFERENCE, 0).edit();
         editor.putString("lang", lang);
         editor.commit();
     }
 
-    public static void removeStoredLocale(Context context){
+    public static void removeStoredLocale(Context context) {
 
         SharedPreferences.Editor editor = context.getSharedPreferences(LANG_PREFERENCE, 0).edit();
         editor.clear();

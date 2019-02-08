@@ -39,10 +39,10 @@ public class MisReservasRecyclerViewAdapter extends RecyclerView.Adapter<MisRese
         Reservas rs = mReservas.get(position);
         Traducciones tr = AlojamientosActivity.jsonData.getData().getTraduccionByAlojaminetoID(rs.getAlojamiento(), MainActivity.getCurrentLang());
 
-        holder.setItem( rs );
+        holder.setItem(rs);
         holder.getIcon().setImageDrawable(holder.getView().getResources().getDrawable(Data.getAlojamientoIcon(holder.getView().getContext(), tr.getTipo())));
         holder.getTitle().setText(tr.getNombre());
-        holder.getDate().setText(rs.getFechaInicio(true)+" - "+rs.getFechaFin(true));
+        holder.getDate().setText(rs.getFechaInicio(true) + " - " + rs.getFechaFin(true));
 
 
         holder.getView().setOnClickListener(new View.OnClickListener() {
@@ -59,7 +59,7 @@ public class MisReservasRecyclerViewAdapter extends RecyclerView.Adapter<MisRese
         holder.getDeleteIcon().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mListener != null){
+                if (mListener != null) {
                     mListener.onListFragmentDeleteIconClick(mReservas.get(position));
                 }
             }

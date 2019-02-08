@@ -16,7 +16,9 @@ import com.gp3.enkasa.Models.Json.JsonData;
 import com.gp3.enkasa.R;
 
 import java.util.regex.Pattern;
+
 import android.util.Patterns;
+
 import java.io.IOException;
 
 public class RegisterActivity extends AppCompatActivity {
@@ -53,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void onClick(View v) {
                 try {
 
-                    if(!validate()) return;
+                    if (!validate()) return;
 
                     User user = new User();
 
@@ -63,23 +65,23 @@ public class RegisterActivity extends AppCompatActivity {
                     user.setEmail(mTxtEmail.getText().toString());
                     user.setPassword(mTxtPassword.getText().toString(), true);
                     user.setRole(3);
-                    
-                    String params = "json={" +
-                                "'db':'reto_gp3'," +
-                                "'user':'gp3'," +
-                                "'password':'IFZWx5dEG12yt8QW'," +
-                                "'tables':{" +
-                                    "'usuarios':{" +
-                                        "'action':'insert'," +
-                                        "'values':[" +
-                                            user.toJson() +
-                                        "]" +
-                                    "}" +
-                                "}" +
-                            "}";
-                    params=params.replaceAll("'", "\"");
 
-                    System.out.println("JSON: "+params);
+                    String params = "json={" +
+                            "'db':'reto_gp3'," +
+                            "'user':'gp3'," +
+                            "'password':'IFZWx5dEG12yt8QW'," +
+                            "'tables':{" +
+                            "'usuarios':{" +
+                            "'action':'insert'," +
+                            "'values':[" +
+                            user.toJson() +
+                            "]" +
+                            "}" +
+                            "}" +
+                            "}";
+                    params = params.replaceAll("'", "\"");
+
+                    System.out.println("JSON: " + params);
                     Connection.pushData(params);
 
                     Intent result = new Intent();
@@ -101,54 +103,54 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     // TODO: validar todos los input
-    private boolean validate(){
-        boolean valido=false;
-        if(mTxtPassword.getText().toString().equals(mTxtPasswordRepeat.getText().toString())){
-        }else{
+    private boolean validate() {
+        boolean valido = false;
+        if (mTxtPassword.getText().toString().equals(mTxtPasswordRepeat.getText().toString())) {
+        } else {
             //los passwords no conicide
             mTxtPassword.setError(getResources().getString(R.string.error_match_password));
             return valido;
         }
 
-            //despues de validar contraseña validamos los mails si tiene el formato correcto
-        if (validarEmail(mTxtEmail.getText().toString())){
-        }else{
+        //despues de validar contraseña validamos los mails si tiene el formato correcto
+        if (validarEmail(mTxtEmail.getText().toString())) {
+        } else {
             //formato de mail no valido
             mTxtEmail.setError(getResources().getString(R.string.error_format_mail));
             return valido;
         }
 
-        if (mTxtUsuario.getText().toString().length()<=20){
-        }else{
+        if (mTxtUsuario.getText().toString().length() <= 20) {
+        } else {
             //nombre de usuario fuera de rango
             mTxtUsuario.setError(getResources().getString(R.string.error_out_of_range));
             return valido;
         }
 
-        if (mTxtNombre.getText().toString().length()<=30){
-        }else{
+        if (mTxtNombre.getText().toString().length() <= 30) {
+        } else {
             //nombre fuera de rango
             mTxtNombre.setError(getResources().getString(R.string.error_out_of_range));
             return valido;
         }
 
-        if(mTxtApellidos.getText().toString().length()<=60){
-        }else{
+        if (mTxtApellidos.getText().toString().length() <= 60) {
+        } else {
             //apellido fuera de rango
             mTxtApellidos.setError(getResources().getString(R.string.error_out_of_range));
             return valido;
         }
 
-        if(mTxtEmail.getText().toString().length()<=100){
-        }else {
+        if (mTxtEmail.getText().toString().length() <= 100) {
+        } else {
             //email fuera de rango
             mTxtEmail.setError(getResources().getString(R.string.error_out_of_range));
             return valido;
         }
 
-        if (mTxtPassword.getText().toString().length()<=16 && mTxtPassword.getText().toString().length()>=8){
-            valido= true;
-        }else {
+        if (mTxtPassword.getText().toString().length() <= 16 && mTxtPassword.getText().toString().length() >= 8) {
+            valido = true;
+        } else {
             //password fuera de rango o demasiado corto
             mTxtPassword.setError(getResources().getString(R.string.error_length_password));
             return valido;

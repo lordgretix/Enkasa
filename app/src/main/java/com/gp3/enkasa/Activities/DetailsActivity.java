@@ -76,15 +76,15 @@ public class DetailsActivity extends AppCompatActivity {
         cargarDetalle(id);
 
 
-        btnMapa=findViewById(R.id.btnMapa);
+        btnMapa = findViewById(R.id.btnMapa);
         btnMapa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = MapsActivity.newIntent(getApplicationContext(), id);
-              //  Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
+                //  Intent intent = new Intent (getApplicationContext(),MapsActivity.class);
 
-            startActivity(intent);
+                startActivity(intent);
             }
         });
 

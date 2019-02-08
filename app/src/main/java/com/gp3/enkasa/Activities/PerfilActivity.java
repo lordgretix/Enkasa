@@ -3,7 +3,6 @@ package com.gp3.enkasa.Activities;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.EditText;
@@ -15,8 +14,6 @@ import android.widget.TextView;
 import com.gp3.enkasa.MainActivity;
 import com.gp3.enkasa.Models.Json.Connection;
 import com.gp3.enkasa.Models.Json.Exceptions.JsonDataException;
-import com.gp3.enkasa.Models.Json.Models.Alojamientos;
-import com.gp3.enkasa.Models.Json.Models.User;
 import com.gp3.enkasa.R;
 
 import java.io.IOException;
@@ -42,14 +39,14 @@ public class PerfilActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_perfil);
 
-        mIdioma= findViewById(R.id.spinner_idioma);
+        mIdioma = findViewById(R.id.spinner_idioma);
         mGuardar = findViewById(R.id.btnPerfilGuardar);
-        mCerrarseion=findViewById(R.id.imgPerfilLogOut);
-        mNombre=findViewById(R.id.perfil_name);
-        mMail=findViewById(R.id.perfil_mail);
-        mPassword=findViewById(R.id.txtPassword);
-        mPasswordRep=findViewById(R.id.txtPasswordRepeat);
-        mPasswordChange=findViewById(R.id.switchPerfilPasswordChange);
+        mCerrarseion = findViewById(R.id.imgPerfilLogOut);
+        mNombre = findViewById(R.id.perfil_name);
+        mMail = findViewById(R.id.perfil_mail);
+        mPassword = findViewById(R.id.txtPassword);
+        mPasswordRep = findViewById(R.id.txtPasswordRepeat);
+        mPasswordChange = findViewById(R.id.switchPerfilPasswordChange);
 
         mNombre.setText(AlojamientosActivity.jsonData.getUser().getNombre());
         mMail.setText(AlojamientosActivity.jsonData.getUser().getEmail());
@@ -73,9 +70,9 @@ public class PerfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                if(mPasswordChange.isChecked()){
+                if (mPasswordChange.isChecked()) {
 
-                   if(!validarPassword()) return;
+                    if (!validarPassword()) return;
 
                     try {
                         AlojamientosActivity.jsonData.getUser().setPassword(mPassword.getText().toString(), true);
@@ -89,20 +86,20 @@ public class PerfilActivity extends AppCompatActivity {
                                 "'action':'update'," +
                                 "'values':[" +
                                 "{" +
-                                "'password':'"+ AlojamientosActivity.jsonData.getUser().getPassword() +"'" +
+                                "'password':'" + AlojamientosActivity.jsonData.getUser().getPassword() + "'" +
                                 "}" +
                                 "]," +
                                 "'where':[" +
                                 "{" +
                                 "'field':'id'," +
-                                "'value':"+AlojamientosActivity.jsonData.getUser().getID()+
+                                "'value':" + AlojamientosActivity.jsonData.getUser().getID() +
                                 "}" +
                                 "]" +
                                 "}" +
                                 "}" +
                                 "}";
 
-                        params=params.replaceAll("'", "\"");
+                        params = params.replaceAll("'", "\"");
                         Connection.pushData(params);
 
                         MainActivity.setStoredUser(getApplicationContext(), AlojamientosActivity.jsonData.getUser());
@@ -115,12 +112,12 @@ public class PerfilActivity extends AppCompatActivity {
 
                 }
 
-                switch (mIdioma.getSelectedItemPosition()){
+                switch (mIdioma.getSelectedItemPosition()) {
                     case 0:
                         MainActivity.setLocale(getApplicationContext(), "es");
                         break;
                     case 1:
-                        MainActivity.setLocale(getApplicationContext(),"eu");
+                        MainActivity.setLocale(getApplicationContext(), "eu");
                         break;
                 }
                 setResult(mIdioma.getSelectedItemPosition());
@@ -140,8 +137,8 @@ public class PerfilActivity extends AppCompatActivity {
 
     }
 
-    private Boolean validarPassword(){
-        if(!mPassword.getText().toString().equals(mPasswordRep.getText().toString())){
+    private Boolean validarPassword() {
+        if (!mPassword.getText().toString().equals(mPasswordRep.getText().toString())) {
             mPassword.setError(getResources().getString(R.string.error_match_password));
             return false;
         }

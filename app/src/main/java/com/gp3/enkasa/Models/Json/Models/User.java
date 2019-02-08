@@ -2,11 +2,12 @@ package com.gp3.enkasa.Models.Json.Models;
 
 import com.google.gson.Gson;
 import com.google.gson.annotations.SerializedName;
+
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 
-public class User{
+public class User {
 
     @SerializedName("id")
     private int ID;
@@ -21,13 +22,13 @@ public class User{
     private int role;
 
     @SerializedName("nombre")
-    private String nombre="";
+    private String nombre = "";
 
     @SerializedName("apellidos")
-    private String apellidos="";
+    private String apellidos = "";
 
     @SerializedName("email")
-    private String email="";
+    private String email = "";
 
     public User() {
     }
@@ -66,7 +67,7 @@ public class User{
         this.password = password;
     }
 
-    public void setPassword(String password, boolean hash){
+    public void setPassword(String password, boolean hash) {
 
         String pass = password;
 
@@ -120,7 +121,7 @@ public class User{
         this.email = email;
     }
 
-    public String toJson(){
+    public String toJson() {
         return new Gson().toJson(this);
     }
 }

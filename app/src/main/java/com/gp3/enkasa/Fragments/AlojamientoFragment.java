@@ -24,7 +24,7 @@ import java.util.Comparator;
 
 public class AlojamientoFragment extends Fragment {
 
-    private static final String ARG_COLUMN_COUNT = AlojamientoFragment.class.getName()+".ARG_COLUMN_COUNT";
+    private static final String ARG_COLUMN_COUNT = AlojamientoFragment.class.getName() + ".ARG_COLUMN_COUNT";
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
 
@@ -105,9 +105,9 @@ public class AlojamientoFragment extends Fragment {
         mListener = null;
     }
 
-    public void updateUI(ArrayList<Traducciones> traducciones){
+    public void updateUI(ArrayList<Traducciones> traducciones) {
 
-        if(mAdapter!=null){
+        if (mAdapter != null) {
             mAdapter.setTraducciones(traducciones);
             mAdapter.notifyDataSetChanged();
         }

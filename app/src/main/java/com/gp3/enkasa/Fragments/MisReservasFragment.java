@@ -25,7 +25,7 @@ import java.util.ArrayList;
  */
 public class MisReservasFragment extends Fragment {
 
-    private static final String ARG_COLUMN_COUNT = MisReservasFragment.class.getName()+".ARG_COLUMN_COUNT";
+    private static final String ARG_COLUMN_COUNT = MisReservasFragment.class.getName() + ".ARG_COLUMN_COUNT";
     private int mColumnCount = 1;
     private MisReservasFragment.OnListFragmentInteractionListener mListener;
 
@@ -98,9 +98,9 @@ public class MisReservasFragment extends Fragment {
         mListener = null;
     }
 
-    public void updateUI(ArrayList<Reservas> resevas){
+    public void updateUI(ArrayList<Reservas> resevas) {
 
-        if(mAdapter!=null){
+        if (mAdapter != null) {
             mAdapter.setReservas(resevas);
             mAdapter.notifyDataSetChanged();
         }
@@ -108,6 +108,7 @@ public class MisReservasFragment extends Fragment {
 
     public interface OnListFragmentInteractionListener {
         void onListFragmentInteraction(Reservas rs);
+
         void onListFragmentDeleteIconClick(Reservas rs);
     }
 }

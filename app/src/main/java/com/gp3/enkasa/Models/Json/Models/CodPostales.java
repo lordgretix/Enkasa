@@ -6,12 +6,16 @@ public class CodPostales {
 
     @SerializedName("cod_provincia")
     private int codProvincia;
+
     @SerializedName("cod_poblacion")
     private int codPoblacion;
+
     @SerializedName("cod_postal")
     private int codPostal;
+
     @SerializedName("poblacion")
     private String poblacion;
+
     @SerializedName("provincia")
     private String provincia;
 
