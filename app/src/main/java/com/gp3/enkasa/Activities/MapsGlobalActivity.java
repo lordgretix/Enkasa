@@ -45,7 +45,7 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
 
     private ArrayList<Traducciones> alojamientos;
     private GoogleMap mMap;
-    private TextView mBarProgress;
+    private TextView mProgressKm;
     private  SeekBar mSeekBar;
     private Button btnBuscarKm;
     private Marker marcador;
@@ -75,7 +75,7 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
         mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                mBarProgress.setText(String.valueOf(progress));
+                mProgressKm.setText(String.valueOf(progress));
             }
 
             @Override
@@ -86,13 +86,13 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
             public void onStopTrackingTouch(SeekBar seekBar) {
             }
         });
-        mBarProgress = findViewById(R.id.textProgress);
-        mBarProgress.setText(String.valueOf(mSeekBar.getProgress()));
+        mProgressKm = findViewById(R.id.textProgress);
+        mProgressKm.setText(String.valueOf(mSeekBar.getProgress()));
         btnBuscarKm=findViewById(R.id.btnBuscarKm);
         btnBuscarKm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //mensaje1=String.valueOf(mBarProgress.getText());
+                //mensaje1=String.valueOf(mProgressKm.getText());
                // mensaje();
                 //Cargamos el mapa de nuevo indicandole el radio de kilometros que queremos consultar
                 onMapReady( mMap);
@@ -215,6 +215,7 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
         mMap = googleMap;
         miUbicacion();
         //Añadir el filtro de lugares a 30 metros.
+        mMap.clear();
         double radiusInMeters = 100 * toRad(mSeekBar.getProgress()*500);
         int strokeColor = 0xffff0000; //red outline
         int shadeColor = 0x44ff0000; //opaque red fill
