@@ -14,7 +14,11 @@ import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.SeekBar;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -23,6 +27,8 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -39,14 +45,16 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
 
     private ArrayList<Traducciones> alojamientos;
     private GoogleMap mMap;
-    private Spinner filtro_radio;
-
+    private TextView mBarProgress;
+    private  SeekBar mSeekBar;
+    private Button btnBuscarKm;
     private Marker marcador;
     double lat = 0.0;
     double log = 0.0;
     String mensaje1 = "";
     String direccion = "";
-    String[] datos = {"1km", "5km", "10km"};
+    CircleOptions circleOptions;
+
 
     public static Intent newIntent(Context packageContect) {
         Intent intent = new Intent(packageContect, MapsGlobalActivity.class);
@@ -56,18 +64,45 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_maps_global);
         alojamientos = AlojamientosActivity.jsonData.getData().getTraducciones();
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
-        /*filtro_radio=(Spinner) findViewById(R.id.filtro_radio);
-        ArrayAdapter<String> adaptador =new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,datos);
-        filtro_radio.setAdapter(adaptador);*/
+        mSeekBar = findViewById(R.id.seekBar);
+        mSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                mBarProgress.setText(String.valueOf(progress));
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+            }
+        });
+        mBarProgress = findViewById(R.id.textProgress);
+        mBarProgress.setText(String.valueOf(mSeekBar.getProgress()));
+        btnBuscarKm=findViewById(R.id.btnBuscarKm);
+        btnBuscarKm.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //mensaje1=String.valueOf(mBarProgress.getText());
+               // mensaje();
+                //Cargamos el mapa de nuevo indicandole el radio de kilometros que queremos consultar
+                onMapReady( mMap);
+            }
+        });
 
 
+    }
+
+    private void setOnClickListener(View.OnClickListener onClickListener) {
     }
 
     //Activar los permisos del gps cuando esten apagados
@@ -170,22 +205,21 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
         Toast toast = Toast.makeText(this, mensaje1, Toast.LENGTH_SHORT);
         toast.show();
     }
-    public static float distFrom(float lat1, float lng1, float lat2, float lng2) {
-        double earthRadius = 6371000; //3958.75 miles or 6371.0 kilometers
-        double dLat = Math.toRadians(lat2-lat1);
-        double dLng = Math.toRadians(lng2-lng1);
-        double a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-                Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2)) *
-                        Math.sin(dLng/2) * Math.sin(dLng/2);
-        double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
-        float dist = (float) (earthRadius * c);
 
-        return dist;
+
+    public static double toRad(double value) {
+        return (Math.PI / 180) * value;
     }
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         miUbicacion();
+        //Añadir el filtro de lugares a 30 metros.
+        double radiusInMeters = 100 * toRad(mSeekBar.getProgress()*500);
+        int strokeColor = 0xffff0000; //red outline
+        int shadeColor = 0x44ff0000; //opaque red fill
+         circleOptions = new CircleOptions().center(new LatLng(lat,log)).radius(radiusInMeters).fillColor(shadeColor).strokeColor(strokeColor).strokeWidth(8);
+         mMap.addCircle(circleOptions);
 
         LatLng target = null;
         //Recorremos nuestros alojamientos
@@ -207,8 +241,12 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
                             .icon(BitmapDescriptorFactory.fromResource(Data.getAlojamientoIconPNG(this, aloj.getTipo()))));
                 }
                 //Poner el Zoom
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target, 7));
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(target, 5));
+
             }
         }
+        mMap.getUiSettings().setZoomControlsEnabled(true);
     }
+
+
 }
