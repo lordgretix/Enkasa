@@ -125,5 +125,5 @@
     <string name="confirm_yes">Si</string>
     <string name="confirm_no">No</string>
     <string name="update_reserve">Actualizar reserva</string>
-
+    <string name="text_distancia">Alojamientos a :</string>
 </resources>

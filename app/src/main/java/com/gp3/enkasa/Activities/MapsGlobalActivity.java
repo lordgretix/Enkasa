@@ -144,8 +144,7 @@ public class MapsGlobalActivity extends FragmentActivity implements OnMapReadyCa
         if (marcador != null) marcador.remove();
         marcador = mMap.addMarker(new MarkerOptions()
                 .position(coordenadas)
-                .title("Direccion:" + direccion)
-                .icon(BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher)));
+                .title("Direccion:" + direccion));
         mMap.animateCamera(miubicacion);
 
     }
